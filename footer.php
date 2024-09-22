@@ -2,10 +2,15 @@
 <footer class="footer container-fluid bg-dark py-5" data-bs-theme="dark">
         <div class="row align-items-center">
             <div class="col-12 col-xl-6 mb-2">
-                <div class="about ms-2 mb-2">
-                    <div class="about__logo mb-1 text-light fw-semibold">Василий Квасов</div>
-                    <div class="about__caption text-body-secondary">Я делаю сайты, IT-проекты и все, чтобы они хорошо работали.</div>
-                </div>
+                <? // About 
+                $APPLICATION->IncludeComponent("bitrix:main.include", ".default", array(
+                	"AREA_FILE_SHOW" => "sect",
+                	"AREA_FILE_SUFFIX" => "footer",
+                	"AREA_FILE_RECURSIVE" => "Y",
+                	"EDIT_TEMPLATE" => "sect_footer.php"
+                	),
+                	false
+                );?>
             </div>
             <div class="footer-menu col-12 col-xl-6 mb-2">
                 <? // Footer Menu
