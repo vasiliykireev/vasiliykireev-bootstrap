@@ -24,48 +24,49 @@
     <header class="header">
         <nav class="navbar navbar-expand-lg text-bg-dark" data-bs-theme="dark">
             <div class="container-fluid">
-                <? if ($APPLICATION->GetCurPage(false) === '/'): ?>
-                    <span class="header__brand navbar-brand fw-semibold focus-ring focus-ring-light ps-2 pe-2 rounded-2">
-                    <?$APPLICATION->IncludeComponent("bitrix:main.include", ".default", array(
-                    	"AREA_FILE_SHOW" => "sect",
-                    	"AREA_FILE_SUFFIX" => "brand",
-                    	"AREA_FILE_RECURSIVE" => "Y",
-                    	"EDIT_TEMPLATE" => "sect_brand.php"
-                    	),
-                    	false
-                    );?>
-                    </a>
+                <? // Brand
+                if ($APPLICATION->GetCurPage(false) === '/'): ?>
+                    <span class="brand navbar-brand fw-semibold focus-ring focus-ring-light ps-2 pe-2 rounded-2">
+                        <?$APPLICATION->IncludeComponent("bitrix:main.include", ".default", array(
+                        	"AREA_FILE_SHOW" => "sect",
+                        	"AREA_FILE_SUFFIX" => "brand",
+                        	"AREA_FILE_RECURSIVE" => "Y",
+                        	"EDIT_TEMPLATE" => "sect_brand.php"
+                        	),
+                        	false
+                        );?>
+                    </span>
                 <? else: ?>
-                    <a class="header__brand navbar-brand fw-semibold focus-ring focus-ring-light ps-2 pe-2 rounded-2" href="/">
-                    <?$APPLICATION->IncludeComponent("bitrix:main.include", ".default", array(
-                    	"AREA_FILE_SHOW" => "sect",
-                    	"AREA_FILE_SUFFIX" => "brand",
-                    	"AREA_FILE_RECURSIVE" => "Y",
-                    	"EDIT_TEMPLATE" => "sect_brand.php"
-                    	),
-                    	false
-                    );?>
+                    <a class="brand navbar-brand fw-semibold focus-ring focus-ring-light ps-2 pe-2 rounded-2" href="/">
+                        <?$APPLICATION->IncludeComponent("bitrix:main.include", ".default", array(
+                        	"AREA_FILE_SHOW" => "sect",
+                        	"AREA_FILE_SUFFIX" => "brand",
+                        	"AREA_FILE_RECURSIVE" => "Y",
+                        	"EDIT_TEMPLATE" => "sect_brand.php"
+                        	),
+                        	false
+                        );?>
                     </a>
                 <? endif; ?>
-                <button class="header__toggle navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Раскрыть меню">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="header__navbar-menu navbar-menu collapse navbar-collapse" id="navbar-menu">
-                    <ul class="navbar-menu__list navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="navbar-menu__item nav-item px-1">
-                            <a class="navbar-menu__link btn btn-dark focus-ring focus-ring-dark" href="#skills">Навыки</a>
-                        </li>
-                        <li class="navbar-menu__item nav-item px-1">
-                            <a class="navbar-menu__link btn btn-dark focus-ring focus-ring-dark" href="#projects">Проекты</a>
-                        </li>
-                        <li class="navbar-menu__item nav-item px-1">
-                            <a class="navbar-menu__link btn btn-dark focus-ring focus-ring-dark" href="#portfolio">Портфолио</a>
-                        </li>
-                        <li class="navbar-menu__item nav-item px-1">
-                            <a class="navbar-menu__link btn btn-dark focus-ring focus-ring-dark" href="#solutions">Решения</a>
-                        </li>
-                    </ul>
-                </div>
+                <?$APPLICATION->IncludeComponent(
+	"bitrix:menu", 
+	"top_menu", 
+	array(
+		"ROOT_MENU_TYPE" => "top",
+		"MAX_LEVEL" => "3",
+		"CHILD_MENU_TYPE" => "left",
+		"USE_EXT" => "Y",
+		"COMPONENT_TEMPLATE" => "top_menu",
+		"MENU_CACHE_TYPE" => "N",
+		"MENU_CACHE_TIME" => "3600",
+		"MENU_CACHE_USE_GROUPS" => "Y",
+		"MENU_CACHE_GET_VARS" => array(
+		),
+		"DELAY" => "N",
+		"ALLOW_MULTI_SELECT" => "N"
+	),
+	false
+);?>
             </div>
         </nav>
     </header>
