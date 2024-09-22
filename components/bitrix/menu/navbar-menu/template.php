@@ -8,7 +8,7 @@
         ?>
         	<?if($arItem["SELECTED"]):?>
                 <li class="navbar-menu__item nav-item px-1">
-                    <a class="navbar-menu__link btn btn-outline-light focus-ring focus-ring-dark" href="<?=$arItem["LINK"]?>">
+                    <a class="navbar-menu__link btn btn-dark focus-ring focus-ring-dark fw-semibold" href="<?=$arItem["LINK"]?>">
                         <?=$arItem["TEXT"]?>
                     </a>
                 </li>
