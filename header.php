@@ -1,4 +1,6 @@
-<? if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) die(); ?>
+<? if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) die();
+IncludeTemplateLangFile(__FILE__);
+?>
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -50,7 +52,7 @@
                     </a>
                 <? endif; ?>
                 <? // To Do: переделать navbar-menu на комплексный компонент, куда включить кнопку ?>
-                <button class="header__toggle navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Раскрыть меню">
+                <button class="header__toggle navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="<?=GetMessage('TOGGLE_NAVIGATION')?>">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="header__navbar-menu navbar-menu collapse navbar-collapse" id="navbar-menu">
