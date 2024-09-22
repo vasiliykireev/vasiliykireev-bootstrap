@@ -5,17 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- To Do: Add Favicon -->
-    <!-- To Do: Add Title and Open Graph -->
-    <!-- To Do: Add Conters to Head and Body-->
-    <!-- To Do: Add Styles correctly -->
-    <!-- Styles -->
-    <link rel="stylesheet" href="https://projects.vasiliykvasov.ru/bootstrap-5.3.1/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="css/main.css">
-    <!-- Head -->
-    <!-- Check: Title -->
-    <title><? $APPLICATION->ShowTitle(); ?></title>
-    <? $APPLICATION->ShowHead();  ?>
+    <!-- To Do: Add Counters to Head and Body-->
+    <!-- External styles -->
+    <?$APPLICATION->AddHeadString('<link rel="stylesheet" href="https://projects.vasiliykvasov.ru/bootstrap-5.3.1/dist/css/bootstrap.min.css">')?>
+    <?$APPLICATION->AddHeadString('<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">')?>
+    <!-- Title -->
+    <title><? $APPLICATION->ShowTitle()?></title>
+    <?$APPLICATION->ShowHead()?>
+    <?$APPLICATION->ShowMeta("og:title")?>
+    <?$APPLICATION->ShowMeta("og:description")?>
+    <?$APPLICATION->ShowMeta("og:image")?>
+    <?$APPLICATION->ShowMeta("og:type")?>
+    <?$APPLICATION->ShowMeta("og:url")?>
 </head>
 <body>
 <div id="panel">
