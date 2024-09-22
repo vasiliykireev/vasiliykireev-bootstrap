@@ -48,25 +48,32 @@
                         );?>
                     </a>
                 <? endif; ?>
-                <?$APPLICATION->IncludeComponent(
-                	"bitrix:menu", 
-                	"navbar-menu", 
-                	array(
-                		"ROOT_MENU_TYPE" => "top",
-                		"MAX_LEVEL" => "3",
-                		"CHILD_MENU_TYPE" => "left",
-                		"USE_EXT" => "Y",
-                		"COMPONENT_TEMPLATE" => "top_menu",
-                		"MENU_CACHE_TYPE" => "N",
-                		"MENU_CACHE_TIME" => "3600",
-                		"MENU_CACHE_USE_GROUPS" => "Y",
-                		"MENU_CACHE_GET_VARS" => array(
-                		),
-                		"DELAY" => "N",
-                		"ALLOW_MULTI_SELECT" => "N"
-                	),
-                	false
-                );?>
+                <button class="header__toggle navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Раскрыть меню">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="header__navbar-menu navbar-menu collapse navbar-collapse" id="navbar-menu">
+                    <div class="ms-auto">
+                    <?$APPLICATION->IncludeComponent(
+                    	"bitrix:menu", 
+                    	"navbar-menu", 
+                    	array(
+                    		"ROOT_MENU_TYPE" => "top",
+                    		"MAX_LEVEL" => "3",
+                    		"CHILD_MENU_TYPE" => "left",
+                    		"USE_EXT" => "Y",
+                    		"COMPONENT_TEMPLATE" => "top_menu",
+                    		"MENU_CACHE_TYPE" => "N",
+                    		"MENU_CACHE_TIME" => "3600",
+                    		"MENU_CACHE_USE_GROUPS" => "Y",
+                    		"MENU_CACHE_GET_VARS" => array(
+                    		),
+                    		"DELAY" => "N",
+                    		"ALLOW_MULTI_SELECT" => "N"
+                    	),
+                    	false
+                    );?>
+                    </div>
+                </div>
             </div>
         </nav>
     </header>
