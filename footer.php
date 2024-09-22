@@ -8,12 +8,13 @@
                 </div>
             </div>
             <div class="footer-menu col-12 col-xl-6 mb-2">
-                <?$APPLICATION->IncludeComponent(
+                <? // Footer Menu
+                $APPLICATION->IncludeComponent(
                     	"bitrix:menu", 
                     	"footer-menu", 
                     	array(
                     		"ROOT_MENU_TYPE" => "top",
-                    		"MAX_LEVEL" => "3",
+                    		"MAX_LEVEL" => "1",
                     		"CHILD_MENU_TYPE" => "left",
                     		"USE_EXT" => "Y",
                     		"COMPONENT_TEMPLATE" => "top_menu",
@@ -32,12 +33,13 @@
         <div class="links row">
             <div class="col-12 col-md-6 mb-2">
                 <div class="contacts">
-                    <?$APPLICATION->IncludeComponent(
+                    <? // Footer Contacts
+                    $APPLICATION->IncludeComponent(
                     	"bitrix:menu", 
                     	"footer-contact", 
                     	array(
                     		"ROOT_MENU_TYPE" => "contact",
-                    		"MAX_LEVEL" => "3",
+                    		"MAX_LEVEL" => "1",
                     		"CHILD_MENU_TYPE" => "left",
                     		"USE_EXT" => "Y",
                     		"COMPONENT_TEMPLATE" => "footer-contact",
@@ -53,12 +55,13 @@
                     );?>
                 </div>
                 <div class="social">
-                    <?$APPLICATION->IncludeComponent(
+                    <? // Footer Socials
+                    $APPLICATION->IncludeComponent(
                 	"bitrix:menu", 
                 	"footer-social", 
                 	array(
                 		"ROOT_MENU_TYPE" => "social",
-                		"MAX_LEVEL" => "3",
+                		"MAX_LEVEL" => "1",
                 		"CHILD_MENU_TYPE" => "left",
                 		"USE_EXT" => "Y",
                 		"COMPONENT_TEMPLATE" => "footer-social",

@@ -53,12 +53,13 @@
                 </button>
                 <div class="header__navbar-menu navbar-menu collapse navbar-collapse" id="navbar-menu">
                     <div class="ms-auto">
-                    <?$APPLICATION->IncludeComponent(
+                    <? // Top menu
+                    $APPLICATION->IncludeComponent(
                     	"bitrix:menu", 
                     	"navbar-menu", 
                     	array(
                     		"ROOT_MENU_TYPE" => "top",
-                    		"MAX_LEVEL" => "3",
+                    		"MAX_LEVEL" => "1",
                     		"CHILD_MENU_TYPE" => "left",
                     		"USE_EXT" => "Y",
                     		"COMPONENT_TEMPLATE" => "top_menu",
