@@ -3,6 +3,7 @@
 <footer class="footer container-fluid bg-dark py-5" data-bs-theme="dark">
         <div class="row align-items-center">
             <div class="col-12 col-xl-6 mb-2">
+			    <div class="about ms-2 mb-2 text-light">
                 <? // About 
                 $APPLICATION->IncludeComponent("bitrix:main.include", ".default", array(
                 	"AREA_FILE_SHOW" => "sect",
@@ -12,6 +13,7 @@
                 	),
                 	false
                 );?>
+			    </div>
             </div>
             <div class="footer-menu col-12 col-xl-6 mb-2">
                 <? // Footer Menu
