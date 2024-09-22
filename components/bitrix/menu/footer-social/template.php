@@ -6,7 +6,7 @@
         	if($arParams["MAX_LEVEL"] == 1 && $arItem["DEPTH_LEVEL"] > 1) 
         		continue;
         ?>
-                <li class="social__item social__item_link_github d-inline-block">
+                <li class="social__item d-inline-block">
                     <a
                     class="social__link btn btn-dark focus-ring focus-ring-dark py-2 px-2"
                     aria-current="page"

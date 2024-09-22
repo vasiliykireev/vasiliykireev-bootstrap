@@ -22,20 +22,3 @@
         <?endforeach?>
     </ul>
 <?endif?>
-                <!-- <ul class="footer-menu__list nav flex-column flex-md-row align-items-start justify-content-xl-end justify-content-start">
-                    <li class="footer-menu__item mb-2">
-                        <a class="footer-menu__link btn btn-dark py-0 py-md-2 px-2 focus-ring focus-ring-dark" href="#first-screen">Наверх</a>
-                    </li>
-                    <li class="footer-menu__item mb-2">
-                        <a class="footer-menu__link btn btn-dark py-0 py-md-2 px-2 focus-ring focus-ring-dark" href="#skills">Навыки</a>
-                    </li>
-                    <li class="footer-menu__item mb-2">
-                        <a class="footer-menu__link btn btn-dark py-0 py-md-2 px-2 focus-ring focus-ring-dark" href="#projects">Проекты</a>
-                    </li>
-                    <li class="footer-menu__item mb-2">
-                        <a class="footer-menu__link btn btn-dark py-0 py-md-2 px-2 focus-ring focus-ring-dark" href="#portfolio">Портфолио</a>
-                    </li>
-                    <li class="footer-menu__item mb-2">
-                        <a class="footer-menu__link btn btn-dark py-0 py-md-2 px-2 focus-ring focus-ring-dark" href="#solutions">Решения</a>
-                    </li>
-                </ul> -->
