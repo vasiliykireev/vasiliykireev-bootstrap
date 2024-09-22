@@ -19,9 +19,9 @@
     <?$APPLICATION->ShowMeta("og:url")?>
 </head>
 <body>
-<div id="panel">
-	<? $APPLICATION->ShowPanel(); ?> 
-</div>
+    <div id="panel">
+	    <? $APPLICATION->ShowPanel(); ?> 
+    </div>
     <header class="header">
         <nav class="navbar navbar-expand-lg text-bg-dark" data-bs-theme="dark">
             <div class="container-fluid">
@@ -49,6 +49,7 @@
                         );?>
                     </a>
                 <? endif; ?>
+                <? // To Do: переделать navbar-menu на комплексный компонент, куда включить кнопку ?>
                 <button class="header__toggle navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Раскрыть меню">
                     <span class="navbar-toggler-icon"></span>
                 </button>
