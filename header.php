@@ -6,7 +6,9 @@ IncludeTemplateLangFile(__FILE__);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- To Do: Add Favicon -->
+    <!-- Favicon -->
+    <?$APPLICATION->AddHeadString('<link type="image/x-icon" href="favicon/vasiliykvasov-favicon.svg" rel="shortcut icon">')?>
+    <?$APPLICATION->AddHeadString('<link type="Image/x-icon" href="favicon/vasiliykvasov-favicon.svg" rel="icon">')?>
     <!-- To Do: Add Counters to Head and Body-->
     <!-- External styles -->
     <?$APPLICATION->AddHeadString('<link rel="stylesheet" href="https://projects.vasiliykvasov.ru/bootstrap-5.3.1/dist/css/bootstrap.min.css">')?>
