@@ -53,7 +53,6 @@ IncludeTemplateLangFile(__FILE__);
                         );?>
                     </a>
                 <? endif; ?>
-                <? // To Do: переделать navbar-menu на комплексный компонент, куда включить кнопку ?>
                 <button class="header__toggle navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="<?=GetMessage('TOGGLE_NAVIGATION')?>">
                     <span class="navbar-toggler-icon"></span>
                 </button>
