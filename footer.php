@@ -8,23 +8,25 @@
                 </div>
             </div>
             <div class="footer-menu col-12 col-xl-6 mb-2">
-                <ul class="footer-menu__list nav flex-column flex-md-row align-items-start justify-content-xl-end justify-content-start">
-                    <li class="footer-menu__item mb-2">
-                        <a class="footer-menu__link btn btn-dark py-0 py-md-2 px-2 focus-ring focus-ring-dark" href="#first-screen">Наверх</a>
-                    </li>
-                    <li class="footer-menu__item mb-2">
-                        <a class="footer-menu__link btn btn-dark py-0 py-md-2 px-2 focus-ring focus-ring-dark" href="#skills">Навыки</a>
-                    </li>
-                    <li class="footer-menu__item mb-2">
-                        <a class="footer-menu__link btn btn-dark py-0 py-md-2 px-2 focus-ring focus-ring-dark" href="#projects">Проекты</a>
-                    </li>
-                    <li class="footer-menu__item mb-2">
-                        <a class="footer-menu__link btn btn-dark py-0 py-md-2 px-2 focus-ring focus-ring-dark" href="#portfolio">Портфолио</a>
-                    </li>
-                    <li class="footer-menu__item mb-2">
-                        <a class="footer-menu__link btn btn-dark py-0 py-md-2 px-2 focus-ring focus-ring-dark" href="#solutions">Решения</a>
-                    </li>
-                </ul>
+                <?$APPLICATION->IncludeComponent(
+                    	"bitrix:menu", 
+                    	"footer-menu", 
+                    	array(
+                    		"ROOT_MENU_TYPE" => "top",
+                    		"MAX_LEVEL" => "3",
+                    		"CHILD_MENU_TYPE" => "left",
+                    		"USE_EXT" => "Y",
+                    		"COMPONENT_TEMPLATE" => "top_menu",
+                    		"MENU_CACHE_TYPE" => "N",
+                    		"MENU_CACHE_TIME" => "3600",
+                    		"MENU_CACHE_USE_GROUPS" => "Y",
+                    		"MENU_CACHE_GET_VARS" => array(
+                    		),
+                    		"DELAY" => "N",
+                    		"ALLOW_MULTI_SELECT" => "N"
+                    	),
+                    	false
+                );?>
             </div>
         </div>
         <div class="links row">
