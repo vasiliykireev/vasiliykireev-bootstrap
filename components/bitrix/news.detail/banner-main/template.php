@@ -14,11 +14,11 @@ $this->setFrameMode(true);
 ?>
 
 <section class="first-screen">
-    <div class="container">
+    <div class="first-screen__container container">
         <div class="first-screen__row row-cols-1 row justify-content-center align-items-center">
-            <div class="col-12 row justify-content-center align-items-center">
+            <div class="first-screen__column col-12 row justify-content-center align-items-center">
 			    <?if(($arResult["DETAIL_PICTURE"] ?? '') !== ''):?>
-                    <picture class="col-12 col-md-10 col-lg-8 col-xl-8 col-xxl-7 first-screen__banner col px-0 py-3 d-block text-center">
+                    <picture class="first-screen__banner col-12 col-md-10 col-lg-8 col-xl-8 col-xxl-7 col px-0 py-3 d-block text-center">
 					    <?if(($arResult["DISPLAY_PROPERTIES"]["IMAGE_WEBP_DESKTOP_2X"] ?? '') !== ''):?>
                             <source
                             type="<?=$arResult["DISPLAY_PROPERTIES"]["IMAGE_WEBP_DESKTOP_2X"]["FILE_VALUE"]["CONTENT_TYPE"]?>"
@@ -55,11 +55,11 @@ $this->setFrameMode(true);
                     </picture>
 				<?endif?>
             </div>
-            <div class="first-screen__caption col-auto pt-3 pb-5">
+            <div class="first-screen__content col-auto pt-3 pb-5">
 				<?if(($arResult["PREVIEW_TEXT"] ?? '') !== ''):?>
                     <h1 class="first-screen__heading h1"><?=$arResult["PREVIEW_TEXT"]?></h1>
 				<?endif?>
-				<div class="first-screen__content">
+				<div class="first-screen__text">
 				<?if(($arResult["DETAIL_TEXT"] ?? '') !== ''):?>
                     <?=$arResult["DETAIL_TEXT"]?>
 				<?endif?>
