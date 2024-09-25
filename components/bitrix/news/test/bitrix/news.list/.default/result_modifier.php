@@ -1,0 +1,2 @@
+<?
+$arResult['XXX'] = "News List";
