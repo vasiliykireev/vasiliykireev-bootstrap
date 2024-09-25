@@ -13,15 +13,27 @@
 $this->setFrameMode(true);
 ?>
 
+<?
+// foreach($arResult["SECTIONS"] as &$arSection) {
+//     $arSection["SECTIONS"] = array();
+//     $arSectionParent = array_column($arResult["SECTIONS"],$arSection["IBLOCK_SECTION_ID"]);
+
+// 	echo '<pre>';
+// 	    echo $arSection["IBLOCK_SECTION_ID"];
+//         print_r($arSectionParent);
+// 	echo "</pre>";
+// }
+?>
+
 <?if(isset($arResult["SECTIONS"])):?>
     <ul>
         <?foreach($arResult["SECTIONS"] as $arSection):?>
 			<?if($arSection["DEPTH_LEVEL"] == 1):?>
                 <li><?=$arSection["NAME"]?>
 			<?endif?>
-			<?/*if($arSection["DEPTH_LEVEL"] > 1):?>
-				<li><?=$arSection["NAME"]?></li>
-			<?endif*/?>
+			<?if($arSection["DEPTH_LEVEL"] > 1):?>
+				<ul><li><?=$arSection["NAME"]?>
+			<?endif?>
     			<?if(isset($arResult["ITEMS"])):?>
     				<?$isListCreated = false?>
     			    <?foreach($arResult["ITEMS"] as $arItem):?>
@@ -37,6 +49,9 @@ $this->setFrameMode(true);
     				    </ul>
     				<?endif?>
     			<?endif?>
+				<?if($arSection["DEPTH_LEVEL"] > 1):?>
+				</ul>
+			    <?endif?>
 				<?if($arSection["DEPTH_LEVEL"] == 1):?>
                 </li>
 			    <?endif?>

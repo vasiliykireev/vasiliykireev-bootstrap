@@ -13,3 +13,10 @@ $arSections = CIBlockSection::GetList(
 while ($arSection = $arSections->GetNext()) {
     array_push($arResult['SECTIONS'], $arSection);
 }
+/* Добавляем элементы в разделы в arResults */
+// foreach($arResult["ITEMS"] as $arItem) {
+//     $arSection = 
+    // $arResult['SECTIONS'][$arItem["IBLOCK_SECTION_ID"]]["ITEMS"] = array();
+    // array_push($arResult['SECTIONS'][$arItem["IBLOCK_SECTION_ID"]], $arItem);
+// }
+
