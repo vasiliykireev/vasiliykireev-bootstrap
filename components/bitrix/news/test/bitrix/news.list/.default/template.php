@@ -12,8 +12,45 @@
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
 ?>
+
+<?/*
+//фильтру указываем ID раздела и ID его инфоблока
+$arFilter = array('IBLOCK_ID' => $arResult['ID']); 
+$arSelect = array();
+$arSections = CIBlockSection::GetList(
+     Array("SORT"=>"ASC"), //сортировка
+     $arFilter, //фильтр (выше объявили)
+     false, //выводить количество элементов - нет
+     $arSelect //выборка вывода, нам нужно только название, описание, картинка
+);
+while ($arSection = $arSections->GetNext()) {
+     */?>
+<ul>
+    <?foreach($arResult["SECTIONS"] as $arSection):?>
+		<?//$arFilter = array("IBLOCK_SECTION_ID"=>$arSection["ID"]);?>
+        <li>
+	        <?=$arSection["NAME"]?>
+			<?if(isset($arResult["ITEMS"])):?>
+				<?$isListCreated = false?>
+			    <?foreach($arResult["ITEMS"] as $arItem):?>
+			    	<?if($arItem["IBLOCK_SECTION_ID"] == $arSection["ID"]):?>
+						<?if($isListCreated == false):?>
+							<ul>
+						<?endif?>
+                        <li><?=$arItem["NAME"]?></li>
+						<?$isListCreated = true;?>
+			    	<?endif?>
+			    <?endforeach?>
+				<?if($isListCreated == true):?>
+					</ul>
+				<?endif?>
+			<?endif?>
+	    </li>
+    <?endforeach;?>
+</ul>
+
 <pre>$arParams:
-<?print_r($arParams);?>
+<?//print_r($arParams);?>
 </pre>
 <pre>$arResult:
 <?print_r($arResult);?>
