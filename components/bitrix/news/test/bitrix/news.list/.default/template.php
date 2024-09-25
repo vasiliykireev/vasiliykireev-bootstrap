@@ -13,41 +13,36 @@
 $this->setFrameMode(true);
 ?>
 
-<?/*
-//фильтру указываем ID раздела и ID его инфоблока
-$arFilter = array('IBLOCK_ID' => $arResult['ID']); 
-$arSelect = array();
-$arSections = CIBlockSection::GetList(
-     Array("SORT"=>"ASC"), //сортировка
-     $arFilter, //фильтр (выше объявили)
-     false, //выводить количество элементов - нет
-     $arSelect //выборка вывода, нам нужно только название, описание, картинка
-);
-while ($arSection = $arSections->GetNext()) {
-     */?>
-<ul>
-    <?foreach($arResult["SECTIONS"] as $arSection):?>
-		<?//$arFilter = array("IBLOCK_SECTION_ID"=>$arSection["ID"]);?>
-        <li>
-	        <?=$arSection["NAME"]?>
-			<?if(isset($arResult["ITEMS"])):?>
-				<?$isListCreated = false?>
-			    <?foreach($arResult["ITEMS"] as $arItem):?>
-			    	<?if($arItem["IBLOCK_SECTION_ID"] == $arSection["ID"]):?>
-						<?if($isListCreated == false):?>
-							<ul>
-						<?endif?>
-                        <li><?=$arItem["NAME"]?></li>
-						<?$isListCreated = true;?>
-			    	<?endif?>
-			    <?endforeach?>
-				<?if($isListCreated == true):?>
-					</ul>
-				<?endif?>
+<?if(isset($arResult["SECTIONS"])):?>
+    <ul>
+        <?foreach($arResult["SECTIONS"] as $arSection):?>
+			<?if($arSection["DEPTH_LEVEL"] == 1):?>
+                <li><?=$arSection["NAME"]?>
 			<?endif?>
-	    </li>
-    <?endforeach;?>
-</ul>
+			<?/*if($arSection["DEPTH_LEVEL"] > 1):?>
+				<li><?=$arSection["NAME"]?></li>
+			<?endif*/?>
+    			<?if(isset($arResult["ITEMS"])):?>
+    				<?$isListCreated = false?>
+    			    <?foreach($arResult["ITEMS"] as $arItem):?>
+    			    	<?if($arItem["IBLOCK_SECTION_ID"] == $arSection["ID"]):?>
+    						<?if($isListCreated == false):?>
+    					<ul>
+    						<?endif?>
+                            <li><?=$arItem["NAME"]?></li>
+    						<?$isListCreated = true;?>
+    			    	<?endif?>
+    			    <?endforeach?>
+    			    <?if($isListCreated == true):?>
+    				    </ul>
+    				<?endif?>
+    			<?endif?>
+				<?if($arSection["DEPTH_LEVEL"] == 1):?>
+                </li>
+			    <?endif?>
+        <?endforeach;?>
+    </ul>
+<?endif?>
 
 <pre>$arParams:
 <?//print_r($arParams);?>
