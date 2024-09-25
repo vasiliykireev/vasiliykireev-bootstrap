@@ -1,0 +1,9 @@
+.thumbnail__icon svg {
+	height: 128px;
+	object-fit: contain;
+}
+
+.thumbnail__image {
+	height: 128px;
+	object-fit: contain;
+}
