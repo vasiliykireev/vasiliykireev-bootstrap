@@ -1,4 +1,4 @@
-div.news-list
+/* div.news-list
 {
 	word-wrap: break-word;
 }
@@ -9,4 +9,14 @@ div.news-list img.preview_picture
 }
 .news-date-time {
 	color:#486DAA;
+} */
+
+.thumbnail__icon svg {
+	height: 128px;
+	object-fit: contain;
+}
+
+.thumbnail__image {
+	height: 128px;
+	object-fit: contain;
 }
