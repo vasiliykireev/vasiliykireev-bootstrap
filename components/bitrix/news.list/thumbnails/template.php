@@ -43,6 +43,25 @@ $this->setFrameMode(true);
 							<?if($arItem["PREVIEW_TEXT"]):?>
                                 <p class="thumbnail__text text-center text-body-secondary"><?=$arItem["PREVIEW_TEXT"]?></p>
 							<?endif?>
+							<?if($arParams["DISPLAY_LINK"]!="N" && isset($arItem["DISPLAY_PROPERTIES"]["LINK"]) && (isset($arItem["DISPLAY_PROPERTIES"]["LINK_CAPTION"]["VALUE"])|| isset($arParams["DEFAULT_LINK_CAPTION"]))):?>
+								<div class="solution__buttons text-center">
+                                    <a
+									class="solution__button btn btn-primary"
+									href="<?=$arItem["DISPLAY_PROPERTIES"]["LINK"]["VALUE"]?>"
+									target="<?
+									if(str_contains($arItem["DISPLAY_PROPERTIES"]["LINK"]["VALUE"], "://")){
+										echo '_blank';
+									} else {
+										echo "_self";
+									} ?>">
+										<?if(isset($arItem["DISPLAY_PROPERTIES"]["LINK_CAPTION"]["VALUE"])):?>
+											<?=$arItem["DISPLAY_PROPERTIES"]["LINK_CAPTION"]["VALUE"]?>
+										<?else:?>
+											<?=$arParams["DEFAULT_LINK_CAPTION"]?>
+										<?endif?>
+									</a>
+                                </div>
+							<?endif?>
                         </div>
                     </div>
                 </div>
@@ -51,6 +70,7 @@ $this->setFrameMode(true);
         </div>
     </div>
 </section>
+<?if($arParams['DEBUG'] == 'Y'):?>
 <div class="accordion" id="accordion-debug">
   <div class="accordion-item">
     <h2 class="accordion-header">
@@ -158,3 +178,4 @@ $this->setFrameMode(true);
 </div>
 
 <hr>
+<?endif?>
