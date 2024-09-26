@@ -10,25 +10,31 @@
 /** @var string $templateFolder */
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
-$this->setFrameMode(true);
+$this->setFrameMode(true); ?>
+
+<?
+/* Выводим элементы в arResult */
+if(isset($arResult["SECTIONS"])){
+	foreach($arResult["SECTIONS"] as $arSection){
+$arFilter = Array(
+    'SECTION_ID' => $arSection["ID"],
+); 
+$arSelect = array();
+$arItems = CIBlockElement::GetList( // CIBlockElement — элемент!
+     Array("SORT"=>"ASC"),
+     $arFilter,
+     false,
+     $arSelect
+);
+while ($arItem = $arItems->GetNext()) {
+	    echo "<pre>";
+		echo "Cлышь бля ";
+	    print_r($arItem);
+		echo "</pre>";
+}
+}
+}
 ?>
-
-
-
-
-<? /*function recarray($ar, $searchfor) {
-    $result = array();
-
-    foreach($ar as $k => $v) {
-    if ($k == $searchfor) $result[] = $v;
-    else if (is_array($ar[$k]))
-     {
-      $ret=recarray($v, $searchfor);
-      if(count($ret)) $result[]=$ret;
-     }
-    }
-    return $result;
-} */?>
 
 <?if(isset($arResult["SECTIONS"])):?>
 	<?foreach($arResult["SECTIONS"] as $arSection):?>
