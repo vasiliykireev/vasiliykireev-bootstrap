@@ -12,6 +12,9 @@
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true); ?>
 
+<?require_once(__DIR__ . '/example.php');
+echo example();
+?>
 <?
 /* Выводим элементы в arResult */
 if(isset($arResult["SECTIONS"])){
