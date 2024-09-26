@@ -28,7 +28,7 @@ $arItems = CIBlockElement::GetList( // CIBlockElement — элемент!
 );
 while ($arItem = $arItems->GetNext()) {
 	    echo "<pre>";
-		echo "Cлышь бля ";
+		echo "arItem ";
 	    print_r($arItem);
 		echo "</pre>";
 }
