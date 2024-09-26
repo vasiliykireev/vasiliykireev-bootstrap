@@ -13,19 +13,97 @@
 $this->setFrameMode(true);
 ?>
 
-<?
-// foreach($arResult["SECTIONS"] as &$arSection) {
-//     $arSection["SECTIONS"] = array();
-//     $arSectionParent = array_column($arResult["SECTIONS"],$arSection["IBLOCK_SECTION_ID"]);
 
-// 	echo '<pre>';
-// 	    echo $arSection["IBLOCK_SECTION_ID"];
-//         print_r($arSectionParent);
-// 	echo "</pre>";
-// }
-?>
+
+
+<? /*function recarray($ar, $searchfor) {
+    $result = array();
+
+    foreach($ar as $k => $v) {
+    if ($k == $searchfor) $result[] = $v;
+    else if (is_array($ar[$k]))
+     {
+      $ret=recarray($v, $searchfor);
+      if(count($ret)) $result[]=$ret;
+     }
+    }
+    return $result;
+} */?>
 
 <?if(isset($arResult["SECTIONS"])):?>
+	<?foreach($arResult["SECTIONS"] as $arSection):?>
+        <div class="section">
+		    <div class="fw-bold"><?=$arSection["NAME"]?></div>
+			<?if(isset($arSection["ITEMS"])):?>
+				<?foreach($arSection["ITEMS"] as $arItem):?>
+					<div class="ps-3"><?=$arItem["NAME"]?></div>
+				<?endforeach;?>
+			<?endif?>
+	    </div>
+	<?endforeach;?>
+<?endif?>
+
+<?/*foreach($arResult["SECTIONS"] as $arSection):?>
+		<?if($arSection["DEPTH_LEVEL"]>$depthLevel){
+			$depthLevel = $arSection["DEPTH_LEVEL"];
+		}?>
+<?endforeach?>
+<div>Максимальный уровень вложенности: <?=$depthLevel?></div>
+<?if(isset($arResult["SECTIONS"])):?>
+	<?foreach($arResult["SECTIONS"] as $arSection):?>
+        <div class="py-2">
+			<div class="fw-bold"><?=$arSection["NAME"]?></div>
+			<div>Уровень вроженности: <?=$arSection["DEPTH_LEVEL"]?></div>
+		    <?foreach($arResult["ITEMS"] as $arItem):?>
+		    	<?if($arItem["IBLOCK_SECTION_ID"] == $arSection["ID"]):?>
+		    		<div class="ps-5 is-list-created-<?=$isListCreated?>"><?=$arItem["NAME"]?></div>
+		    	<?endif?>
+		    <?endforeach?>
+		</div>
+	<?endforeach;?>
+<?endif*/?>
+
+<?/*if(isset($arResult["SECTIONS"])):?>
+	<div class="top-lever">
+	<? $depthLevel = 0?>
+	<?foreach($arResult["SECTIONS"] as $arSection):?>
+		<?if($arSection["DEPTH_LEVEL"]>$depthLevel){
+			$depthLevel = $arSection["DEPTH_LEVEL"];
+		}?>
+	<?endforeach?>
+	<?="Максимальный уровень вложенности: ".$depthLevel?>
+    <? $depthLevelBefore = $depthLevel?>
+	<?foreach($arResult["SECTIONS"] as $arSection):?>
+		<?if($depthLevelBefore<$depthLevel):?>
+			<ul>
+		<?endif?>
+		<?if($arSection["DEPTH_LEVEL"] <= $depthLevel):?>
+                <li class="section-level"><?="Раздел: ".$arSection["NAME"]." / Уровень: ".$depthLevel-$arSection["DEPTH_LEVEL"]?>
+				    <?$isListCreated = false;?>
+				    <?foreach($arResult["ITEMS"] as $arItem):?>
+                        <?//=$arItem["IBLOCK_SECTION_ID"]."/".$arSection["ID"]?>
+						<?if($arItem["IBLOCK_SECTION_ID"] == $arSection["ID"]):?>
+							<?if($isListCreated == false):?>
+						        <ul class="is-list-created-<?=$isListCreated?>">
+								<?$isListCreated = true;?>
+							<?endif?>
+							<li class="is-list-created-<?=$isListCreated?>"><?=$arItem["NAME"]?></li>
+						<?endif?>
+					<?endforeach?>
+					<?if($isListCreated == true):?>
+						        </ul><!-- end section level -->
+					<?endif?>
+			<?endif?>
+			<?if($depthLevelBefore == $depthLevel):?>
+			</ul><!-- end depth level -->
+		    <?endif?>
+		<? $depthLevelBefore = $depthLevel-$arSection["DEPTH_LEVEL"]?>
+		<?="Уровень до: ".$depthLevelBefore?>
+	<?endforeach;?>
+			</div>
+<?endif*/?>
+
+	<? /*
     <ul>
         <?foreach($arResult["SECTIONS"] as $arSection):?>
 			<?if($arSection["DEPTH_LEVEL"] == 1):?>
@@ -57,7 +135,7 @@ $this->setFrameMode(true);
 			    <?endif?>
         <?endforeach;?>
     </ul>
-<?endif?>
+<?endif */?>
 
 <pre>$arParams:
 <?//print_r($arParams);?>
