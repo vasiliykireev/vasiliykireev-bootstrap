@@ -1,4 +1,5 @@
 <?
+$MESS ['nav_name'] = "Пагинация";
 $MESS ['nav_of'] = "из";
 $MESS ['nav_begin'] = "В начало";
 $MESS ['nav_prev'] = "Предыдущая";
