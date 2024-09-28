@@ -18,17 +18,17 @@ while ($arSection = $arSections->GetNext()) {
 ?>
 <?
 /* Добавляем элементы в разделы в arResults */
-// if(isset($arResult["SECTIONS"])){
-// 	foreach($arResult["SECTIONS"] as &$arSection){
-// 		foreach($arResult["ITEMS"] as $arItem){
-// 			if($arItem["IBLOCK_SECTION_ID"] == $arSection["ID"]){
-// 				if(!isset($arSection["ITEMS"])){
-//                     $arSection["ITEMS"] = array();}
-// 				array_push($arSection["ITEMS"], $arItem);
-// 			}
-// 		}
-// 	}
-// }
+if(isset($arResult["SECTIONS"])){
+	foreach($arResult["SECTIONS"] as &$arSection){
+		foreach($arResult["ITEMS"] as $arItem){
+			if($arItem["IBLOCK_SECTION_ID"] == $arSection["ID"]){
+				if(!isset($arSection["ITEMS"])){
+                    $arSection["ITEMS"] = array();}
+				array_push($arSection["ITEMS"], $arItem);
+			}
+		}
+	}
+}
 ?>
 <? // Добавляем вложенную структуру разделов https://dev.1c-bitrix.ru/community/webdev/user/17090/blog/13344/
 // $arStructured = array();

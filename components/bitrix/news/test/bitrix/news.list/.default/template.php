@@ -13,33 +13,36 @@
 $this->setFrameMode(true); ?>
 
 <?require_once(__DIR__ . '/example.php');
-echo example();
-?>
-<?
-/* Выводим элементы в arResult */
-if(isset($arResult["SECTIONS"])){
-	foreach($arResult["SECTIONS"] as $arSection){
-$arFilter = Array(
-    'SECTION_ID' => $arSection["ID"],
-); 
-$arSelect = array();
-$arItems = CIBlockElement::GetList( // CIBlockElement — элемент!
-     Array("SORT"=>"ASC"),
-     $arFilter,
-     false,
-     $arSelect
-);
-while ($arItem = $arItems->GetNext()) {
-	    echo "<pre>";
-		echo "arItem ";
-	    print_r($arItem);
-		echo "</pre>";
-}
-}
-}
+//echo example();
 ?>
 
-<?if(isset($arResult["SECTIONS"])):?>
+<?if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();?>
+
+<?
+/* Выводим элементы в arResult */
+// if(isset($arResult["SECTIONS"])){
+// 	foreach($arResult["SECTIONS"] as $arSection){
+// $arFilter = Array(
+//     'SECTION_ID' => $arSection["ID"],
+// ); 
+// $arSelect = array();
+// $arItems = CIBlockElement::GetList( // CIBlockElement — элемент!
+//      Array("SORT"=>"ASC"),
+//      $arFilter,
+//      false,
+//      $arSelect
+// );
+// while ($arItem = $arItems->GetNext()) {
+// 	    echo "<pre>";
+// 		echo "arItem ";
+// 	    print_r($arItem);
+// 		echo "</pre>";
+// }
+// }
+// }
+?>
+<?
+if(isset($arResult["SECTIONS"])):?>
 	<?foreach($arResult["SECTIONS"] as $arSection):?>
         <div class="section">
 		    <div class="fw-bold"><?=$arSection["NAME"]?></div>
@@ -50,7 +53,8 @@ while ($arItem = $arItems->GetNext()) {
 			<?endif?>
 	    </div>
 	<?endforeach;?>
-<?endif?>
+<?endif
+?>
 
 <?/*foreach($arResult["SECTIONS"] as $arSection):?>
 		<?if($arSection["DEPTH_LEVEL"]>$depthLevel){
