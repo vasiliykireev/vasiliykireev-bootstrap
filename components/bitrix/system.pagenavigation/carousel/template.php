@@ -140,6 +140,7 @@ $strNavQueryStringFull = ($arResult["NavQueryString"] != "" ? "?".$arResult["Nav
                 </li>*/?>
             <?endif?>
         <?else:?>
+            <?if (!$arResult["bShowAll"]):?>
             <div class="carousel-indicators">
                 <?while($arResult["nStartPage"] <= $arResult["nEndPage"]):?>
                     <?if ($arResult["nStartPage"] == $arResult["NavPageNomer"]):?>
@@ -254,6 +255,7 @@ $strNavQueryStringFull = ($arResult["NavQueryString"] != "" ? "?".$arResult["Nav
                         <span aria-hidden="true"><i class="bi bi-chevron-double-right"></i></span>
                     </a>
                 </li>*/?>
+            <?endif?>
             <?endif?>
             <?if ($arResult["bShowAll"]):?>
                 <noindex>
