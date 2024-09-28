@@ -16,3 +16,11 @@ div.news-list img.preview_picture
 	max-height: 384px;
 	object-fit: contain;
 }
+
+.certificate__heading {
+	min-height: 52.6094px;
+}
+
+.certificate__text {
+	min-height: 48px;
+}
