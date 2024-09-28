@@ -14,12 +14,12 @@ $this->setFrameMode(true);
 ?>
 
 <section class="certificates pt-3 pb-5">
-	<div class="carousel carousel-dark">
+	<div id="carouselIndicators" class="carousel carousel-dark slide">
     <?if($arParams["DISPLAY_TOP_PAGER"]):?>
     	<?=$arResult["NAV_STRING"]?><br />
     <?endif;?>
 	<div class="carousel-inner">
-    <div class="certificates__container container">
+    <div class="certificates__container carousel-item active">
         <div class="certificates__header row justify-content-center pt-3 pb-5">
             <div class="col-auto">
                 <h2 class="certificates__heading">Мои решения</h2>
@@ -127,7 +127,9 @@ $this->setFrameMode(true);
 
 	</div>
 </section>
-<?/*</div>*/?>
-<?/*<pre>
+</div>
+<?/*
+<pre>
     <? print_r($arResult)?>
-</pre>*/?>
+</pre>
+*/?>
