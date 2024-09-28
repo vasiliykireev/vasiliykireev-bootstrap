@@ -22,7 +22,50 @@ $strNavQueryString = ($arResult["NavQueryString"] != "" ? $arResult["NavQueryStr
 $strNavQueryStringFull = ($arResult["NavQueryString"] != "" ? "?".$arResult["NavQueryString"] : "");
 ?>
 
-<font class="text"><?=$arResult["NavTitle"]?> 
+<a type="button" class="carousel-button carousel-button__page__left carousel-control-prev"
+href="<?=$arResult["sUrlPath"]?>?<?=$strNavQueryString?>PAGEN_<?=$arResult["NavNum"]?>=<?=($arResult["NavPageNomer"]-1)?>">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+</a>
+<a type="button" class="carousel-button carousel-button__page__left carousel-control-next"
+href="<?=$arResult["sUrlPath"]?>?<?=$strNavQueryString?>PAGEN_<?=$arResult["NavNum"]?>=<?=($arResult["NavPageNomer"]+1)?>">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+</a>
+
+<div class="carousel-indicators">
+<?while($arResult["nStartPage"] <= $arResult["nEndPage"]):?>
+
+<?if ($arResult["nStartPage"] == $arResult["NavPageNomer"]):?>
+	<a type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></a>
+	<?/*<b><?=$arResult["nStartPage"]?></b>*/?>
+<?elseif($arResult["nStartPage"] == 1 && $arResult["bSavePage"] == false):?>
+	<a type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"
+	href="<?=$arResult["sUrlPath"]?><?=$strNavQueryStringFull?>"></a>
+	<?/*<a href="<?=$arResult["sUrlPath"]?><?=$strNavQueryStringFull?>"><?=$arResult["nStartPage"]?></a>*/?>
+<?else:?>
+	<a type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"
+	href="<?=$arResult["sUrlPath"]?>?<?=$strNavQueryString?>PAGEN_<?=$arResult["NavNum"]?>=<?=$arResult["nStartPage"]?>"></a>
+	<?/*<a href="<?=$arResult["sUrlPath"]?>?<?=$strNavQueryString?>PAGEN_<?=$arResult["NavNum"]?>=<?=$arResult["nStartPage"]?>"><?=$arResult["nStartPage"]?></a>*/?>
+<?endif?>
+<?$arResult["nStartPage"]++?>
+<?endwhile?>
+
+<!-- <div class="carousel-indicators">
+    <a type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></a>
+    <a type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></a>
+    <a type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></a>
+  </div> -->
+
+<!-- <div class="side-pagination container-fluid">
+	<div class="row">
+<div class="col-1">[1]</div>
+<div class="col"></div>
+<div class="col-1">[2]</div>
+	</div>
+</div> -->
+
+<?/*<font class="text"><?=$arResult["NavTitle"]?> 
 
 <?if($arResult["bDescPageNumbering"] === true):?>
 
@@ -136,4 +179,4 @@ $strNavQueryStringFull = ($arResult["NavQueryString"] != "" ? "?".$arResult["Nav
 </noindex>
 <?endif?>
 
-</font>
+</font> */?>

@@ -14,13 +14,19 @@ $this->setFrameMode(true);
 ?>
 
 <section class="certificates pt-3 pb-5">
+	<div class="carousel carousel-dark">
+    <?if($arParams["DISPLAY_TOP_PAGER"]):?>
+    	<?=$arResult["NAV_STRING"]?><br />
+    <?endif;?>
+	<div class="carousel-inner">
     <div class="certificates__container container">
         <div class="certificates__header row justify-content-center pt-3 pb-5">
             <div class="col-auto">
                 <h2 class="certificates__heading">Мои решения</h2>
             </div>
         </div>
-        <div class="certificates__grid row row-cols-1 row-cols-lg-3 gx-4 gy-5 justify-content-center align-items-start">
+        <div class="certificates__grid row row-cols-1 row-cols-lg-3 mx-5 gx-4 gy-5 justify-content-center align-items-start">
+
 
 <?/*<div class="news-list">
 <?if($arParams["DISPLAY_TOP_PAGER"]):?>
@@ -33,7 +39,7 @@ $this->setFrameMode(true);
             	?>
             
 
-                <div class="certificate col col-lg-3">
+                <div class="certificate col">
                     <div class="certificate__card card border-0">
                         <div class="certificate__icon text-center text-primary">
 							<?if(isset($arItem["PREVIEW_PICTURE"]["SAFE_SRC"])):?>
@@ -112,12 +118,16 @@ $this->setFrameMode(true);
 	        </p>*/?>
             <?endforeach;?>
         </div>
-		<?if($arParams["DISPLAY_BOTTOM_PAGER"]):?>
-	        <?=$arResult["NAV_STRING"]?>
-        <?endif;?>
     </div>
+	</div>
+    <?if($arParams["DISPLAY_BOTTOM_PAGER"]):?>
+        <?=$arResult["NAV_STRING"]?>
+    <?endif;?>
+
+
+	</div>
 </section>
 <?/*</div>*/?>
-<pre>
+<?/*<pre>
     <? print_r($arResult)?>
-</pre>
+</pre>*/?>
