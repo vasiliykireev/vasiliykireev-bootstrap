@@ -3,3 +3,4 @@ components/bitrix/news/thumbnails/images/
 components/bitrix/news/thumbnails/**/images/
 components/bitrix/news/*/**/images/
 
+components/bitrix/**/images/
