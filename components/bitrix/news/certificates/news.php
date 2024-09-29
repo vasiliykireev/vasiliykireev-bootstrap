@@ -60,10 +60,21 @@ $APPLICATION->IncludeComponent(
 <br />
 <?php
 endif;
+
+foreach($arResult["SECTIONS"] as $arSection) {
+	// $arrFilter = array('SECTION_ID' => $arSection["ID"],);
+if(!empty($arSection["ITEMS"])) {
+	echo $arSection["NAME"];
+	// echo "<pre>";
+	// print_r($arSection["ITEMS"]);
+	// echo "</pre>";
+
+
 $APPLICATION->IncludeComponent(
 	"bitrix:news.list",
-	"",
-	[
+	"certificates",
+	[   
+		"PARENT_SECTION" => $arSection["ID"],
 		"IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
 		"IBLOCK_ID" => $arParams["IBLOCK_ID"],
 		"NEWS_COUNT" => $arParams["NEWS_COUNT"],
@@ -113,3 +124,9 @@ $APPLICATION->IncludeComponent(
 	$component,
 	['HIDE_ICONS' => 'Y']
 );
+}
+};
+
+// echo "<pre> news ";
+// print_r($arResult);
+// echo("</pre>");
