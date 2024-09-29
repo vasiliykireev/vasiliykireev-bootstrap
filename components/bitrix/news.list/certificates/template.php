@@ -13,13 +13,25 @@
 $this->setFrameMode(true);
 ?>
 <section class="certificates pt-3">
+<?if(isset($arResult["NAME"])):?>
+        <div class="thumbnails__name container">
+            <div class="thumbnails__name-row row justify-content-center pt-3 pb-5">
+                <div class="thumbnails__name-column col-auto text-center">
+                    <h3 class="thumbnails__heading"><?=$arResult["NAME"]?></h2>
+		    		<?if(isset($arResult["DESCRIPTION"])):?>
+		    		    <p class="thumbnails__description text text-body-secondary"><?=$arResult["DESCRIPTION"]?></p>
+		    		<?endif?>
+                </div>
+            </div>
+		</div>
+	<?endif?>
 	<div id="carouselIndicators" class="carousel carousel-dark slide">
     <?if($arParams["DISPLAY_TOP_PAGER"]):?>
     	<?=$arResult["NAV_STRING"]?><br />
     <?endif;?>
 	<div class="carousel-inner">
     <div class="certificates__container carousel-item active">
-        <div class="certificates__grid row row-cols-1 row-cols-lg-3 mx-5 gx-4 gy-5 justify-content-center align-items-start">
+        <div class="certificates__grid row row-cols-1 row-cols-xl-4 mx-5 justify-content-center align-items-start">
 
 
 <?/*<div class="news-list">
@@ -46,8 +58,8 @@ $this->setFrameMode(true);
 							<?endif?>
                         </div>
                         <div class="certificate__caption card-body">
-                            <h3 class="certificate__heading mt-3 mb-2 text-center text-lines text-lines__amount__2 align-middle"><?=$arItem["NAME"]?></h3>
-                            <p class="certificate__text text-center text-body-secondary text-lines__amount__2"><?=$arItem["PREVIEW_TEXT"]?></p>
+                            <h3 class="h6 certificate__heading mt-3 mb-2 text-center align-middle"><?=$arItem["NAME"]?></h3>
+                            <p class="certificate__text text-center text-body-secondary"><?=$arItem["PREVIEW_TEXT"]?></p>
                         </div>
                     </div>
                 </div>

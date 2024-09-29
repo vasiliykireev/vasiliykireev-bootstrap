@@ -14,6 +14,7 @@ div.news-list img.preview_picture
 .certificate__image {
 	max-width: 384px;
 	max-height: 384px;
+	width: 100%;
 	object-fit: contain;
 }
 
