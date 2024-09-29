@@ -5,5 +5,4 @@ $MESS ['T_IBLOCK_DESC_NEWS_PICTURE'] = "Выводить изображение 
 $MESS ['T_IBLOCK_DESC_NEWS_TEXT'] = "Выводить текст анонса";
 $MESS ['T_IBLOCK_DESC_DISPLAY_LINK'] = "Показывать ссылку элемента";
 $MESS ['T_IBLOCK_DESC_DEFAULT_LINK_CAPTION'] = "Текст ссылки по умолчанию";
-$MESS ['T_IBLOCK_DESC_DEBUG'] = "Режим отладки";
 ?>
