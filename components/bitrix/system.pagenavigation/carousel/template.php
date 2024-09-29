@@ -13,137 +13,135 @@
 $this->setFrameMode(true);
 ?>
 <?
-if(!$arResult["NavShowAlways"])
+if(!$arResult['NavShowAlways'])
 {
-	if ($arResult["NavRecordCount"] == 0 || ($arResult["NavPageCount"] == 1 && $arResult["NavShowAll"] == false))
+	if ($arResult['NavRecordCount'] == 0 || ($arResult['NavPageCount'] == 1 && $arResult['NavShowAll'] == false))
 		return;
 }
-$strNavQueryString = ($arResult["NavQueryString"] != "" ? $arResult["NavQueryString"]."&amp;" : "");
-$strNavQueryStringFull = ($arResult["NavQueryString"] != "" ? "?".$arResult["NavQueryString"] : "");
+$strNavQueryString = ($arResult['NavQueryString'] != "" ? $arResult['NavQueryString']."&amp;" : "");
+$strNavQueryStringFull = ($arResult['NavQueryString'] != "" ? "?".$arResult['NavQueryString'] : "");
 ?>
-<?if($arResult["bDescPageNumbering"] === true): // Если используется обратная навигация?>
+<?if($arResult['bDescPageNumbering'] === true): // Если используется обратная навигация?>
 	<div class="carousel-indicators mb-0">
-        <?while($arResult["nStartPage"] >= $arResult["nEndPage"]):?>
-        	<?$NavRecordGroupPrint = $arResult["NavPageCount"] - $arResult["nStartPage"] + 1;?>
-        	<?if ($arResult["nStartPage"] == $arResult["NavPageNomer"]):?>
+        <?while($arResult['nStartPage'] >= $arResult['nEndPage']):?>
+        	<?$NavRecordGroupPrint = $arResult['NavPageCount'] - $arResult['nStartPage'] + 1;?>
+        	<?if ($arResult['nStartPage'] == $arResult['NavPageNomer']):?>
 	    		<a type="button" data-bs-target="#carouselIndicators" class="active" aria-current="true" aria-label="<?=$NavRecordGroupPrint?>"></a>
-        	<?elseif($arResult["nStartPage"] == $arResult["NavPageCount"] && $arResult["bSavePage"] == false):?>
+        	<?elseif($arResult['nStartPage'] == $arResult['NavPageCount'] && $arResult['bSavePage'] == false):?>
 	    		<a type="button" data-bs-target="#carouselIndicators" aria-label="<?=$NavRecordGroupPrint?>"
-	    		href="<?=$arResult["sUrlPath"]?><?=$strNavQueryStringFull?>"></a>
+	    		href="<?=$arResult['sUrlPath']?><?=$strNavQueryStringFull?>"></a>
         	<?else:?>
 	    		<a type="button" data-bs-target="#carouselIndicators" aria-label="<?=$NavRecordGroupPrint?>"
-	    		href="<?=$arResult["sUrlPath"]?>?<?=$strNavQueryString?>PAGEN_<?=$arResult["NavNum"]?>=<?=$arResult["nStartPage"]?>"></a>
+	    		href="<?=$arResult['sUrlPath']?>?<?=$strNavQueryString?>PAGEN_<?=$arResult['NavNum']?>=<?=$arResult['nStartPage']?>"></a>
         	<?endif?>
-        	<?$arResult["nStartPage"]--?>
+        	<?$arResult['nStartPage']--?>
         <?endwhile?>
 	</div>
-    <?if ($arResult["NavPageNomer"] < $arResult["NavPageCount"]):?>
-    	<?if($arResult["bSavePage"]):?>
+    <?if ($arResult['NavPageNomer'] < $arResult['NavPageCount']):?>
+    	<?if($arResult['bSavePage']):?>
 			<a type="button" class="carousel-button carousel-button__page__left carousel-control-prev"
-            href="<?=$arResult["sUrlPath"]?>?<?=$strNavQueryString?>PAGEN_<?=$arResult["NavNum"]?>=<?=($arResult["NavPageNomer"]+1)?>">
+            href="<?=$arResult['sUrlPath']?>?<?=$strNavQueryString?>PAGEN_<?=$arResult['NavNum']?>=<?=($arResult['NavPageNomer']+1)?>">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden"><?=GetMessage("nav_prev")?></span>
+                <span class="visually-hidden"><?=GetMessage('nav_prev')?></span>
             </a>
     	<?else:?>	
-    		<?if ($arResult["NavPageCount"] == ($arResult["NavPageNomer"]+1) ):?>
+    		<?if ($arResult['NavPageCount'] == ($arResult['NavPageNomer']+1) ):?>
 				<a type="button" class="carousel-button carousel-button__page__left carousel-control-prev"
-                href="<?=$arResult["sUrlPath"]?><?=$strNavQueryStringFull?>">
+                href="<?=$arResult['sUrlPath']?><?=$strNavQueryStringFull?>">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden"><?=GetMessage("nav_prev")?></span>
+                    <span class="visually-hidden"><?=GetMessage('nav_prev')?></span>
                 </a>
     		<?else:?>
 				<a type="button" class="carousel-button carousel-button__page__left carousel-control-prev"
-                href="<?=$arResult["sUrlPath"]?>?<?=$strNavQueryString?>PAGEN_<?=$arResult["NavNum"]?>=<?=($arResult["NavPageNomer"]+1)?>">
+                href="<?=$arResult['sUrlPath']?>?<?=$strNavQueryString?>PAGEN_<?=$arResult['NavNum']?>=<?=($arResult['NavPageNomer']+1)?>">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden"><?=GetMessage("nav_prev")?></span>
+                    <span class="visually-hidden"><?=GetMessage('nav_prev')?></span>
                 </a>
     		<?endif?>
     	<?endif?>
     <?else:?>
 		<a type="button" class="carousel-button carousel-button__page__left carousel-control-prev"
-        href="<?=$arResult["sUrlPath"]?>?<?=$strNavQueryString?>PAGEN_<?=$arResult["NavNum"]?>=1">
+        href="<?=$arResult['sUrlPath']?>?<?=$strNavQueryString?>PAGEN_<?=$arResult['NavNum']?>=1">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden"><?=GetMessage("nav_end")?></span>
+            <span class="visually-hidden"><?=GetMessage('nav_end')?></span>
         </a>
     <?endif?>
-    <?if ($arResult["NavPageNomer"] > 1):?>
+    <?if ($arResult['NavPageNomer'] > 1):?>
 		<a type="button" class="carousel-button carousel-button__page__right carousel-control-next"
-        href="<?=$arResult["sUrlPath"]?>?<?=$strNavQueryString?>PAGEN_<?=$arResult["NavNum"]?>=<?=($arResult["NavPageNomer"]-1)?>">
+        href="<?=$arResult['sUrlPath']?>?<?=$strNavQueryString?>PAGEN_<?=$arResult['NavNum']?>=<?=($arResult['NavPageNomer']-1)?>">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden"><?=GetMessage("nav_next")?></span>
+            <span class="visually-hidden"><?=GetMessage('nav_next')?></span>
         </a>
     <?else:?>
 		<a type="button" class="carousel-button carousel-button__page__right carousel-control-next"
-        href="<?=$arResult["sUrlPath"]?><?=$strNavQueryStringFull?>">
+        href="<?=$arResult['sUrlPath']?><?=$strNavQueryStringFull?>">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden"><?=GetMessage("nav_begin")?></span>
+            <span class="visually-hidden"><?=GetMessage('nav_begin')?></span>
         </a>
     <?endif?>
 <?else:?>
-    
         <div class="carousel-indicators mb-0 d-none d-xl-flex">
-            <?while($arResult["nStartPage"] <= $arResult["nEndPage"]):?>
-                <?if ($arResult["nStartPage"] == $arResult["NavPageNomer"]):?>
-                    <a type="button" data-bs-target="#carouselIndicators" class="active" aria-current="true" aria-label="<?=$arResult["nStartPage"]?>"></a>
-                <?elseif($arResult["nStartPage"] == 1 && $arResult["bSavePage"] == false):?>
-                    <a type="button" data-bs-target="#carouselIndicators" aria-label="<?=$arResult["nStartPage"]?>"
-                    href="<?=$arResult["sUrlPath"]?><?=$strNavQueryStringFull?>"></a>
+            <?while($arResult['nStartPage'] <= $arResult['nEndPage']):?>
+                <?if ($arResult['nStartPage'] == $arResult['NavPageNomer']):?>
+                    <a type="button" data-bs-target="#carouselIndicators" class="active" aria-current="true" aria-label="<?=$arResult['nStartPage']?>"></a>
+                <?elseif($arResult['nStartPage'] == 1 && $arResult['bSavePage'] == false):?>
+                    <a type="button" data-bs-target="#carouselIndicators" aria-label="<?=$arResult['nStartPage']?>"
+                    href="<?=$arResult['sUrlPath']?><?=$strNavQueryStringFull?>"></a>
                 <?else:?>
-                    <a type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="1" aria-label="<?=$arResult["nStartPage"]?>"
-                    href="<?=$arResult["sUrlPath"]?>?<?=$strNavQueryString?>PAGEN_<?=$arResult["NavNum"]?>=<?=$arResult["nStartPage"]?>"></a>
+                    <a type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="1" aria-label="<?=$arResult['nStartPage']?>"
+                    href="<?=$arResult['sUrlPath']?>?<?=$strNavQueryString?>PAGEN_<?=$arResult['NavNum']?>=<?=$arResult['nStartPage']?>"></a>
                 <?endif?>
-                <?$arResult["nStartPage"]++?>
+                <?$arResult['nStartPage']++?>
             <?endwhile?>
         </div>
-        <?if ($arResult["NavPageNomer"] > 1):?>
-            <?if($arResult["bSavePage"]):?>
+        <?if ($arResult['NavPageNomer'] > 1):?>
+            <?if($arResult['bSavePage']):?>
                 <a type="button" class="carousel-button carousel-button__page__left d-none d-xl-flex carousel-control-prev"
-                href="<?=$arResult["sUrlPath"]?>?<?=$strNavQueryString?>PAGEN_<?=$arResult["NavNum"]?>=<?=($arResult["NavPageNomer"]-1)?>">
+                href="<?=$arResult['sUrlPath']?>?<?=$strNavQueryString?>PAGEN_<?=$arResult['NavNum']?>=<?=($arResult['NavPageNomer']-1)?>">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden"><?=GetMessage("nav_prev")?></span>
+                    <span class="visually-hidden"><?=GetMessage('nav_prev')?></span>
                 </a>
             <?else:?>
-            	<?if ($arResult["NavPageNomer"] > 2):?>
+            	<?if ($arResult['NavPageNomer'] > 2):?>
                     <a type="button" class="carousel-button carousel-button__page__left d-none d-xl-flex carousel-control-prev"
-                    href="<?=$arResult["sUrlPath"]?>?<?=$strNavQueryString?>PAGEN_<?=$arResult["NavNum"]?>=<?=($arResult["NavPageNomer"]-1)?>">
+                    href="<?=$arResult['sUrlPath']?>?<?=$strNavQueryString?>PAGEN_<?=$arResult['NavNum']?>=<?=($arResult['NavPageNomer']-1)?>">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden"><?=GetMessage("nav_prev")?></span>
+                        <span class="visually-hidden"><?=GetMessage('nav_prev')?></span>
                     </a>
             	<?else:?>
                     <a type="button" class="carousel-button carousel-button__page__left d-none d-xl-flex carousel-control-prev"
-                    href="<?=$arResult["sUrlPath"]?><?=$strNavQueryStringFull?>">
+                    href="<?=$arResult['sUrlPath']?><?=$strNavQueryStringFull?>">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden"><?=GetMessage("nav_prev")?></span>
+                        <span class="visually-hidden"><?=GetMessage('nav_prev')?></span>
                     </a>
             	<?endif?>
             <?endif?>
         <?else:?>
             <a type="button" class="carousel-button carousel-button__page__left d-none d-xl-flex carousel-control-prev"
-            href="<?=$arResult["sUrlPath"]?>?<?=$strNavQueryString?>PAGEN_<?=$arResult["NavNum"]?>=<?=$arResult["NavPageCount"]?>">
+            href="<?=$arResult['sUrlPath']?>?<?=$strNavQueryString?>PAGEN_<?=$arResult['NavNum']?>=<?=$arResult['NavPageCount']?>">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden"><?=GetMessage("nav_end")?></span>
+                <span class="visually-hidden"><?=GetMessage('nav_end')?></span>
             </a>
         <?endif?>
-        <?if($arResult["NavPageNomer"] < $arResult["NavPageCount"]):?>
+        <?if($arResult['NavPageNomer'] < $arResult['NavPageCount']):?>
             <a type="button" class="carousel-button carousel-button__page__right d-none d-xl-flex carousel-control-next"
-            href="<?=$arResult["sUrlPath"]?>?<?=$strNavQueryString?>PAGEN_<?=$arResult["NavNum"]?>=<?=($arResult["NavPageNomer"]+1)?>">
+            href="<?=$arResult['sUrlPath']?>?<?=$strNavQueryString?>PAGEN_<?=$arResult['NavNum']?>=<?=($arResult['NavPageNomer']+1)?>">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden"><?=GetMessage("nav_next")?></span>
+                <span class="visually-hidden"><?=GetMessage('nav_next')?></span>
             </a>
         <?else:?>
             <a type="button" class="carousel-button carousel-button__page__right d-none d-xl-flex carousel-control-next"
-            href="<?=$arResult["sUrlPath"]?>?<?=$strNavQueryString?>PAGEN_<?=$arResult["NavNum"]?>=1">
+            href="<?=$arResult['sUrlPath']?>?<?=$strNavQueryString?>PAGEN_<?=$arResult['NavNum']?>=1">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden"><?=GetMessage("nav_begin")?></span>
+                <span class="visually-hidden"><?=GetMessage('nav_begin')?></span>
             </a>
         <?endif?>
-    
-    <?if ($arResult["bShowAll"]):?>
+    <?if ($arResult['bShowAll']):?>
         <noindex>
-    	    <?if ($arResult["NavShowAll"]):?>
-				<div class="text-center d-xl-none mb-5"><a href="<?=$arResult["sUrlPath"]?>?<?=$strNavQueryString?>SHOWALL_<?=$arResult["NavNum"]?>=0" class="btn btn-outline-primary"><?=GetMessage("nav_paged")?></a></div>
+    	    <?if ($arResult['NavShowAll']):?>
+				<div class="text-center d-xl-none mb-5"><a href="<?=$arResult['sUrlPath']?>?<?=$strNavQueryString?>SHOWALL_<?=$arResult['NavNum']?>=0" class="btn btn-outline-primary"><?=GetMessage('nav_paged')?></a></div>
     	    <?else:?>
-				<div class="text-center d-xl-none mb-5"><a href="<?=$arResult["sUrlPath"]?>?<?=$strNavQueryString?>SHOWALL_<?=$arResult["NavNum"]?>=1" class="btn btn-outline-primary"><?=GetMessage("nav_all")?></a></div>
+				<div class="text-center d-xl-none mb-5"><a href="<?=$arResult['sUrlPath']?>?<?=$strNavQueryString?>SHOWALL_<?=$arResult['NavNum']?>=1" class="btn btn-outline-primary"><?=GetMessage('nav_all')?></a></div>
     	    <?endif?>
         </noindex>
     <?endif?>
