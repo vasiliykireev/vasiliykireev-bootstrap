@@ -17,11 +17,21 @@ div.news-list img.preview_picture
 	width: 100%;
 	object-fit: contain;
 }
-
+/* XL */
+@media (min-width: 1200px) and (max-width: 1399.98px) {
 .certificate__heading {
-	min-height: 52.6094px;
+	/*min-height: 52.6094px;*/
+}
 }
 
+/* XXL */
+@media (min-width: 1400px) {
+.certificate__heading {
+	/* min-height: 500px; */
+}
+}
+
+/* 
 .certificate__text {
 	min-height: 48px;
-}
+} */
