@@ -54,8 +54,8 @@ foreach($arResult as $arItem):?>
 </ul>
 <div class="menu-clear-left"></div>
 <?endif?>
-<?/* */?>
+<?/* 
 <pre> arResult
 	<?print_r($arResult);?>
 </pre>
-<?/* */?>
+*/?>
