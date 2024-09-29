@@ -15,9 +15,9 @@ $this->setFrameMode(true);
 <section class="thumbnails pt-3 pb-5">
 	<?if(($arResult['NAME'] ?? '') !== ''):?>
         <div class="thumbnails__name container">
-            <div class="thumbnails__name-row row justify-content-center pt-3 pb-5">
+            <div class="thumbnails__name-row row justify-content-center">
                 <div class="thumbnails__name-column col-auto text-center">
-                    <h2 class="thumbnails__heading"><?=$arResult['NAME']?></h2>
+                    <h2 class="thumbnails__heading mt-3 mb-3"><?=$arResult['NAME']?></h2>
 		    		<?if(($arResult['DESCRIPTION'] ?? '') !== ''):?>
 		    		    <p class="thumbnails__description text text-body-secondary"><?=$arResult['DESCRIPTION']?></p>
 		    		<?endif?>
@@ -31,7 +31,7 @@ $this->setFrameMode(true);
         <?endif;?>
 	    <div class="carousel-inner">
             <div class="container">
-                <div class="thumbnails__grid row row-cols-1 row-cols-md-2 row-cols-xl-3 mx-5 gx-2 gy-5 justify-content-center align-items-center">
+                <div class="thumbnails__grid row row-cols-1 row-cols-md-2 row-cols-xl-3 mx-xl-5 gx-2 gy-2 justify-content-center align-items-center">
 	                <?foreach($arResult['ITEMS'] as $arItem):?>
 	            		<?
 	                    $this->AddEditAction($arItem['ID'], $arItem['EDIT_LINK'], CIBlock::GetArrayByID($arItem['IBLOCK_ID'], 'ELEMENT_EDIT'));
@@ -52,7 +52,7 @@ $this->setFrameMode(true);
 	            			    <?endif?>
                                 <div class="thumbnail__caption card-body">
 	            					<?if($arItem['NAME']):?>
-                                        <h3 class="thumbnail__heading mt-3 mb-2 text-center"><?=$arItem['NAME']?></h3>
+                                        <h3 class="thumbnail__heading mt-0 mb-2 text-center"><?=$arItem['NAME']?></h3>
 	            					<?endif?>
 	            					<?if(($arItem['PREVIEW_TEXT'] ?? '') !== ''):?>
                                         <p class="thumbnail__text text-center text-body-secondary"><?=$arItem['PREVIEW_TEXT']?></p>
