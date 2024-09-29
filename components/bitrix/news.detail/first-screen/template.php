@@ -50,7 +50,7 @@ $this->setFrameMode(true);
                         <img
                         src="<?=$arResult["DETAIL_PICTURE"]["SAFE_SRC"]?>"
                         class="first-screen__image first-screen__image_size_default img-fluid rounded"
-                        alt="<?=$arResult["DETAIL_PICTURE"]["ALT"]?>!"
+                        alt="<?=$arResult["DETAIL_PICTURE"]["ALT"]?>"
                         title="<?=$arResult["DETAIL_PICTURE"]["TITLE"]?>">
                     </picture>
 				<?endif?>
