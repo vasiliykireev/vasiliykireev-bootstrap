@@ -22,7 +22,7 @@ $strNavQueryString = ($arResult["NavQueryString"] != "" ? $arResult["NavQueryStr
 $strNavQueryStringFull = ($arResult["NavQueryString"] != "" ? "?".$arResult["NavQueryString"] : "");
 ?>
 <?if($arResult["bDescPageNumbering"] === true): // Если используется обратная навигация?>
-	<div class="carousel-indicators">
+	<div class="carousel-indicators mb-0">
         <?while($arResult["nStartPage"] >= $arResult["nEndPage"]):?>
         	<?$NavRecordGroupPrint = $arResult["NavPageCount"] - $arResult["nStartPage"] + 1;?>
         	<?if ($arResult["nStartPage"] == $arResult["NavPageNomer"]):?>
@@ -80,8 +80,8 @@ $strNavQueryStringFull = ($arResult["NavQueryString"] != "" ? "?".$arResult["Nav
         </a>
     <?endif?>
 <?else:?>
-    <?if (!$arResult["bShowAll"]):?>
-        <div class="carousel-indicators d-none d-xl-flex">
+    
+        <div class="carousel-indicators mb-0 d-none d-xl-flex">
             <?while($arResult["nStartPage"] <= $arResult["nEndPage"]):?>
                 <?if ($arResult["nStartPage"] == $arResult["NavPageNomer"]):?>
                     <a type="button" data-bs-target="#carouselIndicators" class="active" aria-current="true" aria-label="<?=$arResult["nStartPage"]?>"></a>
@@ -137,13 +137,13 @@ $strNavQueryStringFull = ($arResult["NavQueryString"] != "" ? "?".$arResult["Nav
                 <span class="visually-hidden"><?=GetMessage("nav_begin")?></span>
             </a>
         <?endif?>
-    <?endif?>
+    
     <?if ($arResult["bShowAll"]):?>
         <noindex>
     	    <?if ($arResult["NavShowAll"]):?>
-				<div class="text-center mb-5"><a href="<?=$arResult["sUrlPath"]?>?<?=$strNavQueryString?>SHOWALL_<?=$arResult["NavNum"]?>=0" class="btn btn-outline-primary"><?=GetMessage("nav_paged")?></a></div>
+				<div class="text-center d-xl-none mb-5"><a href="<?=$arResult["sUrlPath"]?>?<?=$strNavQueryString?>SHOWALL_<?=$arResult["NavNum"]?>=0" class="btn btn-outline-primary"><?=GetMessage("nav_paged")?></a></div>
     	    <?else:?>
-				<div class="text-center mb-5"><a href="<?=$arResult["sUrlPath"]?>?<?=$strNavQueryString?>SHOWALL_<?=$arResult["NavNum"]?>=1" class="btn btn-outline-primary"><?=GetMessage("nav_all")?></a></div>
+				<div class="text-center d-xl-none mb-5"><a href="<?=$arResult["sUrlPath"]?>?<?=$strNavQueryString?>SHOWALL_<?=$arResult["NavNum"]?>=1" class="btn btn-outline-primary"><?=GetMessage("nav_all")?></a></div>
     	    <?endif?>
         </noindex>
     <?endif?>
