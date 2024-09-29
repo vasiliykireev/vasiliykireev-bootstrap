@@ -3,19 +3,19 @@
     <ul class="footer-menu__list nav flex-column flex-md-row align-items-start justify-content-xl-end justify-content-start">
         <?
         foreach($arResult as $arItem):
-        	if($arParams["MAX_LEVEL"] == 1 && $arItem["DEPTH_LEVEL"] > 1) 
+        	if($arParams['MAX_LEVEL'] == 1 && $arItem['DEPTH_LEVEL'] > 1) 
         		continue;
         ?>
-        	<?if($arItem["SELECTED"]):?>
+        	<?if($arItem['SELECTED']):?>
                 <li class="footer-menu__item mb-2 px-1">
                     <span class="footer-menu__link btn btn-dark py-0 py-md-2 px-2 focus-ring focus-ring-dark disabled">
-                        <?=$arItem["TEXT"]?>
+                        <?=$arItem['TEXT']?>
                     </span>
                 </li>
 	        <?else:?>
                 <li class="footer-menu__item mb-2 px-1">
-                    <a class="footer-menu__link btn btn-dark py-0 py-md-2 px-2 focus-ring focus-ring-dark" href="<?=$arItem["LINK"]?>">
-                        <?=$arItem["TEXT"]?>
+                    <a class="footer-menu__link btn btn-dark py-0 py-md-2 px-2 focus-ring focus-ring-dark" href="<?=$arItem['LINK']?>">
+                        <?=$arItem['TEXT']?>
                     </a>
                 </li>
 	        <?endif?>
