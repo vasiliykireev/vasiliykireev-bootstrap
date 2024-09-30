@@ -59,9 +59,10 @@ $this->setFrameMode(true);
                     <h1 class="first-screen__heading h1"><?=$arResult['PREVIEW_TEXT']?></h1>
 				<?endif?>
 				<div class="first-screen__text">
-				<?if(($arResult['DETAIL_TEXT'] ?? '') !== ''):?>
-                    <?=$arResult['DETAIL_TEXT']?>
-				<?endif?>
+				    <?if(($arResult['DETAIL_TEXT'] ?? '') !== ''):?>
+                        <?=$arResult['DETAIL_TEXT']?>
+				    <?endif?>
+                </div>
             </div>
             <div class="first-screen__spacer col-12 py-1"></div>
             <div class="first-screen__spacer col-12 py-1"></div>
