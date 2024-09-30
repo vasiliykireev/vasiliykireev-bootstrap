@@ -44,7 +44,7 @@ $this->setFrameMode(true);
 	            			    	    <?=$arItem['DISPLAY_PROPERTIES']['CODE_SVG']['~VALUE']?>
                                     </div>
 	            				<?elseif(($arItem['PREVIEW_PICTURE']['SAFE_SRC'] ?? '') !== ''):?>
-	            					<img class="thumbnail__image"
+	            					<img class="thumbnail__image d-block mx-auto"
 									src="<?=$arItem['PREVIEW_PICTURE']['SAFE_SRC']?>"
 									alt="<?=$arItem['PREVIEW_PICTURE']['ALT']?>"
 								    title="<?=$arItem['PREVIEW_PICTURE']['TITLE']?>"

@@ -1,9 +1,11 @@
 .thumbnail__icon svg {
 	height: 96px;
+	max-width: 100%;
 	object-fit: contain;
 }
 
 .thumbnail__image {
 	height: 128px;
+	max-width: 100%;
 	object-fit: contain;
 }
