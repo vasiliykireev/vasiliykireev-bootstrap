@@ -60,28 +60,28 @@ $APPLICATION->IncludeComponent(
 <br />
 <?endif;?>*/?>
 
-<section class="diploma pt-3 pb-5">
+<section class="certificates pt-3 pb-5">
     <?if(($arResult['NAME'] ?? '') !== ''):?>
-	    <div class="diploma__heading-container container">
-	    	<div class="diploma__heading-row row justify-content-center">
-	    		<div class="diploma__heading-col col-auto mb-3">
-	    			<h2 class="diploma-heading"><?=$arResult['NAME']?></h2>
+	    <div class="certificates__heading-container container">
+	    	<div class="certificates__heading-row row justify-content-center">
+	    		<div class="certificates__heading-col col-auto mb-3">
+	    			<h2 class="certificates__heading"><?=$arResult['NAME']?></h2>
 					<?if(($arResult['DESCRIPTION'] ?? '') !== ''):?>
-	    			    <p class="diploma__description text text-body-secondary"><?=$arResult['DESCRIPTION']?></p>
+	    			    <p class="certificates__description text text-body-secondary"><?=$arResult['DESCRIPTION']?></p>
 					<?endif?>
 	    		</div>
 	    	</div>
 	    </div>
 	<?endif?>
     <?foreach($arResult['SECTIONS'] as $arSection):?>
-    	<div class="certificates pb-3">
+    	<div class="certificates-section pb-3">
             <?if(($arSection['NAME'] ?? '') !== ''):?>
-                <div class="thumbnails__name container">
-                    <div class="thumbnails__name-row row justify-content-center">
-                        <div class="thumbnails__name-column col-auto text-center">
-                            <h3 class="thumbnails__heading"><?=$arSection['NAME']?></h3>
+                <div class="certificates-section__container container">
+                    <div class="certificates-section__heading-row row justify-content-center">
+                        <div class="certificates-section__heading-column col-auto text-center">
+                            <h3 class="certificates-section__heading"><?=$arSection['NAME']?></h3>
     	    	    		<?if(($arSection['DESCRIPTION'] ?? '') !== ''):?>
-    	    	    		    <p class="thumbnails__description text text-body-secondary"><?=$arSection['DESCRIPTION']?></p>
+    	    	    		    <p class="certificates-section__description text text-body-secondary"><?=$arSection['DESCRIPTION']?></p>
     	    	    		<?endif?>
                         </div>
                     </div>

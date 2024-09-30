@@ -25,13 +25,13 @@ $this->setFrameMode(true);
             </div>
 		</div>
 	<?endif?>*/?>
-	<div id="carouselIndicators" class="carousel carousel-dark slide">
+	<div id="carouselIndicators" class="certificates__carousel carousel carousel-dark slide">
         <?if($arParams['DISPLAY_TOP_PAGER']):?>
         	<?=$arResult['NAV_STRING']?><br />
         <?endif;?>
-	    <div class="carousel-inner">
-            <div class="certificates__container carousel-item active">
-                <div class="container">
+	    <div class="certificates__carousel-inner">
+            <div class="certificates__carousel-item carousel-item active">
+                <div class="certificates__container container">
                     <div class="certificates__grid row row-cols-1 row-cols-xl-3 mx-xl-5 justify-content-center align-items-start">
                     <?/*
                     <?if($arParams['DISPLAY_TOP_PAGER']):?>
@@ -43,8 +43,8 @@ $this->setFrameMode(true);
                         	$this->AddEditAction($arItem['ID'], $arItem['EDIT_LINK'], CIBlock::GetArrayByID($arItem['IBLOCK_ID'], 'ELEMENT_EDIT'));
                         	$this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], CIBlock::GetArrayByID($arItem['IBLOCK_ID'], 'ELEMENT_DELETE'), array('CONFIRM' => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
                         	?>
-                            <div class="certificate__card col card border-0 d-flex flex-column justify-content-between align-self-stretch" id="<?=$this->GetEditAreaId($arItem['ID']);?>">
-                                <div class="certificate__icon text-center text-primary">
+                            <div class="certificate col card border-0 d-flex flex-column justify-content-between align-self-stretch" id="<?=$this->GetEditAreaId($arItem['ID']);?>">
+                                <div class="certificate__image text-center text-primary">
 	        	    				<?if(($arItem["PREVIEW_PICTURE"]["SAFE_SRC"] ?? '') !== ''):?>
                                         <img
 	        	    					class="certificate__image"
