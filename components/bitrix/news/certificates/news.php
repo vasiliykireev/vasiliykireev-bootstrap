@@ -74,7 +74,7 @@ $APPLICATION->IncludeComponent(
 	    </div>
 	<?endif?>
     <?foreach($arResult['SECTIONS'] as $arSection):?>
-    	<div class="certificates pb-5">
+    	<div class="certificates pb-3">
             <?if(($arSection['NAME'] ?? '') !== ''):?>
                 <div class="thumbnails__name container">
                     <div class="thumbnails__name-row row justify-content-center">
