@@ -12,7 +12,7 @@
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
 ?>
-<section class="first-screen">
+<div class="first-screen">
     <div class="first-screen__container container">
         <div class="first-screen__row row-cols-1 row justify-content-center align-items-center">
             <div class="first-screen__column col-12 row justify-content-center align-items-center">
@@ -68,4 +68,4 @@ $this->setFrameMode(true);
             <div class="first-screen__spacer col-12 py-1"></div>
         </div>
     </div>
-</section>
+</div>

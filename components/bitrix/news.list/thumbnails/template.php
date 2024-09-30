@@ -12,7 +12,7 @@
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
 ?>
-<section class="thumbnails pt-3 pb-5">
+<div class="thumbnails pt-3 pb-5">
 	<?if(($arResult['NAME'] ?? '') !== ''):?>
         <div class="thumbnails__name container">
             <div class="thumbnails__name-row row justify-content-center">
@@ -87,4 +87,4 @@ $this->setFrameMode(true);
             <?endif;?>
 		</div>
 	</div>
-</section>
+</div>
