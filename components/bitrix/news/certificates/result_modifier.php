@@ -53,7 +53,6 @@ if(CModule::IncludeModule("iblock")) {
     /* Выводим элементы в arResult */
     if(!empty($arResult["SECTIONS"])){
     	foreach($arResult["SECTIONS"] as &$arSection){
-    		$arSection['YYY'] = "News List";
     		$arSection['ITEMS'] = array();
             $arFilter = Array(
                 'SECTION_ID' => $arSection["ID"],
