@@ -43,17 +43,17 @@ $this->setFrameMode(true);
                         	$this->AddEditAction($arItem['ID'], $arItem['EDIT_LINK'], CIBlock::GetArrayByID($arItem['IBLOCK_ID'], 'ELEMENT_EDIT'));
                         	$this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], CIBlock::GetArrayByID($arItem['IBLOCK_ID'], 'ELEMENT_DELETE'), array('CONFIRM' => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
                         	?>
-                            <div class="certificate col card border-0 d-flex flex-column justify-content-between align-self-stretch" id="<?=$this->GetEditAreaId($arItem['ID']);?>">
-                                <div class="certificate__image text-center text-primary">
+                            <div class="certificate col card border-0 d-flex flex-column justify-content-between align-self-stretch align-items-center" id="<?=$this->GetEditAreaId($arItem['ID']);?>">
+                                <?/*<div class="certificate__image text-center text-primary">*/?>
 	        	    				<?if(($arItem["PREVIEW_PICTURE"]["SAFE_SRC"] ?? '') !== ''):?>
                                         <img
-	        	    					class="certificate__image"
+	        	    					class="certificate__image d-block"
 	        	    					src="<?=$arItem['PREVIEW_PICTURE']['SAFE_SRC']?>"
 	        	    					alt="<?=$arItem['PREVIEW_PICTURE']['ALT']?>"
 	        	    					title="<?=$arItem['PREVIEW_PICTURE']['TITLE']?>"
 	        	    					loading="lazy">
 	        	    				<?endif?>
-                                </div>
+                                <?/*</div>*/?>
 	        	    			<?if(($arItem['NAME'] ?? '') !== ''):?>
                                     <div class="certificate__caption card-body d-flex flex-column justify-content-start align-self-stretch">
                                         <h3 class="h6 card-title certificate__heading mt-auto mb-auto text-center align-middle"><?=$arItem['NAME']?></h3>
