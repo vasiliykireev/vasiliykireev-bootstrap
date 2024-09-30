@@ -17,11 +17,36 @@ $arParams['SHARE_SHORTEN_URL_KEY'] = (string)($arParams['SHARE_SHORTEN_URL_KEY']
 
 if(CModule::IncludeModule("iblock")) { 
 $arResult['XXX'] = "News List";
+
+/* Добавляем инфоблок в arResult */
+// $arResult['IBLOCK'] = array();
+$arFilter = array(
+    "ACTIVE"=>"Y", // Сортировка по активности
+    'ID' => $arParams['IBLOCK_ID']); 
+$arSelect = array();
+$arBlocks = CIBlock::GetList( // CIBlock — инфоблок!
+     Array("SORT"=>"ASC"),
+     $arFilter,
+     false,
+     $arSelect
+);
+while ($arBlock = $arBlocks->GetNext()) {
+    // echo "<pre> arBlock ";
+    // print_r($arBlock);
+    // echo "</pre>";
+	    $arResult = array_merge($arResult, $arBlock);
+}
+// echo "<pre> arResult ";
+// print_r($arResult);
+// echo "</pre>";
+
+
 /* Добавляем разделы в arResult */
+if(!empty($arResult['ID'])){
 $arResult['SECTIONS'] = array();
 $arFilter = array(
     "ACTIVE"=>"Y", // Сортировка по активности
-    'IBLOCK_ID' => $arParams['IBLOCK_ID']); 
+    'IBLOCK_ID' => $arResult['ID']); 
 $arSelect = array();
 $arSections = CIBlockSection::GetList( // CIBlockSection — раздел!
      Array("SORT"=>"ASC"),
@@ -35,7 +60,7 @@ while ($arSection = $arSections->GetNext()) {
 }
 
 /* Выводим элементы в arResult */
-if(isset($arResult["SECTIONS"])){
+if(!empty($arResult["SECTIONS"])){
 	foreach($arResult["SECTIONS"] as &$arSection){
 		$arSection['YYY'] = "News List";
 		$arSection['ITEMS'] = array();
@@ -58,7 +83,11 @@ while ($arItem = $arItems->GetNext()) {
 }
 }
 }
+}
 
+// echo "<pre> arResult ";
+// print_r($arResult);
+// echo "</pre>";
 
 ?>
 <?

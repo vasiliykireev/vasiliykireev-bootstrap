@@ -58,13 +58,39 @@ $APPLICATION->IncludeComponent(
 );
 ?>
 <br />
-<?php
-endif;
+<?endif;?>
 
-foreach($arResult["SECTIONS"] as $arSection) {
-	// $arrFilter = array('SECTION_ID' => $arSection["ID"],);
+<section class="diploma pt-3 pb-5">
+    <?if(($arResult['NAME'] ?? '') !== ''):?>
+	    <div class="diploma__heading-container container">
+	    	<div class="diploma__heading-row row justify-content-center">
+	    		<div class="diploma__heading-col col-auto mb-3">
+	    			<h2 class="diploma-heading"><?=$arResult["NAME"]?></h2>
+					<?if(($arResult['DESCRIPTION'] ?? '') !== ''):?>
+	    			    <p class="diploma__description text text-body-secondary"><?=$arResult["DESCRIPTION"]?></p>
+					<?endif?>
+	    		</div>
+	    	</div>
+	    </div>
+	<?endif?>
+<?foreach($arResult["SECTIONS"] as $arSection):?>
+	<?/*// $arrFilter = array('SECTION_ID' => $arSection["ID"],);*/?>
+	<div class="certificates pb-5">
+    <?if(($arSection['NAME'] ?? '') !== ''):?>
+        <div class="thumbnails__name container">
+            <div class="thumbnails__name-row row justify-content-center">
+                <div class="thumbnails__name-column col-auto text-center">
+                    <h3 class="thumbnails__heading"><?=$arSection["NAME"]?></h3>
+		    		<?if(($arSection['DESCRIPTION'] ?? '') !== ''):?>
+		    		    <p class="thumbnails__description text text-body-secondary"><?=$arSection['DESCRIPTION']?></p>
+		    		<?endif?>
+                </div>
+            </div>
+		</div>
+	<?endif?>
+<?	
 if(!empty($arSection["ITEMS"])) {
-	echo $arSection["NAME"];
+	// echo $arSection["NAME"];
 	// echo "<pre>";
 	// print_r($arSection["ITEMS"]);
 	// echo "</pre>";
@@ -75,6 +101,7 @@ $APPLICATION->IncludeComponent(
 	"certificates",
 	[   
 		"PARENT_SECTION" => $arSection["ID"],
+		"AJAX_MODE" => $arParams["AJAX_MODE"],
 		"IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
 		"IBLOCK_ID" => $arParams["IBLOCK_ID"],
 		"NEWS_COUNT" => $arParams["NEWS_COUNT"],
@@ -124,9 +151,13 @@ $APPLICATION->IncludeComponent(
 	$component,
 	['HIDE_ICONS' => 'Y']
 );
-}
 };
-
-// echo "<pre> news ";
-// print_r($arResult);
-// echo("</pre>");
+?>
+</div>
+<?endforeach?>
+</section>
+<?/*
+<pre>
+<?print_r($arResult)?>
+</pre>
+*/?>

@@ -12,7 +12,7 @@
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
 ?>
-<div class="certificates pb-5">
+<?/*<div class="certificates pb-5">
     <?if(($arResult['NAME'] ?? '') !== ''):?>
         <div class="thumbnails__name container">
             <div class="thumbnails__name-row row justify-content-center">
@@ -24,7 +24,7 @@ $this->setFrameMode(true);
                 </div>
             </div>
 		</div>
-	<?endif?>
+	<?endif?>*/?>
 	<div id="carouselIndicators" class="carousel carousel-dark slide">
         <?if($arParams['DISPLAY_TOP_PAGER']):?>
         	<?=$arResult['NAV_STRING']?><br />
@@ -72,4 +72,6 @@ $this->setFrameMode(true);
             <?=$arResult['NAV_STRING']?>
         <?endif;?>
 	</div>
+<?/*
 </div>
+*/?>
