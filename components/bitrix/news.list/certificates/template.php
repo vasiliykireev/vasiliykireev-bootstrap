@@ -32,7 +32,7 @@ $this->setFrameMode(true);
 	    <div class="certificates__carousel-inner carousel-inner">
             <div class="certificates__carousel-item carousel-item active">
                 <div class="certificates__container container">
-                    <div class="certificates__grid row row-cols-1 row-cols-xl-3 mx-xl-5 justify-content-center align-items-start">
+                    <div class="certificates__grid row row-cols-1 row-cols-xl-<?=$arParams['NEWS_COUNT']?> mx-xl-5 justify-content-center align-items-start">
                     <?/*
                     <?if($arParams['DISPLAY_TOP_PAGER']):?>
                     	<?=$arResult['NAV_STRING']?><br />
