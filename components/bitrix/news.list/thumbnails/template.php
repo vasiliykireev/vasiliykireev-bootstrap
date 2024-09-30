@@ -17,7 +17,7 @@ $this->setFrameMode(true);
         <div class="thumbnails__name container">
             <div class="thumbnails__name-row row justify-content-center">
                 <div class="thumbnails__name-column col-auto text-center">
-                    <h2 class="thumbnails__heading mt-3 mb-3"><?=$arResult['NAME']?></h2>
+                    <h2 class="thumbnails__heading"><?=$arResult['NAME']?></h2>
 		    		<?if(($arResult['DESCRIPTION'] ?? '') !== ''):?>
 		    		    <p class="thumbnails__description text text-body-secondary"><?=$arResult['DESCRIPTION']?></p>
 		    		<?endif?>
