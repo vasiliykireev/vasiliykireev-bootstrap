@@ -12,19 +12,19 @@
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
 ?>
-<?/*<div class="certificates pb-5">
-    <?if(($arResult['NAME'] ?? '') !== ''):?>
+<div class="certificates pb-5">
+    <?if(($arResult['SECTION']['PATH'][0] ?? '') !== ''):?>
         <div class="thumbnails__name container">
             <div class="thumbnails__name-row row justify-content-center">
                 <div class="thumbnails__name-column col-auto text-center">
-                    <h3 class="thumbnails__heading mt-3 mb-3"><?=$arResult["NAME"]?></h3>
-		    		<?if(($arResult['DESCRIPTION'] ?? '') !== ''):?>
-		    		    <p class="thumbnails__description text text-body-secondary"><?=$arResult['DESCRIPTION']?></p>
+                    <h3 class="thumbnails__heading mt-3 mb-3"><?=$arResult['SECTION']['PATH'][0]['NAME']?></h3>
+		    		<?if(($arResult['SECTION']['PATH'][0]['DESCRIPTION'] ?? '') !== ''): // Нет в массиве?>
+		    		    <p class="thumbnails__description text text-body-secondary"><?=$arResult['SECTION']['PATH'][0]['DESCRIPTION']?></p>
 		    		<?endif?>
                 </div>
             </div>
 		</div>
-	<?endif?>*/?>
+	<?endif?>
 	<div id="carouselIndicators" class="certificates__carousel carousel carousel-dark slide">
         <?if($arParams['DISPLAY_TOP_PAGER']):?>
         	<?=$arResult['NAV_STRING']?><br />
@@ -72,6 +72,5 @@ $this->setFrameMode(true);
             <?=$arResult['NAV_STRING']?>
         <?endif;?>
 	</div>
-<?/*
+
 </div>
-*/?>
