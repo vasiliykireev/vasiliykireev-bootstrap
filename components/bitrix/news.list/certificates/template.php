@@ -13,13 +13,13 @@
 $this->setFrameMode(true);
 ?>
 <div class="certificates pb-5">
-    <?if(($arResult['SECTION']['PATH'][0] ?? '') !== ''):?>
+    <?if(($arResult['SECTION']['PATH'][array_key_last($arResult["SECTION"]["PATH"])] ?? '') !== ''):?>
         <div class="certificates__name container">
             <div class="certificates__name-row row justify-content-center">
                 <div class="certificates__name-column col-auto text-center">
-                    <h3 class="certificates__heading mt-3 mb-3"><?=$arResult['SECTION']['PATH'][0]['NAME']?></h3>
-		    		<?if(($arResult['SECTION']['PATH'][0]['DESCRIPTION'] ?? '') !== ''): // Нет в массиве?>
-		    		    <p class="certificates__description text text-body-secondary"><?=$arResult['SECTION']['PATH'][0]['DESCRIPTION']?></p>
+                    <h3 class="certificates__heading mt-3 mb-3"><?=$arResult['SECTION']['PATH'][array_key_last($arResult["SECTION"]["PATH"])]['NAME']?></h3>
+		    		<?if(($arResult['SECTION']['PATH'][array_key_last($arResult["SECTION"]["PATH"])]['DESCRIPTION'] ?? '') !== ''): // Нет в массиве?>
+		    		    <p class="certificates__description text text-body-secondary"><?=$arResult['SECTION']['PATH'][array_key_last($arResult["SECTION"]["PATH"])]['DESCRIPTION']?></p>
 		    		<?endif?>
                 </div>
             </div>
