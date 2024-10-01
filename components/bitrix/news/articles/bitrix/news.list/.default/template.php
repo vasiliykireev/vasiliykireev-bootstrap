@@ -34,11 +34,29 @@ $this->setFrameMode(true);
 			<?endif?>
 
             <div class="row justify-content-center">
-                <div class="caption col-12 col-md-10 col-lg-8 col-xl-12 col-xxl-11 mb-5">
-                    <a class="btn btn-outline-secondary" href="#">Раздел</a>
-                    <a class="btn btn-outline-primary" href="#">Портфолио</a>
-                    <a class="btn btn-outline-primary" href="#">Сайты</a>
-                </div>
+				<!-- To Do: Переделать вывод компонентов:
+				 I
+				 - Вывод разделов 1 уровня
+				 - Вывод разделов 2 уровня (выводится) и возврат на 1 уровень
+				 - Вывод разделов 3 уровня и возврат на 2 уровень (сделано)
+				 II
+				 Или убрать назад и выводить разделы с помощью одноуровнего меню.
+			    -->
+			    <?if($arResult["SECTION"]["PATH"]):?>
+                    <div class="caption col-12 col-md-10 col-lg-8 col-xl-12 col-xxl-11 mb-5">
+                        <?if($arResult["SECTION"]["PATH"][array_key_last($arResult["SECTION"]["PATH"])-1]):?>
+                            <a class="btn btn-outline-secondary mb-1" href="<?=$arResult["SECTION"]["PATH"][array_key_last($arResult["SECTION"]["PATH"])-1]["SECTION_PAGE_URL"]?>">
+							<!-- <i class="bi bi-chevron-left"></i> -->
+							<?=$arResult["SECTION"]["PATH"][array_key_last($arResult["SECTION"]["PATH"])-1]["NAME"]?>
+					    	</a>
+                        <?else:?>
+							<a href="<?=$arResult["LIST_PAGE_URL"]?>"><?=$arResult["LIST_PAGE_URL"]?></a>
+                        <?endif?>
+						<?foreach($arResult["SECTION"]["PATH"][array_key_last($arResult["SECTION"]["PATH"])]["SECTIONS"] as $arSection):?>
+                            <a class="btn btn-outline-primary mb-1" href="<?=$arSection["SECTION_PAGE_URL"]?>"><?=$arSection["NAME"]?></a>
+						<?endforeach?>
+                    </div>
+                <?endif?>
             </div>
             <div class="example portfolio__grid row gx-4 gy-5 justify-content-center align-items-center">
 			    <?foreach($arResult["ITEMS"] as $arItem):?>
@@ -90,11 +108,15 @@ $this->setFrameMode(true);
 								</div>
                                 <div class="article__promo col-xl-7 col-xxl-7">
                                     <div class="card-body pt-xl-0 pb-xl-0 px-0 px-xl-3">
-                                        <!-- <a class="card-badge d-inline-block alert alert-secondary px-2 py-1" href="#">Портфолио</a> -->
-                                        <!-- <div class="card-badges text-center text-xl-start">
-                                            <a class="card-badge btn btn-outline-secondary btn-sm mb-2" href="#">Портфолио</a>
-                                            <a class="card-badge btn btn-outline-secondary btn-sm mb-2" href="#">Сайты</a>
-                                        </div> -->
+									<div class="card-badges text-center text-xl-start">
+										<?foreach($arItem["SECTIONS"] as $arSection):?>
+											<?/*<pre> arSection 
+                                                <?print_r($arSection)?>
+										    </pre>*/?>
+
+                                                <a class="card-badge btn btn-outline-primary btn-sm mb-1" href="<?=$arSection["SECTION_PAGE_URL"]?>"><?=$arSection["NAME"]?></a>
+										<?endforeach?>
+										</div>
 										<?if($arItem["NAME"]):?>
 											<h2 class="h3 card-title text-center text-xl-start text-lines text-lines__amount__3">
 												<?echo $arItem["NAME"]?>
@@ -102,7 +124,9 @@ $this->setFrameMode(true);
 		                                <?endif;?>
                                         <div class="news-info row mb-1">
                                             <div class="author col small text-body-tertiary">Василий Квасов</div>
-                                            <div class="time col-auto small text-body-tertiary">11 сентября 2024</div>
+											<?if($arParams["DISPLAY_DATE"]!="N" && $arItem["DISPLAY_ACTIVE_FROM"]):?>
+                                                <div class="time col-auto small text-body-tertiary"><?=$arItem["DISPLAY_ACTIVE_FROM"]?></div>
+											<?endif?>
                                         </div>
 										<?if($arItem["PREVIEW_TEXT"]):?>
                                             <p class="card-text text-body-secondary text-lines text-lines__amount__3">
@@ -205,3 +229,4 @@ if($debug){
 	print_r($arResult);
 	echo "</pre>";
 }
+?>
