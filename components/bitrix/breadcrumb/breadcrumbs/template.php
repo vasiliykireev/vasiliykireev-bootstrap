@@ -23,9 +23,11 @@ if(!is_array($css) || !in_array("/bitrix/css/main/font-awesome.css", $css))
 */
 
 $strReturn .= '
-    <div class="breadcrumbs container">
-	<nav class="row justify-content-center" aria-label="breadcrumb">
-    <ol class="breadcrumb col-12 col-md-10 col-lg-8 col-xl-12 col-xxl-11 my-3 px-3" itemscope itemtype="https://schema.org/BreadcrumbList" style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'8\' height=\'8\'%3E%3Cpath d=\'M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z\' fill=\'%236c757d\'/%3E%3C/svg%3E&#34;);">';
+    <div class="breadcrumbs container-fluid">
+	<div class="row">
+	<div class="col">
+	<nav aria-label="breadcrumb">
+    <ol class="breadcrumb px-2 my-3" itemscope itemtype="https://schema.org/BreadcrumbList" style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'8\' height=\'8\'%3E%3Cpath d=\'M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z\' fill=\'%236c757d\'/%3E%3C/svg%3E&#34;);">';
 
 $itemSize = count($arResult);
 for($index = 0; $index < $itemSize; $index++)
@@ -55,7 +57,7 @@ for($index = 0; $index < $itemSize; $index++)
 }
 
 //$strReturn .= '<div style="clear:both"></div>'.'</ol></nav>';
-$strReturn .= '</ol></nav></div>';
+$strReturn .= '</ol></nav></div></div></div>';
 
 
 return $strReturn;
