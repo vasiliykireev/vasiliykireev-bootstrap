@@ -116,7 +116,7 @@ $this->setFrameMode(true);
 		                            	<?endif;?>
 		                            <?endif?>
 								</div>
-                                <div class="article__promo col-xl-6 col-xxl-7 card-body pt-xl-0 pb-xl-0 px-0 px-xl-3 d-flex flex-column justify-content-between">
+                                <div class="article__promo col col-xl-6 col-xxl-7 card-body pt-xl-0 pb-xl-0 d-flex flex-column justify-content-between">
                                     <?/*<div class="card-body pt-xl-0 pb-xl-0 px-0 px-xl-3 d-flex flex-column h-100 justify-content-between">*/?>
 									    <div class="card-badges text-center text-xl-start">
 									    	<?foreach($arItem["SECTIONS"] as $arSection):?>
