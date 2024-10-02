@@ -42,21 +42,31 @@ $this->setFrameMode(true);
 				 II
 				 Или убрать назад и выводить разделы с помощью одноуровнего меню.
 			    -->
+				<div class="caption col-12 col-md-10 col-lg-8 col-xl-12 col-xxl-11 mb-5">
+
+				<?if(!isset($arResult["SECTION"]["PATH"]) && isset($arResult["SECTIONS"])):?>
+					<?foreach($arResult["SECTIONS"] as $arSection):?>
+                         <?if($arSection["ELEMENT_CNT"] > 0):?>
+							<a class="btn btn-outline-primary" href="<?=$arSection["SECTION_PAGE_URL"]?>"><?=$arSection["NAME"]?></a>
+						 <?endif?>
+					<?endforeach?>
+				<?endif?>
 			    <?if($arResult["SECTION"]["PATH"]):?>
-                    <div class="caption col-12 col-md-10 col-lg-8 col-xl-12 col-xxl-11 mb-5">
                         <?if($arResult["SECTION"]["PATH"][array_key_last($arResult["SECTION"]["PATH"])-1]):?>
-                            <a class="btn btn-outline-secondary mb-1" href="<?=$arResult["SECTION"]["PATH"][array_key_last($arResult["SECTION"]["PATH"])-1]["SECTION_PAGE_URL"]?>">
+                            <?/*<a class="btn btn-outline-secondary mb-1" href="<?=$arResult["SECTION"]["PATH"][array_key_last($arResult["SECTION"]["PATH"])-1]["SECTION_PAGE_URL"]?>">
 							<!-- <i class="bi bi-chevron-left"></i> -->
 							<?=$arResult["SECTION"]["PATH"][array_key_last($arResult["SECTION"]["PATH"])-1]["NAME"]?>
-					    	</a>
+					    	</a>*/?>
                         <?else:?>
-							<a href="<?=$arResult["LIST_PAGE_URL"]?>"><?=$arResult["LIST_PAGE_URL"]?></a>
+							<?/*<a href="<?=$arResult["LIST_PAGE_URL"]?>"><?=$arResult["LIST_PAGE_URL"]?></a>*/?>
                         <?endif?>
 						<?foreach($arResult["SECTION"]["PATH"][array_key_last($arResult["SECTION"]["PATH"])]["SECTIONS"] as $arSection):?>
                             <a class="btn btn-outline-primary mb-1" href="<?=$arSection["SECTION_PAGE_URL"]?>"><?=$arSection["NAME"]?></a>
 						<?endforeach?>
-                    </div>
                 <?endif?>
+
+				</div>
+
             </div>
             <div class="example portfolio__grid row gx-4 gy-5 justify-content-center align-items-center">
 			    <?foreach($arResult["ITEMS"] as $arItem):?>
@@ -66,8 +76,8 @@ $this->setFrameMode(true);
 	                ?>
                     <div class="case col-12 col-md-10 col-lg-8 col-xl-12 col-xxl-11" id="<?=$this->GetEditAreaId($arItem['ID']);?>">
                         <div class="card mb-3 border-0">
-                            <div class="row justify-content-center align-items-end">
-								<div class="article__image col-xl-5 col-xxl-5">
+                            <div class="row justify-content-center align-items-stretch">
+								<div class="article__image col-xl-6 col-xxl-5 text-center d-flex flex-column justify-content-end">
 									<?if($arParams["DISPLAY_PICTURE"]!="N" && is_array($arItem["PREVIEW_PICTURE"])):?>
 		                            	<?if(!$arParams["HIDE_LINK_WHEN_NO_DETAIL"] || ($arItem["DETAIL_TEXT"] && $arResult["USER_HAVE_ACCESS"])):?>
 		                            		<a href="<?=$arItem["DETAIL_PAGE_URL"]?>">
@@ -106,39 +116,37 @@ $this->setFrameMode(true);
 		                            	<?endif;?>
 		                            <?endif?>
 								</div>
-                                <div class="article__promo col-xl-7 col-xxl-7">
-                                    <div class="card-body pt-xl-0 pb-xl-0 px-0 px-xl-3">
-									<div class="card-badges text-center text-xl-start">
-										<?foreach($arItem["SECTIONS"] as $arSection):?>
-											<?/*<pre> arSection 
-                                                <?print_r($arSection)?>
-										    </pre>*/?>
-
+                                <div class="article__promo col-xl-6 col-xxl-7 card-body pt-xl-0 pb-xl-0 px-0 px-xl-3 d-flex flex-column justify-content-between">
+                                    <?/*<div class="card-body pt-xl-0 pb-xl-0 px-0 px-xl-3 d-flex flex-column h-100 justify-content-between">*/?>
+									    <div class="card-badges text-center text-xl-start">
+									    	<?foreach($arItem["SECTIONS"] as $arSection):?>
                                                 <a class="card-badge btn btn-outline-primary btn-sm mb-1" href="<?=$arSection["SECTION_PAGE_URL"]?>"><?=$arSection["NAME"]?></a>
-										<?endforeach?>
-										</div>
-										<?if($arItem["NAME"]):?>
-											<h2 class="h3 card-title text-center text-xl-start text-lines text-lines__amount__3">
-												<?echo $arItem["NAME"]?>
-											</h2>
-		                                <?endif;?>
-                                        <div class="news-info row mb-1">
-                                            <div class="author col small text-body-tertiary">Василий Квасов</div>
-											<?if($arParams["DISPLAY_DATE"]!="N" && $arItem["DISPLAY_ACTIVE_FROM"]):?>
-                                                <div class="time col-auto small text-body-tertiary"><?=$arItem["DISPLAY_ACTIVE_FROM"]?></div>
-											<?endif?>
-                                        </div>
-										<?if($arItem["PREVIEW_TEXT"]):?>
-                                            <p class="card-text text-body-secondary text-lines text-lines__amount__3">
-		                                    	<?echo $arItem["PREVIEW_TEXT"];?>
-										    </p>
-										<?endif;?>
+									    	<?endforeach?>
+									    </div>
+                                        <div class="article__announce">
+									    	<?if($arItem["NAME"]):?>
+									    		<h2 class="h4 card-title text-center text-xl-start text-lines text-lines__amount__2">
+									    			<?echo $arItem["NAME"]?>
+									    		</h2>
+		                                    <?endif;?>
+                                            <div class="news-info row mb-1">
+                                                <?/*<div class="author col small text-body-tertiary">Василий Квасов</div>*/?>
+									    		<?if($arParams["DISPLAY_DATE"]!="N" && $arItem["DISPLAY_ACTIVE_FROM"]):?>
+                                                    <div class="time col-auto small text-body-tertiary"><?=$arItem["DISPLAY_ACTIVE_FROM"]?></div>
+									    		<?endif?>
+                                            </div>
+									    	<?if($arItem["PREVIEW_TEXT"]):?>
+                                                <p class="card-text text-body-secondary mb-1 text-lines text-lines__amount__3">
+		                                        	<?echo $arItem["PREVIEW_TEXT"];?>
+									    	    </p>
+									    	<?endif;?>
+									    </div>
 										<?if($arItem["NAME"] && !$arParams["HIDE_LINK_WHEN_NO_DETAIL"] && $arResult["USER_HAVE_ACCESS"]):?>
                                             <p class="card-text text-center text-xl-start">
 												<a class="btn btn-primary" href="<?=$arItem["DETAIL_PAGE_URL"]?>">Подробнее</a>
 											</p>
 										<?endif?>
-                                    </div>
+                                    <?/*</div>*/?>
                                 </div>
                             </div>
                         </div>

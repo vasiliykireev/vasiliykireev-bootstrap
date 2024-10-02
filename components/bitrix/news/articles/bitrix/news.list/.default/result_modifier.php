@@ -1,45 +1,46 @@
 <?
 /* Добавляем разделы в arResult */
-// $arResult['SECTIONS'] = array();
-// $arFilter = array(
-//     "ACTIVE"=>"Y", // Сортировка по активности
-//     'IBLOCK_ID' => $arResult['ID'],
-//     'DEPTH_LEVEL' => 1,
-//     'CNT_ACTIVE' => "Y",
-// ); 
-// $arSelect = array();
-// $arSections = CIBlockSection::GetList( // CIBlockSection — раздел!
-//      Array("SORT"=>"ASC"),
-//      $arFilter,
-//      true,
-//      $arSelect
-// );
-// while ($arSection = $arSections->GetNext()) {
-// 	    array_push($arResult['SECTIONS'], $arSection);
-// }
+$arResult['SECTIONS'] = array();
+$arFilter = array(
+    "ACTIVE"=>"Y", // Сортировка по активности
+    'IBLOCK_ID' => $arResult['ID'],
+    'DEPTH_LEVEL' => 1,
+    'CNT_ACTIVE' => "Y",
+); 
+$arSelect = array();
+$arSections = CIBlockSection::GetList( // CIBlockSection — раздел!
+     Array("SORT"=>"ASC"),
+     $arFilter,
+     true,
+     $arSelect
+);
+while ($arSection = $arSections->GetNext()) {
+	    array_push($arResult['SECTIONS'], $arSection);
+}
 
 /* Добавляем разделы в arResult */
-// if(!empty($arResult["SECTION"]["PATH"]) && ($arResult["SECTION"]["PATH"][array_key_last($arResult["SECTION"]["PATH"])] ?? '') !== '') {
-//     $arResult["SECTION"]["PATH"][array_key_last($arResult["SECTION"]["PATH"])]['SECTIONS'] = array();
-//     $arFilter = array(
-//         "ACTIVE" => "Y", // Сортировка по активности
-//         'IBLOCK_ID' => $arResult['ID'],
-//         'SECTION_ID' => $arResult["SECTION"]["PATH"][array_key_last($arResult["SECTION"]["PATH"])]["ID"],
-//     ); 
-//     $arSelect = array();
-//     $arSections = CIBlockSection::GetList( // CIBlockSection — раздел!
-//          Array("SORT"=>"ASC"),
-//          $arFilter,
-//          false,
-//          $arSelect
-//     );
-//     while ($arSection = $arSections->GetNext()) {
-//         // echo "<pre> result_modifier arSection ";
-//         // print_r($arSection);
-//         // echo "</pre>";
-//     	array_push($arResult["SECTION"]["PATH"][array_key_last($arResult["SECTION"]["PATH"])]['SECTIONS'], $arSection);
-//     }
-// }
+if(!empty($arResult["SECTION"]["PATH"]) && ($arResult["SECTION"]["PATH"][array_key_last($arResult["SECTION"]["PATH"])] ?? '') !== '') {
+    $arResult["SECTION"]["PATH"][array_key_last($arResult["SECTION"]["PATH"])]['SECTIONS'] = array();
+    $arFilter = array(
+        "ACTIVE" => "Y", // Сортировка по активности
+        'IBLOCK_ID' => $arResult['ID'],
+        'SECTION_ID' => $arResult["SECTION"]["PATH"][array_key_last($arResult["SECTION"]["PATH"])]["ID"],
+    ); 
+    $arSelect = array();
+    $arSections = CIBlockSection::GetList( // CIBlockSection — раздел!
+         Array("SORT"=>"ASC"),
+         $arFilter,
+         false,
+         $arSelect
+    );
+    while ($arSection = $arSections->GetNext()) {
+        // echo "<pre> result_modifier arSection ";
+        // print_r($arSection);
+        // echo "</pre>";
+    	array_push($arResult["SECTION"]["PATH"][array_key_last($arResult["SECTION"]["PATH"])]['SECTIONS'], $arSection);
+    }
+}
+
 foreach($arResult['ITEMS'] as &$arItem){
     $arItem['SECTIONS'] = array();
     $arSections = CIBlockElement::GetElementGroups($arItem["ID"], true);
