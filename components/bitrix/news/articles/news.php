@@ -67,7 +67,7 @@ endif;
 
 $APPLICATION->IncludeComponent(
 	"bitrix:news.list",
-	"",
+	"articles",
 	[   
 		"DISPLAY_SECTIONS" => $arParams["DISPLAY_SECTIONS"],
 		"DISPLAY_DETAIL_LINK" => $arParams["DISPLAY_DETAIL_LINK"],
