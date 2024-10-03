@@ -149,7 +149,13 @@ $this->setFrameMode(true);
                                         		<?endif?>
                                         		<?if($isShowExternalLink):?>
                                                     <a
-                                        	    	class="solution__button btn btn-secondary"
+                                        	    	class="solution__button btn <?
+													if($isShowDetailLink){
+														echo 'btn-secondary';
+													} else {
+														echo "btn-primary";
+													}
+													?>"
                                         	    	href="<?=$arItem['DISPLAY_PROPERTIES']['EXTERNAL_LINK']['VALUE']?>"
                                         	    	target="<?
                                         	    	if(str_contains($arItem['DISPLAY_PROPERTIES']['EXTERNAL_LINK']['VALUE'], "://")){
