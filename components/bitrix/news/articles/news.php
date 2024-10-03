@@ -60,10 +60,20 @@ $APPLICATION->IncludeComponent(
 <br />
 <?php
 endif;
+
+// echo "<pre> news arParams ";
+// print_r($arParams);
+// echo "</pre>";
+
 $APPLICATION->IncludeComponent(
 	"bitrix:news.list",
 	"",
-	[
+	[   
+		"DISPLAY_SECTIONS" => $arParams["DISPLAY_SECTIONS"],
+		"DISPLAY_DETAIL_LINK" => $arParams["DISPLAY_DETAIL_LINK"],
+		"DISPLAY_EXTERNAL_LINK" => $arParams["DISPLAY_EXTERNAL_LINK"],
+		"DEFAULT_EXTERNAL_LINK_CAPTION" => $arParams["DEFAULT_EXTERNAL_LINK_CAPTION"],
+		"DISPLAY_SECTIONS_BUTTONS" => $arParams["DISPLAY_SECTIONS_BUTTONS"],
 		"IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
 		"IBLOCK_ID" => $arParams["IBLOCK_ID"],
 		"NEWS_COUNT" => $arParams["NEWS_COUNT"],
