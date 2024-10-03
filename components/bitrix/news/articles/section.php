@@ -57,6 +57,7 @@ $this->setFrameMode(true);
 	"bitrix:news.list",
 	"articles",
 	Array(
+		"DISPLAY_HEADER" => $arParams["DISPLAY_HEADER"],
 		"DISPLAY_SECTIONS" => $arParams["DISPLAY_SECTIONS"],
 		"DISPLAY_DETAIL_LINK" => $arParams["DISPLAY_DETAIL_LINK"],
 		"DISPLAY_EXTERNAL_LINK" => $arParams["DISPLAY_EXTERNAL_LINK"],

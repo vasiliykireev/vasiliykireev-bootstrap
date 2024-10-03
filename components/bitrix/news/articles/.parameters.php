@@ -28,6 +28,11 @@ $arTemplateParameters = array(
 		"DEFAULT" =>"N",
 		"REFRESH"=> "Y",
 	),
+	"DISPLAY_HEADER" => Array(
+    	"NAME" => GetMessage("T_IBLOCK_DESC_NEWS_HEADER"),
+    	"TYPE" => "CHECKBOX",
+    	"DEFAULT" => "N",
+	),
 	"DISPLAY_SECTIONS" => Array(
     	"NAME" => GetMessage("T_IBLOCK_DESC_NEWS_SECTIONS"),
     	"TYPE" => "CHECKBOX",

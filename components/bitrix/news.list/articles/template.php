@@ -18,7 +18,7 @@ $this->setFrameMode(true);
 		<?if($arParams["DISPLAY_TOP_PAGER"]):?>
 	        <?=$arResult["NAV_STRING"]?><br />
         <?endif;?>
-        <?if((($arResult["SECTION"]["PATH"] ?? '') !== '') || (($arResult["NAME"] ?? '') !== '')):?>
+        <?if(($arParams["DISPLAY_HEADER"] == 'Y') && ((($arResult["SECTION"]["PATH"] ?? '') !== '') || (($arResult["NAME"] ?? '') !== ''))):?>
         	<div class="articles__header-row row justify-content-center pt-3 pb-2">
                 <div class="articles__header-col col-auto">
                     <h1 class="articles__heading">
@@ -111,7 +111,7 @@ $this->setFrameMode(true);
 								    } elseif(!$isShowLinks && $arParams["DISPLAY_SECTIONS_BUTTONS"] == 'Y') {
 										echo 'justify-content-evenly';
 									} else {
-								    	echo 'justify-content-center';
+								    	echo 'justify-content-evenly';
 								    }
 								?>">
                                     <?/*<div class="card-body pt-xl-0 pb-xl-0 px-0 px-xl-3 d-flex flex-column h-100 justify-content-between">*/?>
@@ -251,7 +251,7 @@ $this->setFrameMode(true);
 <?endforeach;?>
 </div>
 */?>
-<? $debug = true;
+<? $debug = false;
 if($debug){
 	echo "<pre> arParams ";
 	print_r($arParams);
