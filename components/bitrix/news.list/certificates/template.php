@@ -52,7 +52,7 @@ $this->setFrameMode(true);
                                             type="<?=$arItem['DISPLAY_PROPERTIES']['IMAGE_WEBP_2X']['FILE_VALUE']['CONTENT_TYPE']?>"
 						                    srcset="<?=$arItem['DISPLAY_PROPERTIES']['IMAGE_WEBP_2X']['FILE_VALUE']['SRC']?>"
 						                    class="certificate__image-source certificate-screen__image-source_size_2x"
-                                            <?//?>media="(min-width: 576px) and (-webkit-min-device-pixel-ratio: 1.5)"<??> />
+                                            <?//?>media="(-webkit-min-device-pixel-ratio: 1.5)"<??> />
 						                <?endif?>
 						                <?if(($arItem['DISPLAY_PROPERTIES']['IMAGE_WEBP'] ?? '') !== ''):?>
                                             <source
