@@ -46,12 +46,28 @@ $this->setFrameMode(true);
                             <div class="certificate col card border-0 d-flex flex-column justify-content-between align-self-stretch align-items-center" id="<?=$this->GetEditAreaId($arItem['ID']);?>">
                                 <?/*<div class="certificate__image text-center text-primary">*/?>
 	        	    				<?if(($arItem["PREVIEW_PICTURE"]["SAFE_SRC"] ?? '') !== ''):?>
-                                        <img
-	        	    					class="certificate__image d-block"
-	        	    					src="<?=$arItem['PREVIEW_PICTURE']['SAFE_SRC']?>"
-	        	    					alt="<?=$arItem['PREVIEW_PICTURE']['ALT']?>"
-	        	    					title="<?=$arItem['PREVIEW_PICTURE']['TITLE']?>"
-	        	    					loading="lazy">
+                                        <picture class="certificate__picture">
+                                        <?if(($arItem['DISPLAY_PROPERTIES']['IMAGE_WEBP_2X'] ?? '') !== ''):?>
+                                            <source
+                                            type="<?=$arItem['DISPLAY_PROPERTIES']['IMAGE_WEBP_2X']['FILE_VALUE']['CONTENT_TYPE']?>"
+						                    srcset="<?=$arItem['DISPLAY_PROPERTIES']['IMAGE_WEBP_2X']['FILE_VALUE']['SRC']?>"
+						                    class="certificate__image-source certificate-screen__image-source_size_2x"
+                                            <?//?>media="(min-width: 576px) and (-webkit-min-device-pixel-ratio: 1.5)"<??> />
+						                <?endif?>
+						                <?if(($arItem['DISPLAY_PROPERTIES']['IMAGE_WEBP'] ?? '') !== ''):?>
+                                            <source
+                                            type="<?=$arItem['DISPLAY_PROPERTIES']['IMAGE_WEBP']['FILE_VALUE']['CONTENT_TYPE']?>"
+						                    srcset="<?=$arItem['DISPLAY_PROPERTIES']['IMAGE_WEBP']['FILE_VALUE']['SRC']?>"
+                                            class="certificate__image-source certificate-screen__image-source_size_normal">
+						                <?endif?>
+                                            <img
+	        	    					    class="certificate__image"
+	        	    					    src="<?=$arItem['PREVIEW_PICTURE']['SAFE_SRC']?>"
+	        	    					    alt="<?=$arItem['PREVIEW_PICTURE']['ALT']?>"
+	        	    					    title="<?=$arItem['PREVIEW_PICTURE']['TITLE']?>"
+	        	    					    loading="lazy">
+                                        </picture>
+
 	        	    				<?endif?>
                                 <?/*</div>*/?>
 	        	    			<?if(($arItem['NAME'] ?? '') !== ''):?>
