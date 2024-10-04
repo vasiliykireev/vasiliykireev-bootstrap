@@ -13,7 +13,7 @@
 $this->setFrameMode(true);
 ?>
 
-<div class="articles pt-3 pb-5">
+<div class="articles mt-3 mb-3">
     <div class="articles__container container">
 		<?if($arParams["DISPLAY_TOP_PAGER"]):?>
 	        <?=$arResult["NAV_STRING"]?><br />
@@ -83,11 +83,11 @@ $this->setFrameMode(true);
                                             <source
                                             type="<?=$arItem['DISPLAY_PROPERTIES']['IMAGE_WEBP']['FILE_VALUE']['CONTENT_TYPE']?>"
 						                    srcset="<?=$arItem['DISPLAY_PROPERTIES']['IMAGE_WEBP']['FILE_VALUE']['SRC']?>"
-                                            class="article-screen__image-source article-screen__image-source_size_normal">
+                                            class="article__image-source article-screen__image-source_size_normal">
 						                <?endif?>
                                             <img
                                             src="<?=$arItem["PREVIEW_PICTURE"]["SRC"]?>"
-                                            class="article__img img-fluid rounded"
+                                            class="article__image img-fluid rounded"
                                             alt="<?=$arItem["PREVIEW_PICTURE"]["ALT"]?>"
                                             title="<?=$arItem["PREVIEW_PICTURE"]["TITLE"]?>"
                                             loading="lazy">
