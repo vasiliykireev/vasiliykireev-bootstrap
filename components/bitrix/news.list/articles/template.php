@@ -70,38 +70,30 @@ $this->setFrameMode(true);
 									<?if(is_array($arItem["PREVIEW_PICTURE"])):?>
 		                            	<?if($isShowDetailLink):?>
 		                            		<a href="<?=$arItem["DETAIL_PAGE_URL"]?>">
-			    				    		<picture class="article__picture">
-                                                <!-- <source
-                                                type="image/webp"
-                                                srcset="./images/portfolio/roof-rack@2x.webp"
-                                                media="(min-width: 576px) and (-webkit-min-device-pixel-ratio: 1.5)" />
-                                                <source
-                                                type="image/webp"
-                                                srcset="./images/portfolio/roof-rack.webp"/> -->
-                                                <img
-                                                src="<?=$arItem["PREVIEW_PICTURE"]["SRC"]?>"
-                                                class="article__img img-fluid rounded"
-                                                alt="<?=$arItem["PREVIEW_PICTURE"]["ALT"]?>"
-                                                title="<?=$arItem["PREVIEW_PICTURE"]["TITLE"]?>"
-                                                loading="lazy">
-                                            </picture>
-			    				    	</a>
-		                            	<?else:?>
-			    				    		<picture class="article__picture">
-                                                <!-- <source
-                                                type="image/webp"
-                                                srcset="./images/portfolio/roof-rack@2x.webp"
-                                                media="(min-width: 576px) and (-webkit-min-device-pixel-ratio: 1.5)" />
-                                                <source
-                                                type="image/webp"
-                                                srcset="./images/portfolio/roof-rack.webp"/> -->
-                                                <img
-                                                src="<?=$arItem["PREVIEW_PICTURE"]["SRC"]?>"
-                                                class="article__img img-fluid rounded"
-                                                alt="<?=$arItem["PREVIEW_PICTURE"]["ALT"]?>"
-                                                title="<?=$arItem["PREVIEW_PICTURE"]["TITLE"]?>"
-                                                loading="lazy">
-                                            </picture>
+										<?endif?>
+			    				    	<picture class="article__picture">
+						                <?if(($arItem['DISPLAY_PROPERTIES']['IMAGE_WEBP_2X'] ?? '') !== ''):?>
+                                            <source
+                                            type="<?=$arItem['DISPLAY_PROPERTIES']['IMAGE_WEBP_2X']['FILE_VALUE']['CONTENT_TYPE']?>"
+						                    srcset="<?=$arItem['DISPLAY_PROPERTIES']['IMAGE_WEBP_2X']['FILE_VALUE']['SRC']?>"
+						                    class="article__image-source article-screen__image-source_size_2x"
+                                            media="(min-width: 576px) and (-webkit-min-device-pixel-ratio: 1.5)" />
+						                <?endif?>
+						                <?if(($arItem['DISPLAY_PROPERTIES']['IMAGE_WEBP'] ?? '') !== ''):?>
+                                            <source
+                                            type="<?=$arItem['DISPLAY_PROPERTIES']['IMAGE_WEBP']['FILE_VALUE']['CONTENT_TYPE']?>"
+						                    srcset="<?=$arItem['DISPLAY_PROPERTIES']['IMAGE_WEBP']['FILE_VALUE']['SRC']?>"
+                                            class="article-screen__image-source article-screen__image-source_size_normal">
+						                <?endif?>
+                                            <img
+                                            src="<?=$arItem["PREVIEW_PICTURE"]["SRC"]?>"
+                                            class="article__img img-fluid rounded"
+                                            alt="<?=$arItem["PREVIEW_PICTURE"]["ALT"]?>"
+                                            title="<?=$arItem["PREVIEW_PICTURE"]["TITLE"]?>"
+                                            loading="lazy">
+                                        </picture>
+										<?if($isShowDetailLink):?>
+										    </a>
 		                            	<?endif;?>
 		                            <?endif?>
 								</div>
