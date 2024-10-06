@@ -1,4 +1,4 @@
-div.news-detail
+/* div.news-detail
 {
 	word-wrap: break-word;
 }
@@ -10,4 +10,17 @@ div.news-detail img.detail_picture
 .news-date-time
 {
 	color:#486DAA;
+} */
+.article__image {
+	max-width: 768px !important;
+	width: 100%;
+	height: auto;
+}
+
+.article__info-container {
+	max-width: 42em !important;
+}
+.article__preview-text,
+.article__detail-text {
+	max-width: 42em;
 }

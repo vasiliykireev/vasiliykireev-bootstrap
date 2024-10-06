@@ -80,4 +80,11 @@ if ($arCurrentValues["USE_SHARE"] == "Y")
 	);
 }
 
+$arTemplateParameters = array(
+	"DETAIL_MARKDOWN" => Array(
+		"NAME" => GetMessage("T_IBLOCK_DESC_DETAIL_MARKDOWN"),
+		"TYPE" => "CHECKBOX",
+		"DEFAULT" => "N",
+	),
+);
 ?>

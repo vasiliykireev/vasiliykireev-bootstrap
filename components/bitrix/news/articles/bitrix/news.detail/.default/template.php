@@ -12,6 +12,81 @@
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
 ?>
+
+<?
+$this->AddEditAction($arResult['ID'], $arResult['EDIT_LINK'], CIBlock::GetArrayByID($arResult["IBLOCK_ID"], "ELEMENT_EDIT"));
+$this->AddDeleteAction($arResult['ID'], $arResult['DELETE_LINK'], CIBlock::GetArrayByID($arResult["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
+?>
+
+<div class="article mt-3 mb-3" id="<?=$this->GetEditAreaId($arResult['ID']);?>">
+    <div class="article__container container">
+	    <?if(is_array($arResult["DETAIL_PICTURE"])):?>
+		    <div class="article__picture-row row justify-content-center pt-3 pb-2">
+                <div class="article__picture-col col-auto">
+			    	<picture class="article__picture">
+					    <?if(($arResult['DISPLAY_PROPERTIES']['IMAGE_WEBP_2X'] ?? '') !== ''):?>
+                            <source
+                            type="<?=$$arResult['DISPLAY_PROPERTIES']['IMAGE_WEBP_2X']['FILE_VALUE']['CONTENT_TYPE']?>"
+					        srcset="<?=$arResult['DISPLAY_PROPERTIES']['IMAGE_WEBP_2X']['FILE_VALUE']['SRC']?>"
+					        class="article__image-source article-screen__image-source_size_2x"
+						<?/*media="(-webkit-min-device-pixel-ratio: 1.5)"*/?>/>
+					    <?endif?>
+					    <?/*<?if(($arResult['DISPLAY_PROPERTIES']['IMAGE_WEBP'] ?? '') !== ''):?>
+                            <source
+                            type="<?=$arResult['DISPLAY_PROPERTIES']['IMAGE_WEBP']['FILE_VALUE']['CONTENT_TYPE']?>"
+					        srcset="<?=$arResult['DISPLAY_PROPERTIES']['IMAGE_WEBP']['FILE_VALUE']['SRC']?>"
+                            class="article__image-source article-screen__image-source_size_normal">
+					    <?endif?>*/?>
+                        <img
+                        src="<?=$arResult["DETAIL_PICTURE"]["SRC"]?>"
+                        class="article__image rounded"
+                        alt="<?=$arResult["DETAIL_PICTURE"]["ALT"]?>"
+                        title="<?=$arResult["DETAIL_PICTURE"]["TITLE"]?>"
+                        loading="lazy">
+                    </picture>
+    	        </div>
+            </div>
+        <?endif?>
+	    <?if($arResult["NAME"]):?>
+	    	<div class="article__heading-row row justify-content-center pt-3 pb-2">
+                <div class="article__heading-col col-auto">
+                    <h1 class="article__heading"><?=($arResult["NAME"])?></h1>	
+                </div>
+            </div>
+	    <?endif?>
+		<div class="article__info row justify-content-center mb-1">
+			<div class="article__info-container">
+			    <?/*<div class="article__author col small text-body-tertiary">
+			    To Do: Добавить вывод автора
+			    </div>*/?>
+				<div class="article__info-row row">
+			        <?if($arParams["DISPLAY_DATE"]!="N" && (($arResult["DISPLAY_ACTIVE_FROM"] ?? '') !== '')):?>
+                        <div class="article__time col-auto small text-body-tertiary px-md-0"><?=$arResult["DISPLAY_ACTIVE_FROM"]?></div>
+			        <?endif?>
+				</div>
+			</div>
+        </div>
+		<?if(($arResult["PREVIEW_TEXT"] ?? '') !== ''):?>
+			<div class="article__preview-text mx-auto text-secondary mb-5">
+		        <?echo $arResult["PREVIEW_TEXT"];?>
+		    </div>
+		<?endif;?>
+		<?if(($arResult["DETAIL_TEXT"] ?? '') !== ''):?>
+			<div class="article__detail-text mx-auto">
+			<?require_once($_SERVER['DOCUMENT_ROOT'] . SITE_TEMPLATE_PATH . '/libraries/parsedown/parsedown.php');?>
+			    <?if($arResult['DETAIL_TEXT_TYPE'] == "text" && $arParams['DETAIL_MARKDOWN'] == "Y") {
+                    $Parsedown = new Parsedown();
+                    echo $Parsedown->text($arResult["DETAIL_TEXT"]);
+			    } else {
+			    	echo $arResult["DETAIL_TEXT"];
+			    }?>
+		    </div>
+		<?endif?>
+    </div>
+</div>
+
+
+<?/*
 <div class="news-detail">
 	<?if($arParams["DISPLAY_PICTURE"]!="N" && is_array($arResult["DETAIL_PICTURE"])):?>
 		<img
@@ -93,3 +168,4 @@ $this->setFrameMode(true);
 	}
 	?>
 </div>
+*/?>

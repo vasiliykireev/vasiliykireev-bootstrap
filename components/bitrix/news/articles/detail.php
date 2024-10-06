@@ -20,6 +20,7 @@ $ElementID = $APPLICATION->IncludeComponent(
 	"bitrix:news.detail",
 	"",
 	[
+		"DETAIL_MARKDOWN" => $arParams["DETAIL_MARKDOWN"],
 		"DISPLAY_DATE" => $arParams["DISPLAY_DATE"],
 		"DISPLAY_NAME" => $arParams["DISPLAY_NAME"],
 		"DISPLAY_PICTURE" => $arParams["DISPLAY_PICTURE"],
@@ -72,7 +73,17 @@ $ElementID = $APPLICATION->IncludeComponent(
 	$component,
 	['HIDE_ICONS' => 'Y']
 );?>
-<p><a href="<?=$arResult["FOLDER"].$arResult["URL_TEMPLATES"]["news"]?>"><?=GetMessage("T_NEWS_DETAIL_BACK")?></a></p>
+
+<div class="back-to-list mt-3 mb-3" id="<?=$this->GetEditAreaId($arResult['ID']);?>">
+    <div class="back-to-list__container container">
+	    <div class="back-to-list__row row">
+	        <div class="back-to-list__col col-auto">
+                <a class="back-to-list__link btn btn-primary" href="<?=$arResult["FOLDER"].$arResult["URL_TEMPLATES"]["news"]?>"><?=GetMessage("T_NEWS_DETAIL_BACK")?></a>
+            </div>
+        </div>
+    </div>
+</div>
+
 <?if($arParams["USE_RATING"]=="Y" && $ElementID):?>
 <?$APPLICATION->IncludeComponent(
 	"bitrix:iblock.vote",
