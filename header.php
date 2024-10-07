@@ -22,7 +22,7 @@ IncludeTemplateLangFile(__FILE__);
     <?$APPLICATION->ShowMeta("og:type")?>
     <?$APPLICATION->ShowMeta("og:url")?>
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
     <div id="panel">
 	    <? $APPLICATION->ShowPanel(); ?> 
     </div>
