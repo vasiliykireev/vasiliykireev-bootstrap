@@ -17,6 +17,13 @@ $this->setFrameMode(true);
 $this->AddEditAction($arResult['ID'], $arResult['EDIT_LINK'], CIBlock::GetArrayByID($arResult["IBLOCK_ID"], "ELEMENT_EDIT"));
 $this->AddDeleteAction($arResult['ID'], $arResult['DELETE_LINK'], CIBlock::GetArrayByID($arResult["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
 ?>
+<?
+$isExistExternalLinkCaption = ($arResult['DISPLAY_PROPERTIES']['LINK_CAPTION']['VALUE'] ?? '') !== '';
+$isExistExternalLinkDefaultCaption = ($arParams['DEFAULT_EXTERNAL_LINK_CAPTION'] ?? '') !== '';
+$isShowExternalLink = ($arParams['DISPLAY_EXTERNAL_LINK'] == "Y") &&
+    (($arResult['DISPLAY_PROPERTIES']['EXTERNAL_LINK']['VALUE'] ?? '') !== '') &&
+    ($isExistExternalLinkCaption || $isExistExternalLinkDefaultCaption);
+?>
 
 <div class="article mt-3 mb-3" id="<?=$this->GetEditAreaId($arResult['ID']);?>">
     <div class="article__container container">
@@ -50,7 +57,9 @@ $this->AddDeleteAction($arResult['ID'], $arResult['DELETE_LINK'], CIBlock::GetAr
 	    <?if($arResult["NAME"]):?>
 	    	<div class="article__heading-row row justify-content-center pt-3 pb-2">
                 <div class="article__heading-col col-auto">
-                    <h1 class="article__heading"><?=($arResult["NAME"])?></h1>	
+                    <h1 class="article__heading">
+						<?$APPLICATION->ShowTitle(false)?>
+					</h1>	
                 </div>
             </div>
 	    <?endif?>
@@ -69,6 +78,25 @@ $this->AddDeleteAction($arResult['ID'], $arResult['DELETE_LINK'], CIBlock::GetAr
 		<?if(($arResult["PREVIEW_TEXT"] ?? '') !== ''):?>
 			<div class="article__preview-text mx-auto text-secondary mb-5">
 		        <?echo $arResult["PREVIEW_TEXT"];?>
+				<?if($isShowExternalLink):?>
+			        <div class="article__buttons text-center">
+                        <a
+                        class="solution__button btn btn-primary"
+                        href="<?=$arResult['DISPLAY_PROPERTIES']['EXTERNAL_LINK']['VALUE']?>"
+                        target="<?
+                        if(str_contains($arResult['DISPLAY_PROPERTIES']['EXTERNAL_LINK']['VALUE'], "://")){
+                        	echo '_blank';
+                        } else {
+                        	echo "_self";
+                        } ?>">
+                        <?if($isExistExternalLinkCaption):?>
+                        	<?=$arResult['DISPLAY_PROPERTIES']['LINK_CAPTION']['VALUE']?>
+                        <?else:?>
+                        	<?=$arParams['DEFAULT_EXTERNAL_LINK_CAPTION']?>
+                        <?endif?>
+                        </a>
+			        </div>
+                <?endif?>
 		    </div>
 		<?endif;?>
 		<?if(($arResult["DETAIL_TEXT"] ?? '') !== ''):?>

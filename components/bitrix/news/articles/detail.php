@@ -20,6 +20,8 @@ $ElementID = $APPLICATION->IncludeComponent(
 	"bitrix:news.detail",
 	"",
 	[
+		"DISPLAY_EXTERNAL_LINK" => $arParams["DISPLAY_EXTERNAL_LINK"],
+		"DEFAULT_EXTERNAL_LINK_CAPTION" => $arParams["DEFAULT_EXTERNAL_LINK_CAPTION"],
 		"DETAIL_MARKDOWN" => $arParams["DETAIL_MARKDOWN"],
 		"DISPLAY_DATE" => $arParams["DISPLAY_DATE"],
 		"DISPLAY_NAME" => $arParams["DISPLAY_NAME"],
