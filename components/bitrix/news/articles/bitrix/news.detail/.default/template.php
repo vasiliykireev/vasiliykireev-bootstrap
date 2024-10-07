@@ -104,7 +104,7 @@ $isShowExternalLink = ($arParams['DISPLAY_EXTERNAL_LINK'] == "Y") &&
 			<?require_once($_SERVER['DOCUMENT_ROOT'] . SITE_TEMPLATE_PATH . '/libraries/parsedown/parsedown.php');?>
 			    <?if($arResult['DETAIL_TEXT_TYPE'] == "text" && $arParams['DETAIL_MARKDOWN'] == "Y") {
                     $Parsedown = new Parsedown();
-                    echo $Parsedown->text($arResult["DETAIL_TEXT"]);
+                    echo $Parsedown->text($arResult["~DETAIL_TEXT"]);
 			    } else {
 			    	echo $arResult["DETAIL_TEXT"];
 			    }?>
@@ -197,3 +197,13 @@ $isShowExternalLink = ($arParams['DISPLAY_EXTERNAL_LINK'] == "Y") &&
 	?>
 </div>
 */?>
+<? $debug = false;
+if($debug){
+	echo "<pre> arParams ";
+	print_r($arParams);
+	echo "</pre>";
+	echo "<pre> arResult ";
+	print_r($arResult);
+	echo "</pre>";
+}
+?>
