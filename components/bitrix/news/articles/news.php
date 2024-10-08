@@ -61,10 +61,6 @@ $APPLICATION->IncludeComponent(
 <?php
 endif;
 
-// echo "<pre> news arParams ";
-// print_r($arParams);
-// echo "</pre>";
-
 $APPLICATION->IncludeComponent(
 	"bitrix:news.list",
 	"articles",
