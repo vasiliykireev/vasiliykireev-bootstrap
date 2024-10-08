@@ -13,15 +13,6 @@ if(empty($arResult))
 
 $strReturn = '';
 
-/*
-//we can't use $APPLICATION->SetAdditionalCSS() here because we are inside the buffered function GetNavChain()
-$css = $APPLICATION->GetCSSArray();
-if(!is_array($css) || !in_array("/bitrix/css/main/font-awesome.css", $css))
-{
-	$strReturn .= '<link href="'.CUtil::GetAdditionalFileURL("/bitrix/css/main/font-awesome.css").'" type="text/css" rel="stylesheet" />'."\n";
-}
-*/
-
 $strReturn .= '
     <div class="breadcrumbs container-fluid">
 	<div class="row">
@@ -56,7 +47,6 @@ for($index = 0; $index < $itemSize; $index++)
 	}
 }
 
-//$strReturn .= '<div style="clear:both"></div>'.'</ol></nav>';
 $strReturn .= '</ol></nav></div></div></div>';
 
 
