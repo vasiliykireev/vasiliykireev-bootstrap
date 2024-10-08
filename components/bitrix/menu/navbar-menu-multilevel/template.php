@@ -14,7 +14,7 @@
 $previousLevel = 0;
 foreach($arResult as $arItem):?>
 
-	<?if ($previousLevel && $arItem["DEPTH_LEVEL"] < $previousLevel):?>
+	<?if ($previousLevel && $arItem["DEPTH_LEVEL"] < $previousLevel && $arItem["DEPTH_LEVEL"] <= $arParams["MAX_LEVEL"]):?>
 		<?=str_repeat("</ul></li>", ($previousLevel - $arItem["DEPTH_LEVEL"]));?>
 	<?endif?>
 
