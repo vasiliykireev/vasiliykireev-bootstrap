@@ -30,28 +30,9 @@ $this->setFrameMode(true);
         			    <?endif?>
 						</p>
 					<?endif?>
-
-
-					<?/*if(($arResult['DESCRIPTION'] ?? '') !== ''):?>
-		    		    <p class="thumbnails__description text text-body-secondary"><?=$arResult['DESCRIPTION']?></p>
-		    		<?endif*/?>
 		        </div>
 		    </div>
 		<?endif?>
-
-        <?/*if(($arParams["DISPLAY_HEADER"] == 'Y') && ((($arResult["SECTION"]["PATH"] ?? '') !== '') || (($arResult["NAME"] ?? '') !== ''))):?>
-        	<div class="articles__header-row row justify-content-center pt-3 pb-2">
-                <div class="articles__header-col col-auto">
-                    <h1 class="articles__heading">
-        			    <?if(($arResult["SECTION"]["PATH"] ?? '') !== ''):?>
-        			        <?=$arResult["SECTION"]["PATH"][array_key_last($arResult["SECTION"]["PATH"])]["NAME"]?></h1>
-        			    <?elseif(($arResult["NAME"] ?? '') !== ''):?>
-        			        <?=$arResult["NAME"]?>
-        			    <?endif?>
-        			</h1>
-                </div>
-            </div>
-        <?endif*/?>
     <?if($arParams['DISPLAY_SECTIONS'] == "Y"):?>
         <div class="articles__sections-row row justify-content-center">
 			<div class="articles__sections-col col-12 col-md-10 col-lg-8 col-xl-12 col-xxl-11 mb-5">
@@ -128,65 +109,63 @@ $this->setFrameMode(true);
 				    				    	echo 'justify-content-evenly';
 				    				    }
 				    				?>">
-                                        <?/*<div class="card-body pt-xl-0 pb-xl-0 px-0 px-xl-3 d-flex flex-column h-100 justify-content-between">*/?>
-				    					    <?if($arParams['DISPLAY_SECTIONS'] == "Y" && $arParams["DISPLAY_SECTIONS_BUTTONS"]):?>
-				    					        <div class="article__badges text-center text-xl-start">
-				    					        	<?foreach($arItem["SECTIONS"] as $arSection):?>
-                                                        <a class="article__badge btn btn-outline-primary btn-sm mb-1" href="<?=$arSection["SECTION_PAGE_URL"]?>"><?=$arSection["NAME"]?></a>
-				    					        	<?endforeach?>
-				    					        </div>
-				    					    <?endif?>
-                                            <div class="article__announce">
-				    					    	<?if(($arItem["NAME"] ?? '') !== ''):?>
-				    					    		<h2 class="h4 article__heading card-title text-center text-xl-start text-lines text-lines__amount__2">
-				    					    			<?echo $arItem["NAME"]?>
-				    					    		</h2>
-		                                        <?endif;?>
-                                                <div class="article__info row mb-1">
-                                                    <?/*<div class="article__author col small text-body-tertiary">
-				    								To Do: Добавить вывод автора
-				    								</div>*/?>
-				    					    		<?if($arParams["DISPLAY_DATE"]!="N" && (($arItem["DISPLAY_ACTIVE_FROM"] ?? '') !== '')):?>
-                                                        <div class="article__time col-auto small text-body-tertiary"><?=$arItem["DISPLAY_ACTIVE_FROM"]?></div>
-				    					    		<?endif?>
-                                                </div>
-				    					    	<?if(($arItem["PREVIEW_TEXT"] ?? '') !== ''):?>
-                                                    <p class="article__preview-text card-text text-body-secondary mb-2 text-lines text-lines__amount__3">
-		                                            	<?echo $arItem["PREVIEW_TEXT"];?>
-				    					    	    </p>
-				    					    	<?endif;?>
+				    					<?if($arParams['DISPLAY_SECTIONS'] == "Y" && $arParams["DISPLAY_SECTIONS_BUTTONS"]):?>
+				    					    <div class="article__badges text-center text-xl-start">
+				    					    	<?foreach($arItem["SECTIONS"] as $arSection):?>
+                                                    <a class="article__badge btn btn-outline-primary btn-sm mb-1" href="<?=$arSection["SECTION_PAGE_URL"]?>"><?=$arSection["NAME"]?></a>
+				    					    	<?endforeach?>
 				    					    </div>
-                                            <?if($isShowLinks):?>
-                                                <div class="article__buttons text-center text-xl-start">
-                                            		<?if($isShowDetailLink):?>
-                                            				<a class="btn btn-primary" href="<?=$arItem["DETAIL_PAGE_URL"]?>">Подробнее</a>
-                                            		<?endif?>
-                                            		<?if($isShowExternalLink):?>
-                                                        <a
-                                            	    	class="solution__button btn <?
-				    									if($isShowDetailLink){
-				    										echo 'btn-secondary';
-				    									} else {
-				    										echo "btn-primary";
-				    									}
-				    									?>"
-                                            	    	href="<?=$arItem['DISPLAY_PROPERTIES']['EXTERNAL_LINK']['VALUE']?>"
-                                            	    	target="<?
-                                            	    	if(str_contains($arItem['DISPLAY_PROPERTIES']['EXTERNAL_LINK']['VALUE'], "://")){
-                                            	    		echo '_blank';
-                                            	    	} else {
-                                            	    		echo "_self";
-                                            	    	} ?>">
-                                            	    	<?if($isExistExternalLinkCaption):?>
-                                            	    		<?=$arItem['DISPLAY_PROPERTIES']['LINK_CAPTION']['VALUE']?>
-                                            	    	<?else:?>
-                                            	    		<?=$arParams['DEFAULT_EXTERNAL_LINK_CAPTION']?>
-                                            	    	<?endif?>
-                                            	    	</a>
-                                            	    <?endif?>
-                                                </div>
-                                            <?endif?>
-                                        <?/*</div>*/?>
+				    					<?endif?>
+                                        <div class="article__announce">
+				    						<?if(($arItem["NAME"] ?? '') !== ''):?>
+				    							<h2 class="h4 article__heading card-title text-center text-xl-start text-lines text-lines__amount__2">
+				    								<?echo $arItem["NAME"]?>
+				    							</h2>
+		                                    <?endif;?>
+                                            <div class="article__info row mb-1">
+                                                <?/*<div class="article__author col small text-body-tertiary">
+				    							To Do: Добавить вывод автора
+				    							</div>*/?>
+				    							<?if($arParams["DISPLAY_DATE"]!="N" && (($arItem["DISPLAY_ACTIVE_FROM"] ?? '') !== '')):?>
+                                                    <div class="article__time col-auto small text-body-tertiary"><?=$arItem["DISPLAY_ACTIVE_FROM"]?></div>
+				    							<?endif?>
+                                            </div>
+				    						<?if(($arItem["PREVIEW_TEXT"] ?? '') !== ''):?>
+                                                <p class="article__preview-text card-text text-body-secondary mb-2 text-lines text-lines__amount__3">
+		                                        	<?echo $arItem["PREVIEW_TEXT"];?>
+				    						    </p>
+				    						<?endif;?>
+				    					</div>
+                                        <?if($isShowLinks):?>
+                                            <div class="article__buttons text-center text-xl-start">
+                                        		<?if($isShowDetailLink):?>
+                                        				<a class="btn btn-primary" href="<?=$arItem["DETAIL_PAGE_URL"]?>">Подробнее</a>
+                                        		<?endif?>
+                                        		<?if($isShowExternalLink):?>
+                                                    <a
+                                        	    	class="solution__button btn <?
+				    								if($isShowDetailLink){
+				    									echo 'btn-secondary';
+				    								} else {
+				    									echo "btn-primary";
+				    								}
+				    								?>"
+                                        	    	href="<?=$arItem['DISPLAY_PROPERTIES']['EXTERNAL_LINK']['VALUE']?>"
+                                        	    	target="<?
+                                        	    	if(str_contains($arItem['DISPLAY_PROPERTIES']['EXTERNAL_LINK']['VALUE'], "://")){
+                                        	    		echo '_blank';
+                                        	    	} else {
+                                        	    		echo "_self";
+                                        	    	} ?>">
+                                        	    	<?if($isExistExternalLinkCaption):?>
+                                        	    		<?=$arItem['DISPLAY_PROPERTIES']['LINK_CAPTION']['VALUE']?>
+                                        	    	<?else:?>
+                                        	    		<?=$arParams['DEFAULT_EXTERNAL_LINK_CAPTION']?>
+                                        	    	<?endif?>
+                                        	    	</a>
+                                        	    <?endif?>
+                                            </div>
+                                        <?endif?>
                                     </div>
                                 </div>
                             </div>
@@ -201,13 +180,3 @@ $this->setFrameMode(true);
             <?endif;?>
     </div>
 </div>
-<? $debug = false;
-if($debug){
-	echo "<pre> arParams ";
-	print_r($arParams);
-	echo "</pre>";
-	echo "<pre> arResult ";
-	print_r($arResult);
-	echo "</pre>";
-}
-?>

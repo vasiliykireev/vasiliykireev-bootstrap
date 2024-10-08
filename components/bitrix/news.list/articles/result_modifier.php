@@ -64,31 +64,8 @@ if($arParams['DISPLAY_SECTIONS']){
             while ($arSection = $arSections->GetNext()) {
             	array_push($arItem['SECTIONS'], $arSection);
             }
-            // echo "<pre> result_modifier arSections ";
-            //     print_r($arSections);
-            // echo "</pre>";
         }
     }
 }
-/* Добавляем разделы в arResult */
-// $arResult['ITEMS_TRUE'] = "TRUE";
-// if(!empty($arResult['ITEMS'])){
-//     foreach($arResult['ITEMS'] as &$arItem){
-//     $arItem['SECTIONS'] = array();
-//     $arFilter = array(
-//         "ACTIVE"=>"Y", // Сортировка по активности
-//         'ID' => $arItem['IBLOCK_SECTION_ID']); 
-//     $arSelect = array();
-//     $arSections = CIBlockSection::GetList( // CIBlockSection — раздел!
-//          Array("SORT"=>"ASC"),
-//          $arFilter,
-//          false,
-//          $arSelect
-//     );
-//     while ($arSection = $arSections->GetNext()) {
-//     	array_push($arItem['SECTIONS'], $arSection);
-//     }
-//     }
-// }
 
 ?>
