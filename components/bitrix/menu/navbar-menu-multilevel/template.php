@@ -1,16 +1,8 @@
 <? if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) die(); ?>
 
 <?if (!empty($arResult)):?>
-<ul class="<?/*navbar-menu navbar-nav*/?>list-group list-group-horizontal-lg border-0 mb-2 mb-lg-0">
-
-<pre>
+<ul class="list-group list-group-horizontal-lg border-0 mb-2 mb-lg-0">
 <?
-// print_r($arParams);
-?>
-</pre>
-
-<?
-
 $previousLevel = 0;
 foreach($arResult as $arItem):?>
 
@@ -23,14 +15,14 @@ foreach($arResult as $arItem):?>
 		<?if($arItem["DEPTH_LEVEL"] == 1):?>
 			<li class="navbar-menu__item navbar-menu__item_is-parent_true navbar-menu__item_depth-level_1 list-group-item btn-group border-0 p-0 m-1 me-lg-0 my-lg-0">
                 <a
-                class="navbar-menu__link list-item btn btn-dark focus-ring focus-ring-dark pe-2 border-end-0 <?/*dropdown-toggle*/?> <?if($arItem["SELECTED"]):?>active<?else:?>not-active<?endif?>"
+                class="navbar-menu__link list-item btn btn-dark focus-ring focus-ring-dark pe-2 border-end-0 <?if($arItem["SELECTED"]):?>active<?else:?>not-active<?endif?>"
                 href="<?=$arItem["LINK"]?>"
-                role="button" <?/*data-bs-toggle="dropdown" aria-expanded="false"*/?>>
+                role="button">
                     <?=$arItem["TEXT"]?>
                 </a><button type="button" class="btn btn-dark focus-ring focus-ring-dark border-start-0 dropdown-toggle dropdown-toggle-split <?if($arItem["SELECTED"]):?>active<?endif?>" data-bs-toggle="dropdown" aria-expanded="false">
                     <span class="visually-hidden">Toggle Dropdown</span>
                 </button>
-				<ul class="navbar-menu__child navbar-menu__child_depth-level_1 dropdown-menu dropdown-menu-lg-end <?/*overflow-x-auto mw-100*/?> px-2">
+				<ul class="navbar-menu__child navbar-menu__child_depth-level_1 dropdown-menu dropdown-menu-lg-end px-2">
 		<?elseif($arItem["DEPTH_LEVEL"] <= $arParams["MAX_LEVEL"]):?>
 			<li class="navbar-menu__item navbar-menu__item_is-parent_true navbar-menu__item_depth-level_else list-group-item border-0 p-0 m-1 me-0">
                 <a
@@ -39,7 +31,7 @@ foreach($arResult as $arItem):?>
                 role="button">
                     <?=$arItem["TEXT"]?>
                 </a>
-				<ul class="navbar-menu__child navbar-menu__child_depth-level_else list-group ms-3 <?/*mb-1*/?>">
+				<ul class="navbar-menu__child navbar-menu__child_depth-level_else list-group ms-3">
 		<?endif?>
 
 	<?else:?>
@@ -97,40 +89,10 @@ foreach($arResult as $arItem):?>
 
 <?endforeach?>
 
-<?if ($previousLevel > 1)://close last item tags?>
+<?if ($previousLevel > 1):?>
 	<?=str_repeat("</ul></li>", ($previousLevel-1) );?>
 <?endif?>
 
 </ul>
 <div class="menu-clear-left"></div>
 <?endif?>
-<?/* 
-<pre> arResult
-	<?print_r($arResult);?>
-</pre>
-*/?>
-
-
-<?/*<?if (!empty($arResult)):?>
-    <ul class="navbar-menu__list navbar-nav mb-2 mb-lg-0">
-        <?
-        foreach($arResult as $arItem):
-        	if($arParams['MAX_LEVEL'] == 1 && $arItem['DEPTH_LEVEL'] > 1) 
-        		continue;
-        ?>
-        	<?if($arItem['SELECTED']):?>
-                <li class="navbar-menu__item nav-item px-1">
-                    <span class="navbar-menu__link btn btn-dark focus-ring focus-ring-dark disabled">
-                        <?=$arItem['TEXT']?>
-                    </span>
-                </li>
-	        <?else:?>
-                <li class="navbar-menu__item nav-item px-1">
-                    <a class="navbar-menu__link btn btn-dark focus-ring focus-ring-dark" href="<?=$arItem['LINK']?>">
-                        <?=$arItem['TEXT']?>
-                    </a>
-                </li>
-	        <?endif?>
-        <?endforeach?>
-    </ul>
-<?endif?>*/?>
