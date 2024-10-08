@@ -1,4 +1,5 @@
-<? if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) die(); ?>
+<? if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) die();
+IncludeTemplateLangFile(__FILE__);?>
 
 <?if (!empty($arResult)):?>
 <ul class="list-group list-group-horizontal-lg border-0 mb-2 mb-lg-0">
@@ -20,7 +21,7 @@ foreach($arResult as $arItem):?>
                 role="button">
                     <?=$arItem["TEXT"]?>
                 </a><button type="button" class="btn btn-dark focus-ring focus-ring-dark border-start-0 dropdown-toggle dropdown-toggle-split <?if($arItem["SELECTED"]):?>active<?endif?>" data-bs-toggle="dropdown" aria-expanded="false">
-                    <span class="visually-hidden">Toggle Dropdown</span>
+                    <span class="visually-hidden"><?=GetMessage('TOGGLE_DROPDOWN')?></span>
                 </button>
 				<ul class="navbar-menu__child navbar-menu__child_depth-level_1 dropdown-menu dropdown-menu-lg-end px-2">
 		<?elseif($arItem["DEPTH_LEVEL"] <= $arParams["MAX_LEVEL"]):?>
