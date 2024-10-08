@@ -14,14 +14,14 @@
 $previousLevel = 0;
 foreach($arResult as $arItem):?>
 
-	<?if ($previousLevel && $arItem["DEPTH_LEVEL"] < $previousLevel && $arItem["DEPTH_LEVEL"] <= $arParams["MAX_LEVEL"]):?>
+	<?if($previousLevel && $arItem["DEPTH_LEVEL"] < $previousLevel && $arItem["DEPTH_LEVEL"] <= $arParams["MAX_LEVEL"]):?>
 		<?=str_repeat("</ul></li>", ($previousLevel - $arItem["DEPTH_LEVEL"]));?>
 	<?endif?>
 
-	<?if ($arItem["IS_PARENT"]):?>
+	<?if($arItem["IS_PARENT"]):?>
 
-		<?if ($arItem["DEPTH_LEVEL"] == 1):?>
-			<li class="navbar-menu__item navbar-menu__item_is-parent_true navbar-menu__item_depth-level_1 list-group-item border-0 p-0 btn-group ms-1">
+		<?if($arItem["DEPTH_LEVEL"] == 1):?>
+			<li class="navbar-menu__item navbar-menu__item_is-parent_true navbar-menu__item_depth-level_1 list-group-item btn-group border-0 p-0 m-1 my-lg-0">
                 <a
                 class="navbar-menu__link list-item btn btn-dark focus-ring focus-ring-dark pe-2 border-end-0 <?/*dropdown-toggle*/?> <?if($arItem["SELECTED"]):?>active<?else:?>not-active<?endif?>"
                 href="<?=$arItem["LINK"]?>"
@@ -32,9 +32,9 @@ foreach($arResult as $arItem):?>
                 </button>
 				<ul class="navbar-menu__child navbar-menu__child_depth-level-1 dropdown-menu dropdown-menu-lg-end">
 		<?elseif($arItem["DEPTH_LEVEL"] <= $arParams["MAX_LEVEL"]):?>
-			<li class="navbar-menu__item navbar-menu__item_is-parent_true navbar-menu__item_depth-level_else list-group-item p-0 ms-1 border-0">
+			<li class="navbar-menu__item navbar-menu__item_is-parent_true navbar-menu__item_depth-level_else list-group-item border-0 p-1 mx-1">
                 <a
-                class="navbar-menu__link dropdown-item list-item rounded-start <?if($arItem["SELECTED"]):?>active<?endif?>"
+                class="navbar-menu__link dropdown-item list-item rounded <?if($arItem["SELECTED"]):?>active<?endif?>"
                 href="<?=$arItem["LINK"]?>"
                 role="button">
                     <?=$arItem["TEXT"]?>
@@ -44,21 +44,21 @@ foreach($arResult as $arItem):?>
 
 	<?else:?>
 
-		<?if ($arItem["PERMISSION"] > "D"):?>
+		<?if($arItem["PERMISSION"] > "D"):?>
 
-			<?if ($arItem["DEPTH_LEVEL"] == 1):?>
-				<li class="navbar-menu__item navbar-menu__item_is-parent_else navbar-menu__item_permission_d navbar-menu__item_depth-level_1 list-group-item border-0 p-0 ms-1">
+			<?if($arItem["DEPTH_LEVEL"] == 1):?>
+				<li class="navbar-menu__item navbar-menu__item_is-parent_else navbar-menu__item_permission_d navbar-menu__item_depth-level_1 list-group-item border-0 p-0 m-1 my-lg-0">
                     <a 
-                    class="navbar-menu__link nav-item btn btn-dark focus-ring focus-ring-dark <?if ($arItem["SELECTED"]):?>active<?else:?>not-active<?endif?>"
+                    class="navbar-menu__link nav-item btn btn-dark focus-ring focus-ring-dark <?if($arItem["SELECTED"]):?>active<?else:?>not-active<?endif?>"
                     href="<?=$arItem["LINK"]?>"
                     role="button">
                         <?=$arItem["TEXT"]?>
                     </a>
                 </li>
 			<?elseif($arItem["DEPTH_LEVEL"] <= $arParams["MAX_LEVEL"]):?>
-				<li class="navbar-menu__item navbar-menu__item_is-parent_else navbar-menu__item_permission_d navbar-menu__item_depth-level_else list-group-item p-0 ms-1 border-0">
+				<li class="navbar-menu__item navbar-menu__item_is-parent_else navbar-menu__item_permission_d navbar-menu__item_depth-level_else list-group-item border-0 p-1 mx-1 b">
                     <a
-                    class="navbar-menu__link dropdown-item list-item rounded-start <?if($arItem["SELECTED"]):?>active<?endif?>"
+                    class="navbar-menu__link dropdown-item list-item rounded <?if($arItem["SELECTED"]):?>active<?endif?>"
                     href="<?=$arItem["LINK"]?>"
                     role="button">
                         <?=$arItem["TEXT"]?>
@@ -69,8 +69,8 @@ foreach($arResult as $arItem):?>
 
 		<?else:?>
 
-			<?if ($arItem["DEPTH_LEVEL"] == 1):?>
-				<li class="navbar-menu__item navbar-menu__item_is-parent_else navbar-menu__item_permission_else navbar-menu__item_depth-level_1 list-group-item border-0 p-0 ms-1">
+			<?if($arItem["DEPTH_LEVEL"] == 1):?>
+				<li class="navbar-menu__item navbar-menu__item_is-parent_else navbar-menu__item_permission_else navbar-menu__item_depth-level_1 list-group-item border-0 p-0 mx-1">
                     <a
                     class="navbar-menu__link nav-item btn btn-dark focus-ring focus-ring-dark <?if ($arItem["SELECTED"]):?>active<?else:?>not-active<?endif?>"
                     href=""
@@ -80,9 +80,9 @@ foreach($arResult as $arItem):?>
                     </a>
                 </li>
 			<?elseif($arItem["DEPTH_LEVEL"] <= $arParams["MAX_LEVEL"]):?>
-				<li class="navbar-menu__item navbar-menu__item_is-parent_else navbar-menu__item_permission_else navbar-menu__item_depth-level_else list-group-item p-0 ms-1 border-0">
+				<li class="navbar-menu__item navbar-menu__item_is-parent_else navbar-menu__item_permission_else navbar-menu__item_depth-level_else list-group-item border-0 p-1 m-1 my-lg-0">
                     <a
-                    class="navbar-menu__link dropdown-item list-item rounded-start"
+                    class="navbar-menu__link dropdown-item list-item rounded"
                     href="" title="<?=GetMessage("MENU_ITEM_ACCESS_DENIED")?>">
                         <?=$arItem["TEXT"]?>
                     </a>
