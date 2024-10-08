@@ -44,32 +44,29 @@ $this->setFrameMode(true);
                         	$this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], CIBlock::GetArrayByID($arItem['IBLOCK_ID'], 'ELEMENT_DELETE'), array('CONFIRM' => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
                         	?>
                             <div class="certificate col card border-0 d-flex flex-column justify-content-between align-self-stretch align-items-center" id="<?=$this->GetEditAreaId($arItem['ID']);?>">
-                                <?/*<div class="certificate__image text-center text-primary">*/?>
-	        	    				<?if(($arItem["PREVIEW_PICTURE"]["SAFE_SRC"] ?? '') !== ''):?>
-                                        <picture class="certificate__picture">
-                                        <?if(($arItem['DISPLAY_PROPERTIES']['IMAGE_WEBP_2X'] ?? '') !== ''):?>
-                                            <source
-                                            type="<?=$arItem['DISPLAY_PROPERTIES']['IMAGE_WEBP_2X']['FILE_VALUE']['CONTENT_TYPE']?>"
-						                    srcset="<?=$arItem['DISPLAY_PROPERTIES']['IMAGE_WEBP_2X']['FILE_VALUE']['SRC']?>"
-						                    class="certificate__image-source certificate-screen__image-source_size_2x"
-                                            <?//?>media="(-webkit-min-device-pixel-ratio: 1.5)"<??> />
-						                <?endif?>
-						                <?if(($arItem['DISPLAY_PROPERTIES']['IMAGE_WEBP'] ?? '') !== ''):?>
-                                            <source
-                                            type="<?=$arItem['DISPLAY_PROPERTIES']['IMAGE_WEBP']['FILE_VALUE']['CONTENT_TYPE']?>"
-						                    srcset="<?=$arItem['DISPLAY_PROPERTIES']['IMAGE_WEBP']['FILE_VALUE']['SRC']?>"
-                                            class="certificate__image-source certificate-screen__image-source_size_normal">
-						                <?endif?>
-                                            <img
-	        	    					    class="certificate__image"
-	        	    					    src="<?=$arItem['PREVIEW_PICTURE']['SAFE_SRC']?>"
-	        	    					    alt="<?=$arItem['PREVIEW_PICTURE']['ALT']?>"
-	        	    					    title="<?=$arItem['PREVIEW_PICTURE']['TITLE']?>"
-	        	    					    loading="lazy">
-                                        </picture>
-
-	        	    				<?endif?>
-                                <?/*</div>*/?>
+	        	    			<?if(($arItem["PREVIEW_PICTURE"]["SAFE_SRC"] ?? '') !== ''):?>
+                                    <picture class="certificate__picture">
+                                    <?if(($arItem['DISPLAY_PROPERTIES']['IMAGE_WEBP_2X'] ?? '') !== ''):?>
+                                        <source
+                                        type="<?=$arItem['DISPLAY_PROPERTIES']['IMAGE_WEBP_2X']['FILE_VALUE']['CONTENT_TYPE']?>"
+						                srcset="<?=$arItem['DISPLAY_PROPERTIES']['IMAGE_WEBP_2X']['FILE_VALUE']['SRC']?>"
+						                class="certificate__image-source certificate-screen__image-source_size_2x"
+                                        <?//?>media="(-webkit-min-device-pixel-ratio: 1.5)"<??> />
+						            <?endif?>
+						            <?if(($arItem['DISPLAY_PROPERTIES']['IMAGE_WEBP'] ?? '') !== ''):?>
+                                        <source
+                                        type="<?=$arItem['DISPLAY_PROPERTIES']['IMAGE_WEBP']['FILE_VALUE']['CONTENT_TYPE']?>"
+						                srcset="<?=$arItem['DISPLAY_PROPERTIES']['IMAGE_WEBP']['FILE_VALUE']['SRC']?>"
+                                        class="certificate__image-source certificate-screen__image-source_size_normal">
+						            <?endif?>
+                                        <img
+	        	    				    class="certificate__image"
+	        	    				    src="<?=$arItem['PREVIEW_PICTURE']['SAFE_SRC']?>"
+	        	    				    alt="<?=$arItem['PREVIEW_PICTURE']['ALT']?>"
+	        	    				    title="<?=$arItem['PREVIEW_PICTURE']['TITLE']?>"
+	        	    				    loading="lazy">
+                                    </picture>
+	        	    			<?endif?>
 	        	    			<?if(($arItem['NAME'] ?? '') !== ''):?>
                                     <div class="certificate__caption card-body d-flex flex-column justify-content-start align-self-stretch">
                                         <h3 class="h6 card-title certificate__heading mt-auto mb-auto text-center align-middle"><?=$arItem['NAME']?></h3>
