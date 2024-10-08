@@ -74,7 +74,7 @@ IncludeTemplateLangFile(__FILE__);
 		"MENU_CACHE_GET_VARS" => array(
 		),
 		"DELAY" => "N",
-		"ALLOW_MULTI_SELECT" => "Y",
+		"ALLOW_MULTI_SELECT" => "N",
 		"MENU_THEME" => "site"
 	),
 	false
