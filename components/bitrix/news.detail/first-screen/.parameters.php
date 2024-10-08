@@ -1,7 +1,7 @@
 <?
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) die();
 
-$arTemplateParameters = array(
+// $arTemplateParameters = array(
 	// "DISPLAY_DATE" => Array(
 	// 	"NAME" => GetMessage("T_IBLOCK_DESC_NEWS_DATE"),
 	// 	"TYPE" => "CHECKBOX",
@@ -28,7 +28,7 @@ $arTemplateParameters = array(
 	// 	"DEFAULT" =>"N",
 	// 	"REFRESH"=> "Y",
 	// ),
-);
+// );
 
 // if (($arCurrentValues['USE_SHARE'] ?? 'N') === 'Y')
 // {
