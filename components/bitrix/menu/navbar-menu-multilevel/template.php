@@ -1,9 +1,16 @@
 <? if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) die(); ?>
 
 <?if (!empty($arResult)):?>
-<ul class="navbar-menu navbar-nav mb-2 mb-lg-0">
+<ul class="<?/*navbar-menu navbar-nav*/?>list-group list-group-horizontal-lg border-0 mb-2 mb-lg-0">
+
+<pre>
+<?
+// print_r($arParams);
+?>
+</pre>
 
 <?
+
 $previousLevel = 0;
 foreach($arResult as $arItem):?>
 
@@ -14,18 +21,17 @@ foreach($arResult as $arItem):?>
 	<?if ($arItem["IS_PARENT"]):?>
 
 		<?if ($arItem["DEPTH_LEVEL"] == 1):?>
-			<li class="navbar-menu__item navbar-menu__item_is-parent_true navbar-menu__item_depth-level_1 nav-item dropdown">
+			<li class="navbar-menu__item navbar-menu__item_is-parent_true navbar-menu__item_depth-level_1 list-group-item border-0 p-0 btn-group">
                 <a
-                class="navbar-menu__link nav-item btn btn-dark focus-ring focus-ring-dark dropdown-toggle <?if($arItem["SELECTED"]):?>active<?else:?>not-active<?endif?>"
+                class="navbar-menu__link list-item btn btn-dark focus-ring focus-ring-dark pe-2 border-end-0<?/*dropdown-toggle*/?> <?if($arItem["SELECTED"]):?>active<?else:?>not-active<?endif?>"
                 href="<?=$arItem["LINK"]?>"
-                role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                role="button" <?/*data-bs-toggle="dropdown" aria-expanded="false"*/?>>
                     <?=$arItem["TEXT"]?>
-                </a>
-                <?/*<a role="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                </a><button type="button" class="btn btn-dark focus-ring focus-ring-dark border-start-0 dropdown-toggle dropdown-toggle-split <?if($arItem["SELECTED"]):?>active<?endif?>" data-bs-toggle="dropdown" aria-expanded="false">
                     <span class="visually-hidden">Toggle Dropdown</span>
-                </a>*/?>
+                </button>
 				<ul class="navbar-menu__child navbar-menu__child_depth-level-1 dropdown-menu dropdown-menu-end">
-		<?else:?>
+		<?elseif($arItem["DEPTH_LEVEL"] <= $arParams["MAX_LEVEL"]):?>
 			<li class="navbar-menu__item navbar-menu__item_is-parent_true navbar-menu__item_depth-level_else list-group-item p-0">
                 <a
                 class="navbar-menu__link dropdown-item list-item <?if($arItem["SELECTED"]):?>active<?endif?>"
@@ -41,7 +47,7 @@ foreach($arResult as $arItem):?>
 		<?if ($arItem["PERMISSION"] > "D"):?>
 
 			<?if ($arItem["DEPTH_LEVEL"] == 1):?>
-				<li class="navbar-menu__item navbar-menu__item_is-parent_else navbar-menu__item_permission_d navbar-menu__item_depth-level_1">
+				<li class="navbar-menu__item navbar-menu__item_is-parent_else navbar-menu__item_permission_d navbar-menu__item_depth-level_1 list-group-item border-0 p-0">
                     <a 
                     class="nav-item btn btn-dark focus-ring focus-ring-dark <?if ($arItem["SELECTED"]):?>active<?else:?>not-active<?endif?>"
                     href="<?=$arItem["LINK"]?>"
@@ -49,7 +55,7 @@ foreach($arResult as $arItem):?>
                         <?=$arItem["TEXT"]?>
                     </a>
                 </li>
-			<?else:?>
+			<?elseif($arItem["DEPTH_LEVEL"] <= $arParams["MAX_LEVEL"]):?>
 				<li class="navbar-menu__item navbar-menu__item_is-parent_else navbar-menu__item_permission_d navbar-menu__item_depth-level_else list-group-item p-0">
                     <a
                     class="dropdown-item list-item <?if($arItem["SELECTED"]):?>active<?endif?>"
@@ -73,7 +79,7 @@ foreach($arResult as $arItem):?>
                         <?=$arItem["TEXT"]?>
                     </a>
                 </li>
-			<?else:?>
+			<?elseif($arItem["DEPTH_LEVEL"] <= $arParams["MAX_LEVEL"]):?>
 				<li class="navbar-menu__item navbar-menu__item_is-parent_else navbar-menu__item_permission_else navbar-menu__item_depth-level_else">
                     <a
                     class="nav-link btn btn-dark focus-ring focus-ring-dark"
