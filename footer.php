@@ -5,11 +5,16 @@
             <div class="col-12 col-xl-6 mb-2">
 			    <div class="about ms-2 mb-2 text-light">
                 <? // About 
-                $APPLICATION->IncludeComponent("bitrix:main.include", ".default", array(
-                	"AREA_FILE_SHOW" => "sect",
-                	"AREA_FILE_SUFFIX" => "footer",
-                	"AREA_FILE_RECURSIVE" => "Y",
-                	"EDIT_TEMPLATE" => "sect_footer.php"
+                $APPLICATION->IncludeComponent(
+                	"bitrix:main.include", 
+                	".default", 
+                	array(
+                		"AREA_FILE_SHOW" => "file",
+                		"AREA_FILE_SUFFIX" => "brand",
+                		"AREA_FILE_RECURSIVE" => "Y",
+                		"EDIT_TEMPLATE" => "sect_footer.php",
+                		"COMPONENT_TEMPLATE" => ".default",
+                		"PATH" => "/include/sect_footer.php"
                 	),
                 	false
                 );?>
@@ -87,7 +92,5 @@
             </div>
         </div>
     </footer>
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous" defer></script>
 </body>
 </html>
