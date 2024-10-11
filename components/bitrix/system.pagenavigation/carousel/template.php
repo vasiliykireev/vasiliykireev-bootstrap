@@ -80,15 +80,16 @@ $strNavQueryStringFull = ($arResult['NavQueryString'] != "" ? "?".$arResult['Nav
         </a>
     <?endif?>
 <?else:?>
+    <noindex>
         <div class="carousel-indicators mb-0 d-none d-xl-flex">
             <?while($arResult['nStartPage'] <= $arResult['nEndPage']):?>
                 <?if ($arResult['nStartPage'] == $arResult['NavPageNomer']):?>
-                    <a type="button" data-bs-target="#carouselIndicators" class="active" aria-current="true" aria-label="<?=$arResult['nStartPage']?>"></a>
+                    <a type="button" rel="nofollow" data-bs-target="#carouselIndicators" class="active" aria-current="true" aria-label="<?=$arResult['nStartPage']?>"></a>
                 <?elseif($arResult['nStartPage'] == 1 && $arResult['bSavePage'] == false):?>
-                    <a type="button" data-bs-target="#carouselIndicators" aria-label="<?=$arResult['nStartPage']?>"
+                    <a type="button" rel="nofollow" data-bs-target="#carouselIndicators" aria-label="<?=$arResult['nStartPage']?>"
                     href="<?=$arResult['sUrlPath']?><?=$strNavQueryStringFull?>"></a>
                 <?else:?>
-                    <a type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="1" aria-label="<?=$arResult['nStartPage']?>"
+                    <a type="button" rel="nofollow" data-bs-target="#carouselIndicators" data-bs-slide-to="1" aria-label="<?=$arResult['nStartPage']?>"
                     href="<?=$arResult['sUrlPath']?>?<?=$strNavQueryString?>PAGEN_<?=$arResult['NavNum']?>=<?=$arResult['nStartPage']?>"></a>
                 <?endif?>
                 <?$arResult['nStartPage']++?>
@@ -96,20 +97,20 @@ $strNavQueryStringFull = ($arResult['NavQueryString'] != "" ? "?".$arResult['Nav
         </div>
         <?if ($arResult['NavPageNomer'] > 1):?>
             <?if($arResult['bSavePage']):?>
-                <a type="button" class="carousel-button carousel-button__page__left d-none d-xl-flex carousel-control-prev"
+                <a type="button" rel="nofollow" class="carousel-button carousel-button__page__left d-none d-xl-flex carousel-control-prev"
                 href="<?=$arResult['sUrlPath']?>?<?=$strNavQueryString?>PAGEN_<?=$arResult['NavNum']?>=<?=($arResult['NavPageNomer']-1)?>">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="visually-hidden"><?=GetMessage('nav_prev')?></span>
                 </a>
             <?else:?>
             	<?if ($arResult['NavPageNomer'] > 2):?>
-                    <a type="button" class="carousel-button carousel-button__page__left d-none d-xl-flex carousel-control-prev"
+                    <a type="button" rel="nofollow" class="carousel-button carousel-button__page__left d-none d-xl-flex carousel-control-prev"
                     href="<?=$arResult['sUrlPath']?>?<?=$strNavQueryString?>PAGEN_<?=$arResult['NavNum']?>=<?=($arResult['NavPageNomer']-1)?>">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="visually-hidden"><?=GetMessage('nav_prev')?></span>
                     </a>
             	<?else:?>
-                    <a type="button" class="carousel-button carousel-button__page__left d-none d-xl-flex carousel-control-prev"
+                    <a type="button" rel="nofollow" class="carousel-button carousel-button__page__left d-none d-xl-flex carousel-control-prev"
                     href="<?=$arResult['sUrlPath']?><?=$strNavQueryStringFull?>">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="visually-hidden"><?=GetMessage('nav_prev')?></span>
@@ -117,31 +118,32 @@ $strNavQueryStringFull = ($arResult['NavQueryString'] != "" ? "?".$arResult['Nav
             	<?endif?>
             <?endif?>
         <?else:?>
-            <a type="button" class="carousel-button carousel-button__page__left d-none d-xl-flex carousel-control-prev"
+            <a type="button" rel="nofollow" class="carousel-button carousel-button__page__left d-none d-xl-flex carousel-control-prev"
             href="<?=$arResult['sUrlPath']?>?<?=$strNavQueryString?>PAGEN_<?=$arResult['NavNum']?>=<?=$arResult['NavPageCount']?>">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="visually-hidden"><?=GetMessage('nav_end')?></span>
             </a>
         <?endif?>
         <?if($arResult['NavPageNomer'] < $arResult['NavPageCount']):?>
-            <a type="button" class="carousel-button carousel-button__page__right d-none d-xl-flex carousel-control-next"
+            <a type="button" rel="nofollow" class="carousel-button carousel-button__page__right d-none d-xl-flex carousel-control-next"
             href="<?=$arResult['sUrlPath']?>?<?=$strNavQueryString?>PAGEN_<?=$arResult['NavNum']?>=<?=($arResult['NavPageNomer']+1)?>">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden"><?=GetMessage('nav_next')?></span>
             </a>
         <?else:?>
-            <a type="button" class="carousel-button carousel-button__page__right d-none d-xl-flex carousel-control-next"
+            <a type="button" rel="nofollow" class="carousel-button carousel-button__page__right d-none d-xl-flex carousel-control-next"
             href="<?=$arResult['sUrlPath']?>?<?=$strNavQueryString?>PAGEN_<?=$arResult['NavNum']?>=1">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden"><?=GetMessage('nav_begin')?></span>
             </a>
         <?endif?>
+    </noindex>
     <?if ($arResult['bShowAll']):?>
         <noindex>
     	    <?if ($arResult['NavShowAll']):?>
-				<div class="text-center d-xl-none mb-5"><a href="<?=$arResult['sUrlPath']?>?<?=$strNavQueryString?>SHOWALL_<?=$arResult['NavNum']?>=0" class="btn btn-outline-primary"><?=GetMessage('nav_paged')?></a></div>
+				<div class="text-center d-xl-none mb-5"><a rel="nofollow" href="<?=$arResult['sUrlPath']?>?<?=$strNavQueryString?>SHOWALL_<?=$arResult['NavNum']?>=0" class="btn btn-outline-primary"><?=GetMessage('nav_paged')?></a></div>
     	    <?else:?>
-				<div class="text-center d-xl-none mb-5"><a href="<?=$arResult['sUrlPath']?>?<?=$strNavQueryString?>SHOWALL_<?=$arResult['NavNum']?>=1" class="btn btn-outline-primary"><?=GetMessage('nav_all')?></a></div>
+				<div class="text-center d-xl-none mb-5"><a rel="nofollow" href="<?=$arResult['sUrlPath']?>?<?=$strNavQueryString?>SHOWALL_<?=$arResult['NavNum']?>=1" class="btn btn-outline-primary"><?=GetMessage('nav_all')?></a></div>
     	    <?endif?>
         </noindex>
     <?endif?>
