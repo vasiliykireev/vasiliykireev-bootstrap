@@ -1,4 +1,7 @@
 <?
+// Open Graph https://marketplace.1c-bitrix.ru/solutions/dev2fun.opengraph/#tab-about-link
+// \Bitrix\Main\Loader::includeModule('dev2fun.opengraph');
+// \Dev2fun\Module\OpenGraph::Show($arResult['ID'],'section'); 
 
 if($arParams['DISPLAY_SECTIONS']){
 /* Список разделов инфоблока */
@@ -20,7 +23,7 @@ if($arParams['DISPLAY_SECTIONS']){
     	    array_push($arResult['SECTIONS'], $arSection);
     }
     
-    if(!empty($arResult["SECTION"]["PATH"]) && ($arResult["SECTION"]["PATH"][array_key_last($arResult["SECTION"]["PATH"])] ?? '') !== '') {
+if(!empty($arResult["SECTION"]["PATH"]) && ($arResult["SECTION"]["PATH"][array_key_last($arResult["SECTION"]["PATH"])] ?? '') !== '') {
         /* Список разделов текущего раздела*/
         $arResult["SECTION"]["PATH"][array_key_last($arResult["SECTION"]["PATH"])]['SECTIONS'] = array();
         $arFilter = array(
