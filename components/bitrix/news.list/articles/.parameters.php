@@ -52,5 +52,10 @@ $arTemplateParameters = array(
 		"TYPE" => "STRING",
 		"DEFAULT" => "",
 	),
+	"SECTION_SET_CANONICAL_URL" => Array(
+		"NAME" => GetMessage("T_IBLOCK_DESC_NEWS_SECTION_CANONICAL"),
+		"TYPE" => "CHECKBOX",
+		"DEFAULT" => "N",
+	),
 );
 ?>

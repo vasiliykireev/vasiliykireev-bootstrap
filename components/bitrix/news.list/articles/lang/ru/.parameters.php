@@ -9,4 +9,5 @@ $MESS ['T_IBLOCK_DESC_NEWS_SECTION_BUTTONS'] = "Выводить разделы 
 $MESS ['T_IBLOCK_DESC_DISPLAY_DETAIL_LINK'] = "Выводить ссылку на элемент";
 $MESS ['T_IBLOCK_DESC_DISPLAY_EXTERNAL_LINK'] = "Показывать внешнюю ссылку элемента";
 $MESS ['T_IBLOCK_DESC_DEFAULT_EXTERNAL_LINK_CAPTION'] = "Текст внешней ссылки по умолчанию";
+$MESS ['T_IBLOCK_DESC_NEWS_SECTION_CANONICAL'] = "Устанавливать канонический URL разделов";
 ?>

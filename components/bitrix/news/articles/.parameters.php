@@ -63,6 +63,11 @@ $arTemplateParameters = array(
 		"TYPE" => "CHECKBOX",
 		"DEFAULT" => "N",
 	),
+	"SECTION_SET_CANONICAL_URL" => Array(
+		"NAME" => GetMessage("T_IBLOCK_DESC_NEWS_SECTION_CANONICAL"),
+		"TYPE" => "CHECKBOX",
+		"DEFAULT" => "N",
+	),
 );
 
 if (($arCurrentValues['USE_SHARE'] ?? 'N') === 'Y')

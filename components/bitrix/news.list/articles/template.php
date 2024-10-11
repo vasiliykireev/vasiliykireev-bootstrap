@@ -11,6 +11,24 @@
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
+
+// if(($arResult["SECTION"]["PATH"] ?? '') !== '') {
+// $APPLICATION->SetPageProperty("og:description", $arResult["SECTION"]["PATH"][array_key_last($arResult["SECTION"]["PATH"])]["IPROPERTY_VALUES"]["SECTION_META_DESCRIPTION"]);
+// $APPLICATION->SetPageProperty("og:title", $arResult["SECTION"]["PATH"][array_key_last($arResult["SECTION"]["PATH"])]["IPROPERTY_VALUES"]["SECTION_META_TITLE"]);
+// $APPLICATION->SetPageProperty("og:image", "/open-graph-image");
+// $APPLICATION->SetPageProperty("og:type", "website");
+// $APPLICATION->SetPageProperty("og:url", "https://".SITE_SERVER_NAME.$arResult["SECTION"]["PATH"][array_key_last($arResult["SECTION"]["PATH"])]["SECTION_PAGE_URL"]);
+// }
+
+if($arParams['SECTION_SET_CANONICAL_URL'] == "Y"){
+	if(($arResult["SECTION"]["PATH"] ?? '') !== '') {
+	    $APPLICATION->SetPageProperty("canonical", "https://".SITE_SERVER_NAME.$arResult["SECTION"]["PATH"][array_key_last($arResult["SECTION"]["PATH"])]["SECTION_PAGE_URL"]);
+	} else {
+		// Вывести канонический урл компонента
+	}
+}
+
+
 ?>
 <div class="articles mb-5">
     <div class="articles__container container">
@@ -21,7 +39,7 @@ $this->setFrameMode(true);
 			<div class="articles__header-row row justify-content-center pb-2">
                 <div class="articles__header-col col-auto">
                     <h1 class="articles__heading text-center"><?$APPLICATION->ShowTitle(false)?></h1>
-                    <?if ((($arResult["SECTION"]["PATH"] ?? '') !== '') || (($arResult["DESCRIPTION"] ?? '') !== '')):?>
+                    <?if((($arResult["SECTION"]["PATH"] ?? '') !== '') || (($arResult["DESCRIPTION"] ?? '') !== '')):?>
 						<p class="articles__description text text-body-secondary">
 					    <?if(($arResult["SECTION"]["PATH"] ?? '') !== ''):?>
         			        <?=$arResult["SECTION"]["PATH"][array_key_last($arResult["SECTION"]["PATH"])]["DESCRIPTION"]?></h1>
