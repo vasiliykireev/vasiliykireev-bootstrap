@@ -46,7 +46,7 @@ $this->setFrameMode(true);
                             <div class="certificate col card border-0 d-flex flex-column justify-content-between align-self-stretch align-items-center" id="<?=$this->GetEditAreaId($arItem['ID']);?>">
 	        	    			<?if(($arItem["PREVIEW_PICTURE"]["SAFE_SRC"] ?? '') !== ''):?>
                                     <picture class="certificate__picture">
-                                    <?if(($arItem['DISPLAY_PROPERTIES']['IMAGE_WEBP_2X'] ?? '') !== ''):?>
+                                    <?/*if(($arItem['DISPLAY_PROPERTIES']['IMAGE_WEBP_2X'] ?? '') !== ''):?>
                                         <source
                                         type="<?=$arItem['DISPLAY_PROPERTIES']['IMAGE_WEBP_2X']['FILE_VALUE']['CONTENT_TYPE']?>"
 						                srcset="<?=$arItem['DISPLAY_PROPERTIES']['IMAGE_WEBP_2X']['FILE_VALUE']['SRC']?>"
@@ -58,7 +58,7 @@ $this->setFrameMode(true);
                                         type="<?=$arItem['DISPLAY_PROPERTIES']['IMAGE_WEBP']['FILE_VALUE']['CONTENT_TYPE']?>"
 						                srcset="<?=$arItem['DISPLAY_PROPERTIES']['IMAGE_WEBP']['FILE_VALUE']['SRC']?>"
                                         class="certificate__image-source certificate-screen__image-source_size_normal">
-						            <?endif?>
+						            <?endif*/?>
                                         <img
 	        	    				    class="certificate__image"
 	        	    				    src="<?=$arItem['PREVIEW_PICTURE']['SAFE_SRC']?>"

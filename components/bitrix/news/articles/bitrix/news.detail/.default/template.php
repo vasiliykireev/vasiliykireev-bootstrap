@@ -31,13 +31,13 @@ $isShowExternalLink = ($arParams['DISPLAY_EXTERNAL_LINK'] == "Y") &&
 		    <div class="article__picture-row row justify-content-center pt-3 pb-2">
                 <div class="article__picture-col col-auto">
 			    	<picture class="article__picture">
-					    <?if(($arResult['DISPLAY_PROPERTIES']['IMAGE_WEBP_2X'] ?? '') !== ''):?>
+					    <?/*if(($arResult['DISPLAY_PROPERTIES']['IMAGE_WEBP_2X'] ?? '') !== ''):?>
                             <source
                             type="<?=$$arResult['DISPLAY_PROPERTIES']['IMAGE_WEBP_2X']['FILE_VALUE']['CONTENT_TYPE']?>"
 					        srcset="<?=$arResult['DISPLAY_PROPERTIES']['IMAGE_WEBP_2X']['FILE_VALUE']['SRC']?>"
 					        class="article__image-source article-screen__image-source_size_2x"
-						<?/*media="(-webkit-min-device-pixel-ratio: 1.5)"*/?>/>
-					    <?endif?>
+						<?//media="(-webkit-min-device-pixel-ratio: 1.5)"?>/>
+					    <?endif*/?>
 					    <?/*<?if(($arResult['DISPLAY_PROPERTIES']['IMAGE_WEBP'] ?? '') !== ''):?>
                             <source
                             type="<?=$arResult['DISPLAY_PROPERTIES']['IMAGE_WEBP']['FILE_VALUE']['CONTENT_TYPE']?>"

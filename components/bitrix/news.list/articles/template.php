@@ -130,7 +130,7 @@ if($arParams['SECTION_SET_CANONICAL_URL'] == "Y"){
 		                                		<a href="<?=$arItem["DETAIL_PAGE_URL"]?>">
 				    						<?endif?>
 			        				    	<picture class="article__picture">
-				    		                <?if(($arItem['DISPLAY_PROPERTIES']['IMAGE_WEBP_2X'] ?? '') !== ''):?>
+				    		                <?/*if(($arItem['DISPLAY_PROPERTIES']['IMAGE_WEBP_2X'] ?? '') !== ''):?>
                                                 <source
                                                 type="<?=$arItem['DISPLAY_PROPERTIES']['IMAGE_WEBP_2X']['FILE_VALUE']['CONTENT_TYPE']?>"
 				    		                    srcset="<?=$arItem['DISPLAY_PROPERTIES']['IMAGE_WEBP_2X']['FILE_VALUE']['SRC']?>"
@@ -142,7 +142,7 @@ if($arParams['SECTION_SET_CANONICAL_URL'] == "Y"){
                                                 type="<?=$arItem['DISPLAY_PROPERTIES']['IMAGE_WEBP']['FILE_VALUE']['CONTENT_TYPE']?>"
 				    		                    srcset="<?=$arItem['DISPLAY_PROPERTIES']['IMAGE_WEBP']['FILE_VALUE']['SRC']?>"
                                                 class="article__image-source article-screen__image-source_size_normal">
-				    		                <?endif?>
+				    		                <?endif*/?>
                                                 <img
                                                 src="<?=$arItem["PREVIEW_PICTURE"]["SRC"]?>"
                                                 class="article__image img-fluid rounded"
