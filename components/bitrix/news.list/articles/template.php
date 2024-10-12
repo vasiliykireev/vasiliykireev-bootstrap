@@ -12,30 +12,67 @@
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
 
-// if(($arResult["SECTION"]["PATH"] ?? '') !== '') {
-// $APPLICATION->SetPageProperty("og:description", $arResult["SECTION"]["PATH"][array_key_last($arResult["SECTION"]["PATH"])]["IPROPERTY_VALUES"]["SECTION_META_DESCRIPTION"]);
-// $APPLICATION->SetPageProperty("og:title", $arResult["SECTION"]["PATH"][array_key_last($arResult["SECTION"]["PATH"])]["IPROPERTY_VALUES"]["SECTION_META_TITLE"]);
-// $APPLICATION->SetPageProperty("og:image", "/open-graph-image");
-// $APPLICATION->SetPageProperty("og:type", "website");
-// $APPLICATION->SetPageProperty("og:url", "https://".SITE_SERVER_NAME.$arResult["SECTION"]["PATH"][array_key_last($arResult["SECTION"]["PATH"])]["SECTION_PAGE_URL"]);
-// }
-
 if($arParams['SECTION_SET_CANONICAL_URL'] == "Y"){
 	if(($arResult["SECTION"]["PATH"] ?? '') !== '') {
 	    $APPLICATION->SetPageProperty("canonical", "https://".SITE_SERVER_NAME.$arResult["SECTION"]["PATH"][array_key_last($arResult["SECTION"]["PATH"])]["SECTION_PAGE_URL"]);
-	} else {
-		// Вывести канонический урл компонента
+	} elseif (($arParams["IBLOCK_URL"] ?? '') !== '') {
+		$APPLICATION->SetPageProperty("canonical", "https://".SITE_SERVER_NAME.$arParams["IBLOCK_URL"]);
 	}
 }
-
 
 ?>
 <div class="articles mb-5">
     <div class="articles__container container">
 		<?if($arParams["DISPLAY_TOP_PAGER"]):?>
-	        <?=$arResult["NAV_STRING"]?><br />
-        <?endif;?>
-		<?if($arParams["DISPLAY_HEADER"] == 'Y'):?>
+	        <?=$arResult["NAV_STRING"]?>
+        <?endif?>
+        <?if($arParams["DISPLAY_HEADER"] == 'Y'):?>
+            <div class="articles__preview-row row justify-content-center">
+        	    <div class="articles__preview-col col-12 col-md-10 col-lg-8 col-xl-12 col-xxl-11">
+                    <div class="articles__preview-card card mb-3 border-0" title="Двойной щелчок - Изменить элемент">
+                        <div class="articles__preview-card-row row justify-content-center align-items-stretch">
+        				    <div class="articles__preview-image-col col-xl-6 col-xxl-5 order-xl-2 text-center d-flex flex-column justify-content-end">
+        	                    <picture class="articles__preview-picture">
+                                    <?/*<source type="image/webp" srcset="image@2x.webp" class="article__image-source article-screen__image-source_size_2x" media="(-webkit-min-device-pixel-ratio: 1.5)">
+                                    <source type="image/webp" srcset="image.webp" class="article__image-source article-screen__image-source_size_normal">*/?>
+                                    <?if(($arResult["SECTION"]["PATH"] ?? '') !== ''):?>
+                                        <img
+                                        src="<?=$arResult["SECTION"]["PATH"][array_key_last($arResult["SECTION"]["PATH"])]['PICTURE']['SRC']?>"
+                                        class="articles__preview-image rounded"
+                                        alt="<?=$arResult["SECTION"]["PATH"][array_key_last($arResult["SECTION"]["PATH"])]["IPROPERTY_VALUES"]["SECTION_PICTURE_FILE_ALT"]?>"
+                                        title="<?=$arResult["SECTION"]["PATH"][array_key_last($arResult["SECTION"]["PATH"])]["IPROPERTY_VALUES"]["SECTION_PICTURE_FILE_TITLE"]?>"
+                                        loading="lazy">
+        							<?else:?>
+                                        <img
+                                        src="<?=$arResult['IBLOCK_PICTURE']['SRC']?>"
+                                        class="articles__preview-image rounded"
+                                        alt="<?=$APPLICATION->GetPageProperty("title")?>"
+                                        title="<?=$APPLICATION->GetPageProperty("title")?>"
+                                        loading="lazy">
+                                    <?endif?>
+                                </picture>
+                            </div>
+        				    <div class="articles__preview-card-body col col-xl-6 col-xxl-7 order-xl-1 card-body pt-xl-0 pb-xl-0 d-flex flex-column justify-content-evenly">
+        	                    <div class="articles__preview-announce">
+        	                        <h1 class="articles__preview-heading card-title text-center text-xl-start text-lines text-lines__amount__2"><?$APPLICATION->ShowTitle(false)?></h1>
+                                    <?/*<div class="articles__info row mb-1"><!-- Дата --></div>*/?>
+        							<?if((($arResult["SECTION"]["PATH"] ?? '') !== '') || (($arResult["DESCRIPTION"] ?? '') !== '')):?>
+        	                            <p class="articles__preview-text card-text text-body-secondary mb-2 text-lines text-lines__amount__3">
+        								    <?if(($arResult["SECTION"]["PATH"] ?? '') !== ''):?>
+                			                    <?=$arResult["SECTION"]["PATH"][array_key_last($arResult["SECTION"]["PATH"])]["DESCRIPTION"]?></h1>
+                			                <?elseif(($arResult["DESCRIPTION"] ?? '') !== ''):?>
+                			                    <?=$arResult["DESCRIPTION"]?>
+                			                <?endif?>
+        							    </p>
+        						    <?endif?>
+        	                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?endif?>
+		<?/*if($arParams["DISPLAY_HEADER"] == 'Y'):?>
 			<div class="articles__header-row row justify-content-center pb-2">
                 <div class="articles__header-col col-auto">
                     <h1 class="articles__heading text-center"><?$APPLICATION->ShowTitle(false)?></h1>
@@ -50,7 +87,7 @@ if($arParams['SECTION_SET_CANONICAL_URL'] == "Y"){
 					<?endif?>
 		        </div>
 		    </div>
-		<?endif?>
+		<?endif*/?>
     <?if($arParams['DISPLAY_SECTIONS'] == "Y"):?>
         <div class="articles__sections-row row justify-content-center">
 			<div class="articles__sections-col col-12 col-md-10 col-lg-8 col-xl-12 col-xxl-11 mb-5">
@@ -87,7 +124,7 @@ if($arParams['SECTION_SET_CANONICAL_URL'] == "Y"){
                         <div class="article col-12 col-md-10 col-lg-8 col-xl-12 col-xxl-11" id="<?=$this->GetEditAreaId($arItem['ID']);?>">
                             <div class="article__card card mb-3 border-0">
                                 <div class="article__row row justify-content-center align-items-stretch">
-				    				<div class="article__image col-xl-6 col-xxl-5 text-center d-flex flex-column justify-content-end">
+				    				<div class="article__image-col col-xl-6 col-xxl-5 text-center d-flex flex-column justify-content-end">
 				    					<?if(is_array($arItem["PREVIEW_PICTURE"])):?>
 		                                	<?if($isShowDetailLink):?>
 		                                		<a href="<?=$arItem["DETAIL_PAGE_URL"]?>">

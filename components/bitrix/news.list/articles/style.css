@@ -1,3 +1,9 @@
-.articles__description {
-	max-width: 40em;
+.articles__preview-image {
+	max-width: 512px;
+	width: 100%;
+	height: auto;
 }
+
+/* .articles__description {
+	max-width: 40em;
+} */
