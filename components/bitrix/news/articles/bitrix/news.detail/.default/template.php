@@ -23,7 +23,7 @@ $isShowExternalLink = ($arParams['DISPLAY_EXTERNAL_LINK'] == "Y") &&
 
 
     <?if(is_array($arResult["DETAIL_PICTURE"])):?>
-        <div class="article__picture-col order-first col-auto mt-3 mb-2">
+        <div class="article__picture-col order-first col-12 mt-3 mb-2">
 	    	<picture class="article__picture">
 			    <?/*if(($arResult['DISPLAY_PROPERTIES']['IMAGE_WEBP_2X'] ?? '') !== ''):?>
                     <source
@@ -51,7 +51,7 @@ $isShowExternalLink = ($arParams['DISPLAY_EXTERNAL_LINK'] == "Y") &&
                 media="(max-width: 575.98px)" />
                 <img
                 src="<?=$arResult['RESIZED_DETAIL_PICTURE']['src']?>"
-                class="article__image article__image_size_default img-fluid rounded"
+                class="article__image article__image_size_default img-fluid rounded d-block mx-auto"
                 alt="<?=$arResult['DETAIL_PICTURE']['ALT']?>"
                 title="<?=$arResult['DETAIL_PICTURE']['TITLE']?>">
             </picture>
@@ -72,7 +72,7 @@ $isShowExternalLink = ($arParams['DISPLAY_EXTERNAL_LINK'] == "Y") &&
 	<div class="article__preview-text mx-auto text-secondary mb-5">
         <?echo $arResult["PREVIEW_TEXT"];?>
 		<?if($isShowExternalLink):?>
-	        <div class="article__buttons text-center">
+	        <div class="article__buttons text-center mt-3">
                 <a
                 class="solution__button btn btn-primary"
                 href="<?=$arResult['DISPLAY_PROPERTIES']['EXTERNAL_LINK']['VALUE']?>"
