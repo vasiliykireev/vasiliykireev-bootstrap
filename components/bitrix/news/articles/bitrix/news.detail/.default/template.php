@@ -44,12 +44,23 @@ $isShowExternalLink = ($arParams['DISPLAY_EXTERNAL_LINK'] == "Y") &&
 					        srcset="<?=$arResult['DISPLAY_PROPERTIES']['IMAGE_WEBP']['FILE_VALUE']['SRC']?>"
                             class="article__image-source article-screen__image-source_size_normal">
 					    <?endif?>*/?>
-                        <img
+                        <?/*<img
                         src="<?=$arResult["DETAIL_PICTURE"]["SRC"]?>"
                         class="article__image rounded"
                         alt="<?=$arResult["DETAIL_PICTURE"]["ALT"]?>"
                         title="<?=$arResult["DETAIL_PICTURE"]["TITLE"]?>"
-                        loading="lazy">
+                        loading="lazy">*/?>
+						<source
+                        type="<?=$arResult['DETAIL_PICTURE']['CONTENT_TYPE']?>"
+						srcset="<?=$arResult['MOBILE_RESIZED_DETAIL_PICTURE']['src']?>"
+                        class="article__image-source article__image-source_size_mobile"
+                        media="(max-width: 575.98px)" />
+                        <img
+                        src="<?=$arResult['RESIZED_DETAIL_PICTURE']['src']?>"
+                        class="article__image article__image_size_default img-fluid rounded"
+                        alt="<?=$arResult['DETAIL_PICTURE']['ALT']?>"
+                        title="<?=$arResult['DETAIL_PICTURE']['TITLE']?>">
+                    </picture>
                     </picture>
     	        </div>
             </div>

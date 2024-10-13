@@ -17,7 +17,7 @@ $this->setFrameMode(true);
         <div class="first-screen__row row-cols-1 row justify-content-center align-items-center">
             <div class="first-screen__column col-12 row justify-content-center align-items-center">
 			    <?if(($arResult['DETAIL_PICTURE'] ?? '') !== ''):?>
-                    <picture class="first-screen__banner col-12 col-md-10 col-lg-8 col-xl-8 col-xxl-7 col px-0 py-3 d-block text-center">
+                    <picture class="first-screen__banner col-12 col-md-10 col-lg-8 col-xl-8 col-xxl-8 col px-0 py-3 d-block text-center">
 					    <?/*if(($arResult['DISPLAY_PROPERTIES']['IMAGE_WEBP_DESKTOP_2X'] ?? '') !== ''):?>
                             <source
                             type="<?=$arResult['DISPLAY_PROPERTIES']['IMAGE_WEBP_DESKTOP_2X']['FILE_VALUE']['CONTENT_TYPE']?>"
@@ -46,8 +46,13 @@ $this->setFrameMode(true);
                             class="first-screen__image-source first-screen__image-source_size_mobile"
                             media="(max-width: 575.98px)" />
 						<?endif*/?>
+                        <source
+                        type="<?=$arResult['PREVIEW_PICTURE']['CONTENT_TYPE']?>"
+						srcset="<?=$arResult['PREVIEW_PICTURE']['SAFE_SRC']?>"
+                        class="first-screen__image-source first-screen__image-source_size_mobile"
+                        media="(max-width: 575.98px)" />
                         <img
-                        src="<?=$arResult['DETAIL_PICTURE']['SAFE_SRC']?>"
+                        src="<?=$arResult['RESIZED_DETAIL_PICTURE']['src']?>"
                         class="first-screen__image first-screen__image_size_default img-fluid rounded"
                         alt="<?=$arResult['DETAIL_PICTURE']['ALT']?>"
                         title="<?=$arResult['DETAIL_PICTURE']['TITLE']?>">

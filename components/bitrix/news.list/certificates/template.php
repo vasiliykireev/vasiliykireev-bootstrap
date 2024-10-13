@@ -59,6 +59,11 @@ $this->setFrameMode(true);
 						                srcset="<?=$arItem['DISPLAY_PROPERTIES']['IMAGE_WEBP']['FILE_VALUE']['SRC']?>"
                                         class="certificate__image-source certificate-screen__image-source_size_normal">
 						            <?endif*/?>
+                                        <source
+                                        type="<?=$arItem['DETAIL_PICTURE']['CONTENT_TYPE']?>"
+						                srcset="<?=$arItem['DETAIL_PICTURE']['SAFE_SRC']?>"
+						                class="certificate__image-source certificate-screen__image-source_size_2x"
+                                        media="(-webkit-min-device-pixel-ratio: 1.5)" />
                                         <img
 	        	    				    class="certificate__image"
 	        	    				    src="<?=$arItem['PREVIEW_PICTURE']['SAFE_SRC']?>"

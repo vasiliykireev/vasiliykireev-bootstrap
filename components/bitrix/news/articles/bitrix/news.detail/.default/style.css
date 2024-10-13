@@ -2,11 +2,11 @@
 	--article-width: 44rem;
 }
 
-.article__image {
+/* .article__image {
 	max-width: 768px !important;
 	width: 100%;
 	height: auto;
-}
+} */
 
 .article__info-container {
 	/* max-width: 42em !important; */

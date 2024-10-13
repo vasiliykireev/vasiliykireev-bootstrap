@@ -5,6 +5,16 @@
 
 if($arParams["DISPLAY_HEADER"] == 'Y' && empty($arResult["SECTION"]["PATH"])) {
     $arResult['IBLOCK_PICTURE'] = CFile::GetFileArray(CIBlock::GetArrayByID($arResult['ID'], 'PICTURE'));
+    /* Изменение размера картинки на фактический */
+    $arResult['IBLOCK_RESIZED_PICTURE'] = CFile::ResizeImageGet(
+        $arResult['IBLOCK_PICTURE'], // file
+        array("width" => 512, "height" => 256), // Size
+        BX_RESIZE_IMAGE_EXACT, // resizeType
+        true, // InitSizes
+        false, // Filters
+        true, // Immediate
+        90 // jpgQuality
+    );
 }
 
 if($arParams['DISPLAY_SECTIONS']){
@@ -61,7 +71,17 @@ if(!empty($arResult["SECTION"]["PATH"]) && ($arResult["SECTION"]["PATH"][array_k
         );
         while ($arSection = $arSections->GetNext()) {
             $arResult["SECTION"]["PATH"][array_key_last($arResult["SECTION"]["PATH"])]["PICTURE"] = CFile::GetFileArray($arSection["PICTURE"]);
-            $arResult["SECTION"]["PATH"][array_key_last($arResult["SECTION"]["PATH"])]["DETAIL_PICTURE"] = CFile::GetFileArray($arSection["DETAIL_PICTURE"]);
+            /* Изменение размера картинки на фактический */
+            $arResult["SECTION"]["PATH"][array_key_last($arResult["SECTION"]["PATH"])]['RESIZED_PICTURE'] = CFile::ResizeImageGet(
+                $arResult["SECTION"]["PATH"][array_key_last($arResult["SECTION"]["PATH"])]["PICTURE"], // file
+                array("width" => 512, "height" => 256), // Size
+                BX_RESIZE_IMAGE_EXACT, // resizeType
+                true, // InitSizes
+                false, // Filters
+                true, // Immediate
+                90 // jpgQuality
+            );
+            // $arResult["SECTION"]["PATH"][array_key_last($arResult["SECTION"]["PATH"])]["DETAIL_PICTURE"] = CFile::GetFileArray($arSection["DETAIL_PICTURE"]);
             $arResult["SECTION"]["PATH"][array_key_last($arResult["SECTION"]["PATH"])]["DESCRIPTION"] = $arSection["DESCRIPTION"];
         }
 

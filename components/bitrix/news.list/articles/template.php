@@ -37,15 +37,15 @@ if($arParams['SECTION_SET_CANONICAL_URL'] == "Y"){
                                     <source type="image/webp" srcset="image.webp" class="article__image-source article-screen__image-source_size_normal">*/?>
                                     <?if(($arResult["SECTION"]["PATH"] ?? '') !== ''):?>
                                         <img
-                                        src="<?=$arResult["SECTION"]["PATH"][array_key_last($arResult["SECTION"]["PATH"])]['PICTURE']['SRC']?>"
-                                        class="articles__preview-image rounded"
+                                        src="<?=$arResult["SECTION"]["PATH"][array_key_last($arResult["SECTION"]["PATH"])]['RESIZED_PICTURE']['src']?>"
+                                        class="articles__preview-image img-fluid rounded"
                                         alt="<?=$arResult["SECTION"]["PATH"][array_key_last($arResult["SECTION"]["PATH"])]["IPROPERTY_VALUES"]["SECTION_PICTURE_FILE_ALT"]?>"
                                         title="<?=$arResult["SECTION"]["PATH"][array_key_last($arResult["SECTION"]["PATH"])]["IPROPERTY_VALUES"]["SECTION_PICTURE_FILE_TITLE"]?>"
                                         loading="lazy">
         							<?else:?>
                                         <img
-                                        src="<?=$arResult['IBLOCK_PICTURE']['SRC']?>"
-                                        class="articles__preview-image rounded"
+                                        src="<?=$arResult['IBLOCK_RESIZED_PICTURE']['src']?>"
+                                        class="articles__preview-image img-fluid rounded"
                                         alt="<?=$APPLICATION->GetPageProperty("title")?>"
                                         title="<?=$APPLICATION->GetPageProperty("title")?>"
                                         loading="lazy">
