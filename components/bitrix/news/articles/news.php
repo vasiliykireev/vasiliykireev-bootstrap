@@ -59,8 +59,21 @@ $APPLICATION->IncludeComponent(
 ?>
 <br />
 <?php
-endif;
+endif?>
 
+<div class="articles mb-5">
+    <div class="articles__container container">
+
+        <?if($arParams["DISPLAY_HEADER"] == 'Y'):?>
+        	<div class="articles__preview-row row justify-content-center">
+        	    <div class="articles__preview-col col-12 col-md-10 col-lg-8 col-xl-12 col-xxl-11">
+        	    	<div class="articles__preview-card card mb-3 border-0">
+        	    		<div class="articles__preview-card-row row justify-content-center align-items-stretch">
+        	    		    <div class="articles__preview-card-body col col-xl-6 col-xxl-7 order-last order-xl-first card-body pt-xl-0 pb-xl-0 d-flex flex-column justify-content-evenly">
+                    	        <div class="articles__preview-announce">
+                    	            <h1 class="articles__preview-heading card-title text-center text-xl-start text-lines text-lines__amount__2"><?$APPLICATION->ShowTitle(false)?></h1>
+        <?endif;?>
+<?
 $APPLICATION->IncludeComponent(
 	"bitrix:news.list",
 	"articles",
@@ -121,3 +134,6 @@ $APPLICATION->IncludeComponent(
 	$component,
 	['HIDE_ICONS' => 'Y']
 );
+?>
+</div>
+</div>
