@@ -43,6 +43,7 @@ if($arParams['SECTION_SET_CANONICAL_URL'] == "Y"){
                                         title="<?=$arResult["SECTION"]["PATH"][array_key_last($arResult["SECTION"]["PATH"])]["IPROPERTY_VALUES"]["SECTION_PICTURE_FILE_TITLE"]?>"
                                         loading="lazy">
         							<?else:?>
+										<?$APPLICATION->SetPageProperty("og:image", "https://".SITE_SERVER_NAME.$arResult['IBLOCK_PICTURE']['SRC']);?>
                                         <img
                                         src="<?=$arResult['IBLOCK_RESIZED_PICTURE']['src']?>"
                                         class="articles__preview-image img-fluid rounded"
