@@ -15,7 +15,16 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
-
+?>
+<div class="article mt-3 mb-5">
+    <div class="article__container container">
+	    <div class="article__heading-row row justify-content-center">
+		    <div class="article__heading-col order-last col-auto mt-3 mb-2">
+                <h1 class="article__heading">
+					<?$APPLICATION->ShowTitle(false)?>
+				</h1>	
+            </div>
+<?
 $ElementID = $APPLICATION->IncludeComponent(
 	"bitrix:news.detail",
 	"",
@@ -75,6 +84,9 @@ $ElementID = $APPLICATION->IncludeComponent(
 	$component,
 	['HIDE_ICONS' => 'Y']
 );?>
+
+    </div>
+</div>
 
 <div class="back-to-list mt-3 mb-3" id="<?=$this->GetEditAreaId($arResult['ID']);?>">
     <div class="back-to-list__container container">
