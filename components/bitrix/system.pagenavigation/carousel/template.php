@@ -26,12 +26,12 @@ $strNavQueryStringFull = ($arResult['NavQueryString'] != "" ? "?".$arResult['Nav
         <?while($arResult['nStartPage'] >= $arResult['nEndPage']):?>
         	<?$NavRecordGroupPrint = $arResult['NavPageCount'] - $arResult['nStartPage'] + 1;?>
         	<?if ($arResult['nStartPage'] == $arResult['NavPageNomer']):?>
-	    		<a type="button" data-bs-target="#carouselIndicators" class="active" aria-current="true" aria-label="<?=$NavRecordGroupPrint?>"></a>
+	    		<a type="button" data-bs-target="#carouselIndicators" class="active" aria-current="true"></a>
         	<?elseif($arResult['nStartPage'] == $arResult['NavPageCount'] && $arResult['bSavePage'] == false):?>
-	    		<a type="button" data-bs-target="#carouselIndicators" aria-label="<?=$NavRecordGroupPrint?>"
+	    		<a type="button" data-bs-target="#carouselIndicators"
 	    		href="<?=$arResult['sUrlPath']?><?=$strNavQueryStringFull?>"></a>
         	<?else:?>
-	    		<a type="button" data-bs-target="#carouselIndicators" aria-label="<?=$NavRecordGroupPrint?>"
+	    		<a type="button" data-bs-target="#carouselIndicators"
 	    		href="<?=$arResult['sUrlPath']?>?<?=$strNavQueryString?>PAGEN_<?=$arResult['NavNum']?>=<?=$arResult['nStartPage']?>"></a>
         	<?endif?>
         	<?$arResult['nStartPage']--?>
@@ -84,12 +84,12 @@ $strNavQueryStringFull = ($arResult['NavQueryString'] != "" ? "?".$arResult['Nav
         <div class="carousel-indicators mb-0 d-none d-xl-flex">
             <?while($arResult['nStartPage'] <= $arResult['nEndPage']):?>
                 <?if ($arResult['nStartPage'] == $arResult['NavPageNomer']):?>
-                    <a type="button" rel="nofollow" data-bs-target="#carouselIndicators" class="active" aria-current="true" aria-label="<?=$arResult['nStartPage']?>"></a>
+                    <a type="button" rel="nofollow" data-bs-target="#carouselIndicators" class="active" aria-current="true"></a>
                 <?elseif($arResult['nStartPage'] == 1 && $arResult['bSavePage'] == false):?>
-                    <a type="button" rel="nofollow" data-bs-target="#carouselIndicators" aria-label="<?=$arResult['nStartPage']?>"
+                    <a type="button" rel="nofollow" data-bs-target="#carouselIndicators"
                     href="<?=$arResult['sUrlPath']?><?=$strNavQueryStringFull?>"></a>
                 <?else:?>
-                    <a type="button" rel="nofollow" data-bs-target="#carouselIndicators" data-bs-slide-to="1" aria-label="<?=$arResult['nStartPage']?>"
+                    <a type="button" rel="nofollow" data-bs-target="#carouselIndicators" data-bs-slide-to="1"
                     href="<?=$arResult['sUrlPath']?>?<?=$strNavQueryString?>PAGEN_<?=$arResult['NavNum']?>=<?=$arResult['nStartPage']?>"></a>
                 <?endif?>
                 <?$arResult['nStartPage']++?>
