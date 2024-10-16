@@ -16,14 +16,13 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
 ?>
-<div class="article mt-3 mb-5">
+<div class="article mt-3 mb-5" id="<?=$this->GetEditAreaId($arResult['ID']);?>">
     <div class="article__container container">
-	    <div class="article__heading-row row justify-content-center">
-		    <div class="article__heading-col order-last col-auto mt-3 mb-2">
-                <h1 class="article__heading">
+	    <div class="article__row row justify-content-center">
+			<div class="article__col col d-flex flex-column">
+                <h1 class="article__heading text-center">
 					<?$APPLICATION->ShowTitle(false)?>
 				</h1>	
-            </div>
 <?
 $ElementID = $APPLICATION->IncludeComponent(
 	"bitrix:news.detail",
@@ -82,9 +81,10 @@ $ElementID = $APPLICATION->IncludeComponent(
 		'STRICT_SECTION_CHECK' => $arParams['STRICT_SECTION_CHECK'],
 	],
 	$component,
-	['HIDE_ICONS' => 'Y']
+	//['HIDE_ICONS' => 'Y']
 );?>
-
+            </div>
+        </div>
     </div>
 </div>
 

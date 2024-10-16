@@ -8,7 +8,7 @@
 	height: auto;
 } */
 
-.article__info {
+.article__info-container {
 	/* max-width: 42em !important; */
 	max-width: var(--article-width);
 }
