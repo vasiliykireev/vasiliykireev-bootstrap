@@ -22,7 +22,7 @@ $isShowExternalLink = ($arParams['DISPLAY_EXTERNAL_LINK'] == "Y") &&
 ?>
 
     <?if(is_array($arResult["DETAIL_PICTURE"])):?>
-        <div class="article__picture-col order-first col-12 mt-3 mb-2">
+        <div class="article__picture-container mt-3 mb-2">
 	    	<picture class="article__picture">
 			    <?/*if(($arResult['DISPLAY_PROPERTIES']['IMAGE_WEBP_2X'] ?? '') !== ''):?>
                     <source
@@ -56,7 +56,6 @@ $isShowExternalLink = ($arParams['DISPLAY_EXTERNAL_LINK'] == "Y") &&
             </picture>
 	    </div>
     <?endif?>
-</div>
 <div class="article__info">
     <div class="article__info-container mx-auto">
 	    <div class="article__info-row row">
@@ -70,27 +69,29 @@ $isShowExternalLink = ($arParams['DISPLAY_EXTERNAL_LINK'] == "Y") &&
     </div>
 </div>
 <?if(($arResult["PREVIEW_TEXT"] ?? '') !== ''):?>
-	<div class="article__preview-text mx-auto text-secondary mb-5">
-        <?echo $arResult["PREVIEW_TEXT"];?>
-		<?if($isShowExternalLink):?>
-	        <div class="article__buttons text-center mt-3">
-                <a
-                class="solution__button btn btn-primary"
-                href="<?=$arResult['DISPLAY_PROPERTIES']['EXTERNAL_LINK']['VALUE']?>"
-                target="<?
-                if(str_contains($arResult['DISPLAY_PROPERTIES']['EXTERNAL_LINK']['VALUE'], "://")){
-                	echo '_blank';
-                } else {
-                	echo "_self";
-                } ?>">
-                <?if($isExistExternalLinkCaption):?>
-                	<?=$arResult['DISPLAY_PROPERTIES']['LINK_CAPTION']['VALUE']?>
-                <?else:?>
-                	<?=$arParams['DEFAULT_EXTERNAL_LINK_CAPTION']?>
-                <?endif?>
-                </a>
-	        </div>
-        <?endif?>
+    <div class="article__preview">
+	    <div class="article__preview-text mx-auto text-secondary mb-5">
+            <?echo $arResult["PREVIEW_TEXT"];?>
+	    	<?if($isShowExternalLink):?>
+	            <div class="article__buttons text-center mt-3">
+                    <a
+                    class="solution__button btn btn-primary"
+                    href="<?=$arResult['DISPLAY_PROPERTIES']['EXTERNAL_LINK']['VALUE']?>"
+                    target="<?
+                    if(str_contains($arResult['DISPLAY_PROPERTIES']['EXTERNAL_LINK']['VALUE'], "://")){
+                    	echo '_blank';
+                    } else {
+                    	echo "_self";
+                    } ?>">
+                    <?if($isExistExternalLinkCaption):?>
+                    	<?=$arResult['DISPLAY_PROPERTIES']['LINK_CAPTION']['VALUE']?>
+                    <?else:?>
+                    	<?=$arParams['DEFAULT_EXTERNAL_LINK_CAPTION']?>
+                    <?endif?>
+                    </a>
+	            </div>
+            <?endif?>
+        </div>
     </div>
 <?endif;?>
 <?if(($arResult["DETAIL_TEXT"] ?? '') !== ''):?>

@@ -19,7 +19,7 @@ $this->setFrameMode(true);
 <div class="article mt-3 mb-5" id="<?=$this->GetEditAreaId($arResult['ID']);?>">
     <div class="article__container container">
 	    <div class="article__row row justify-content-center">
-			<div class="article__col col d-flex flex-column">
+			<div class="article__col">
                 <h1 class="article__heading text-center">
 					<?$APPLICATION->ShowTitle(false)?>
 				</h1>	
