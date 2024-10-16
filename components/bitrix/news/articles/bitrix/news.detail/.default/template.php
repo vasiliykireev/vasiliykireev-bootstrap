@@ -57,15 +57,17 @@ $isShowExternalLink = ($arParams['DISPLAY_EXTERNAL_LINK'] == "Y") &&
 	    </div>
     <?endif?>
 </div>
-<div class="article__info mx-auto">
-	<div class="article__info-row row">
-		<?/*<div class="article__author col small text-body-tertiary">
-	    To Do: Добавить вывод автора
-	    </div>*/?>
-	    <?if($arParams["DISPLAY_DATE"]!="N" && (($arResult["DISPLAY_ACTIVE_FROM"] ?? '') !== '')):?>
-            <div class="article__time col-auto small text-body-tertiary mb-2"><?=$arResult["DISPLAY_ACTIVE_FROM"]?></div>
-	    <?endif?>
-	</div>
+<div class="article__info">
+    <div class="article__info-container mx-auto">
+	    <div class="article__info-row row">
+	    	<?/*<div class="article__author col small text-body-tertiary">
+	        To Do: Добавить вывод автора
+	        </div>*/?>
+	        <?if($arParams["DISPLAY_DATE"]!="N" && (($arResult["DISPLAY_ACTIVE_FROM"] ?? '') !== '')):?>
+                <div class="article__time col-auto small text-body-tertiary mb-2"><?=$arResult["DISPLAY_ACTIVE_FROM"]?></div>
+	        <?endif?>
+	    </div>
+    </div>
 </div>
 <?if(($arResult["PREVIEW_TEXT"] ?? '') !== ''):?>
 	<div class="article__preview-text mx-auto text-secondary mb-5">
