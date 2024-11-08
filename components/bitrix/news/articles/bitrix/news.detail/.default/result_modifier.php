@@ -18,3 +18,11 @@ $arResult['MOBILE_RESIZED_DETAIL_PICTURE'] = CFile::ResizeImageGet(
     true, // Immediate
     90 // jpgQuality
 );
+/* Автор */
+if(($arResult['MODIFIED_BY'] ?? '') !== '') {
+    $filter = Array (
+        "ID" => $arResult['MODIFIED_BY'],
+    );
+    $arParameters["FIELDS"] = Array ("NAME", "LAST_NAME");
+    $arResult['AUTHOR'] = CUser::GetList(($by="id"), ($order="desc"), $filter, $arParameters)->fetch();
+}

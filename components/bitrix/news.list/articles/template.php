@@ -161,7 +161,8 @@ if($arParams['SECTION_SET_CANONICAL_URL'] == "Y"){
 								    <?if($arParams["DISPLAY_DATE"]!="N" && (($arItem["DISPLAY_ACTIVE_FROM"] ?? '') !== '')):?>
                                         <div class="article__time col small text-body-tertiary"><?=$arItem["DISPLAY_ACTIVE_FROM"]?></div>
 	    							<?endif?>
-                                    <?if(($arItem['AUTHOR']['NAME'] ?? '') !== '' || ($arItem['AUTHOR']['LAST_NAME'] ?? '') !== ''):?>
+									<?//To Do: Добавить вывод автора?>
+                                    <?/*if(($arItem['AUTHOR']['NAME'] ?? '') !== '' || ($arItem['AUTHOR']['LAST_NAME'] ?? '') !== ''):?>
                                     <div class="article__author col-auto small text-body-tertiary">
 										<?if(($arItem['AUTHOR']['NAME'] ?? '') !== ''):?>
 										<?=$arItem['AUTHOR']['NAME'];?>
@@ -169,9 +170,8 @@ if($arParams['SECTION_SET_CANONICAL_URL'] == "Y"){
 										<?if(($arItem['AUTHOR']['LAST_NAME'] ?? '') !== ''):?>
 										<?=$arItem['AUTHOR']['LAST_NAME'];?>
 										<?endif?>
-	    							<?//To Do: Добавить вывод автора?>
 	    							</div>
-                                    <?endif?>
+                                    <?endif*/?>
                                 </div>
 	    						<?if(($arItem["PREVIEW_TEXT"] ?? '') !== ''):?>
                                     <p class="article__preview-text card-text text-body-secondary mb-2 text-lines text-lines__amount__3">

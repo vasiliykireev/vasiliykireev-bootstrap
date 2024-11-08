@@ -68,6 +68,11 @@ $arTemplateParameters = array(
 		"TYPE" => "CHECKBOX",
 		"DEFAULT" => "N",
 	),
+	"DEFAULT_AUTHOR" => Array(
+		"NAME" => GetMessage("T_IBLOCK_DESC_DEFAULT_AUTHOR"),
+		"TYPE" => "STRING",
+		"DEFAULT" => "",
+	),
 );
 
 if (($arCurrentValues['USE_SHARE'] ?? 'N') === 'Y')
