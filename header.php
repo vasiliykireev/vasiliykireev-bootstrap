@@ -9,6 +9,8 @@ IncludeTemplateLangFile(__FILE__);
     <? // Favicon
     $APPLICATION->AddHeadString('<link type="image/x-icon" href="/favicon/favicon.svg" rel="shortcut icon">')?>
     <?$APPLICATION->AddHeadString('<link type="Image/x-icon" href="/favicon/favicon.svg" rel="icon">')?>
+	<? // Google Fonts
+	$APPLICATION->SetAdditionalCss('https://fonts.googleapis.com/css2?family=PT+Mono&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap')?>
     <? // Bootstrap Icons
     $APPLICATION->SetAdditionalCss('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css')?>
     <? // Bootstrap JS
