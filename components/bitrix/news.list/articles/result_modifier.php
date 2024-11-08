@@ -97,5 +97,13 @@ if(!empty($arResult["SECTION"]["PATH"]) && ($arResult["SECTION"]["PATH"][array_k
         }
     }
 }
-
+foreach($arResult['ITEMS'] as &$arItem){
+    if(($arItem['MODIFIED_BY'] ?? '') !== '') {
+        $filter = Array (
+            "ID" => $arItem['MODIFIED_BY'],
+        );
+        $arParameters["FIELDS"] = Array ("NAME", "LAST_NAME");
+        $arItem['AUTHOR'] = CUser::GetList(($by="id"), ($order="desc"), $filter, $arParameters)->fetch();
+    }
+}
 ?>
