@@ -68,6 +68,11 @@ $arTemplateParameters = array(
 		"TYPE" => "CHECKBOX",
 		"DEFAULT" => "N",
 	),
+	"SCHEMAORG_JSON" => Array(
+		"NAME" => GetMessage("T_IBLOCK_DESC_SCHEMAORG_JSON"),
+		"TYPE" => "CHECKBOX",
+		"DEFAULT" => "Y",
+	),
 );
 
 if (($arCurrentValues['USE_SHARE'] ?? 'N') === 'Y')

@@ -20,7 +20,79 @@ $isShowExternalLink = ($arParams['DISPLAY_EXTERNAL_LINK'] == "Y") &&
     (($arResult['DISPLAY_PROPERTIES']['EXTERNAL_LINK']['VALUE'] ?? '') !== '') &&
     ($isExistExternalLinkCaption || $isExistExternalLinkDefaultCaption);
 ?>
+<?
+// $dateActiveFromХ = date_format(DateTime::createFromFormat('Y-m-d H:i:s',$arResult['ACTIVE_FROM_X']), 'c');
 
+echo '<pre>';
+print_r($arResult['ACTIVE_FROM_X']);
+print_r($arResult['TIMESTAMP_X']);
+$timestampX = DateTime::createFromFormat('Y-m-d H:i:s',$arResult['TIMESTAMP_X']);
+print_r($timestampX);
+print_r(date_get_last_errors());
+echo date('c');
+echo '</pre>';
+?>
+<?if($arParams['SCHEMAORG_JSON'] === 'Y') {
+$schemaOrgArticle = '<script type="application/ld+json">';
+$schemaOrgArticle = $schemaOrgArticle .
+'{"@context": "http://schema.org",'."\n".
+'"@type": "Article",'."\n".
+'"mainEntityOfPage": {'."\n".'"@type": "WebPage",'."\n".
+'"@id": "'.$arResult['DETAIL_PAGE_URL'].'" },';
+$schemaOrgArticle = $schemaOrgArticle . '</script>';
+$APPLICATION->AddHeadString($schemaOrgArticle);
+}
+$APPLICATION->AddHeadString('<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "'.$arResult['DETAIL_PAGE_URL'].'"
+    },
+    "headline": "'.$arResult['NAME'].'",
+    "image": {
+      "@type": "ImageObject",
+      "url": "'.$arResult['MOBILE_RESIZED_DETAIL_PICTURE']['src'].'",
+      "width": "'.$arResult['MOBILE_RESIZED_DETAIL_PICTURE']['width'].'",
+      "height": "'.$arResult['MOBILE_RESIZED_DETAIL_PICTURE']['height'].'"
+    },
+    "datePublished": "2025-01-23T10:34:43+03:00", // '. date_format(DateTime::createFromFormat('Y-m-d H:i:s',$arResult['ACTIVE_FROM_X']), 'c').'
+    "dateModified": "2025-01-24T17:53:10+03:00", // ' . date_format(DateTime::createFromFormat('d.m.Y H:i:s',$arResult['TIMESTAMP_X']), 'c') .'
+    "author": {
+      "@type": "Person",
+      "name": "Сергей Просветов"
+    },
+    "publisher": {
+      "@type": "Person",
+      "name": "Пиксель Плюс",
+    },
+    "description": "'.$arResult['PREVIEW_TEXT'].'",
+    "interactionStatistic": [
+      {
+        "@type": "InteractionCounter",
+        "interactionType": "http://schema.org/CommentAction",
+        "userInteractionCount": "0"
+      }
+    ],
+    "comment": [
+    ]
+  }
+');
+?>
+
+<?
+'<script type="application/ld+json">{
+    "@context": "https://schema.org/",
+    "@type": "CreativeWorkSeries",
+    "name": "Идеальное описание товара — какое оно?",
+    "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5",
+        "reviewCount": "21"
+    }
+</script>'
+?>
     <?if(is_array($arResult["DETAIL_PICTURE"])):?>
         <div class="article__picture-container mt-3 mb-2">
 	    	<picture class="article__picture">
@@ -105,3 +177,6 @@ $isShowExternalLink = ($arParams['DISPLAY_EXTERNAL_LINK'] == "Y") &&
 	    }?>
     </div>
 <?endif?>
+<pre>
+<?print_r($arResult)?>
+</pre>

@@ -16,4 +16,5 @@ $MESS['T_IBLOCK_DESC_DISPLAY_EXTERNAL_LINK'] = "Показывать внешн�
 $MESS['T_IBLOCK_DESC_DEFAULT_EXTERNAL_LINK_CAPTION'] = "Текст внешней ссылки по умолчанию";
 $MESS["T_IBLOCK_DESC_DETAIL_MARKDOWN"] = "Преобразовывать обычный текст детального описания из Markdown в HTML";
 $MESS ['T_IBLOCK_DESC_NEWS_SECTION_CANONICAL'] = "Устанавливать канонический URL разделов";
+$MESS["T_IBLOCK_DESC_SCHEMAORG_JSON"] = "Использовать Schema.org JSON-LD";
 ?>
