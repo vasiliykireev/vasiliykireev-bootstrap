@@ -110,7 +110,7 @@ $isShowExternalLink = ($arParams['DISPLAY_EXTERNAL_LINK'] == "Y") &&
 ?>
 
     <?if(($arParams["SCHEMAORG_AUTHOR"] ?? '') !== '') {?>
-        <span itemprop="publisher" itemscope itemtype="https://schema.org/<?=$arParams["SCHEMAORG_AUTHOR"]?>">
+        <span itemprop="author" itemscope itemtype="https://schema.org/<?=$arParams["SCHEMAORG_AUTHOR"]?>">
             <?if($arParams["SCHEMAORG_AUTHOR"] === 'Person' && (($arResult['AUTHOR']['NAME'] ?? '') !== '' || ($arResult['AUTHOR']['LAST_NAME']?? '') !== '')) {?>
                 <meta itemprop="name" content="<?
                     if(($arResult['AUTHOR']['NAME'] ?? '') !== '') echo($arResult['AUTHOR']['NAME']);
@@ -120,6 +120,9 @@ $isShowExternalLink = ($arParams['DISPLAY_EXTERNAL_LINK'] == "Y") &&
                     <?if(($arResult['AUTHOR']['URL'] ?? '') !== ''){?>
                         <meta itemprop="url" content="<?=$arResult['AUTHOR']['URL']?>">
                     <?}?>
+            <?} elseif ($arParams["SCHEMAORG_AUTHOR"] === 'Organization') {?>
+                <meta itemprop="name" content="<?=$arResult['SITE']['SITE_NAME']?>">
+                <meta itemprop="url" content="<?='https://'.SITE_SERVER_NAME?>">
             <?}?>
         </span>
         <?}?>
@@ -134,11 +137,15 @@ $isShowExternalLink = ($arParams['DISPLAY_EXTERNAL_LINK'] == "Y") &&
                         <?if(($arResult['AUTHOR']['URL'] ?? '') !== ''){?>
                             <meta itemprop="url" content="<?=$arResult['AUTHOR']['URL']?>">
                         <?}?>
-                    </span>
-                <?}?>
+                <?} elseif ($arParams["SCHEMAORG_PUBLISHER"] === 'Organization') {?>
+                    <meta itemprop="name" content="<?=$arResult['SITE']['SITE_NAME']?>">
+                    <meta itemprop="url" content="<?='https://'.SITE_SERVER_NAME?>">
+            <?}?>
             </span>
         <?}?>
-        <?if(($arResult["SCHEMAORG"]['TIMESTAMP_X'] ?? '') !== ''){
+        <meta itemprop="datePublished" content="<?=$arResult["SCHEMAORG"]["DATE_PUBLISHED"]?>">
+        <meta itemprop="dateModified" content="<?=$arResult["SCHEMAORG"]["DATE_MODIFIED"]?>">
+        <?/*if(($arResult["SCHEMAORG"]['TIMESTAMP_X'] ?? '') !== ''){
             if(($arResult["SCHEMAORG"]['ACTIVE_FROM_X'] ?? '') !== '') {
                 echo '<meta itemprop="datePublished" content="'. date_format(DateTime::createFromFormat('Y-m-d H:i:s',$arResult["SCHEMAORG"]['ACTIVE_FROM_X']), 'c') . '">';
             }
@@ -150,7 +157,7 @@ $isShowExternalLink = ($arParams['DISPLAY_EXTERNAL_LINK'] == "Y") &&
             }
                 echo '<meta itemprop="dateModified" content="'. date_format(DateTime::createFromFormat('d.m.Y H:i:s',$arResult["SCHEMAORG"]['TIMESTAMP_X']), 'c') . '">';
         }
-        ?>
+        */?>
     <?if(is_array($arResult["DETAIL_PICTURE"])):?>
         <div class="article__picture-container mt-3 mb-2">
 	    	<picture class="article__picture">
@@ -195,11 +202,11 @@ $isShowExternalLink = ($arParams['DISPLAY_EXTERNAL_LINK'] == "Y") &&
 	        <?endif?>  
             <?if($arParams["DISPLAY_AUTHOR"] === 'Y') {?>
             <div class="article__author col-auto small text-body-tertiary">
-                <?if(($arResult['AUTHOR']['NAME'] ?? '') !== '' || ($arResult['AUTHOR']['LAST_NAME']?? '') !== '') {?>
+                <?if(($arResult['USER']['NAME'] ?? '') !== '' || ($arResult['USER']['LAST_NAME']?? '') !== '') {?>
                     <span itemprop="name"><?
-                        if(($arResult['AUTHOR']['NAME'] ?? '') !== '') echo($arResult['AUTHOR']['NAME']);
-                        if(($arResult['AUTHOR']['NAME'] ?? '') !== '' && ($arResult['AUTHOR']['LAST_NAME']?? '') !== '') echo " ";
-                        if(($arResult['AUTHOR']['LAST_NAME'] ?? '') !== '') echo($arResult['AUTHOR']['LAST_NAME'])
+                        if(($arResult['USER']['NAME'] ?? '') !== '') echo($arResult['USER']['NAME']);
+                        if(($arResult['USER']['NAME'] ?? '') !== '' && ($arResult['USER']['LAST_NAME']?? '') !== '') echo " ";
+                        if(($arResult['USER']['LAST_NAME'] ?? '') !== '') echo($arResult['USER']['LAST_NAME'])
                         ?></span>
                 <?}?>
             </div>
