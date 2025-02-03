@@ -13,6 +13,12 @@ $arTemplateParameters["DISPLAY_DATE"] = array(
 	"TYPE" => "CHECKBOX",
 	"DEFAULT" => "Y",
 );
+/** Выводить автора элемента */
+$arTemplateParameters["DISPLAY_AUTHOR"] = array(
+	"NAME" => GetMessage("T_IBLOCK_DESC_NEWS_AUTHOR"),
+	"TYPE" => "CHECKBOX",
+	"DEFAULT" => "Y",
+);
 // $arTemplateParameters = array(
 	/** - Выводить изображение для анонса */
 	// "DISPLAY_PICTURE" => Array(
@@ -95,19 +101,29 @@ $arTemplateParameters["SECTION_SET_CANONICAL_URL"] = array(
 	"DEFAULT" => "N",
 );
 /** + Выводить на детальной странице элемента структурированные данные Schema.org для статей в JSON-LD */
-$arTemplateParameters["SCHEMAORG_JSON"] = array(
-	"NAME" => GetMessage("T_IBLOCK_DESC_SCHEMAORG_JSON"),
-	"TYPE" => "CHECKBOX",
-	"DEFAULT" => "Y",
+// $arTemplateParameters["SCHEMAORG_JSON"] = array(
+// 	"NAME" => GetMessage("T_IBLOCK_DESC_SCHEMAORG_JSON"),
+// 	"TYPE" => "CHECKBOX",
+// 	"DEFAULT" => "Y",
+// );
+/** + Тип статьи Schema.org */
+$arTemplateParameters["SCHEMAORG_TYPE"] = array(
+	"NAME" => GetMessage("T_IBLOCK_DESC_SCHEMAORG_TYPE"),
+	"TYPE" => "LIST",
+	"VALUES" => ["Article" => "Article", "NewsArticle" => "NewsArticle", "BlogPosting" => "BlogPosting"],
 );
-/** ++ Тип статьи Schema.org */
-if (($arCurrentValues['SCHEMAORG_JSON'] ?? 'N') === 'Y') {
-	$arTemplateParameters["SCHEMAORG_TYPE"] = array(
-		"NAME" => GetMessage("T_IBLOCK_DESC_SCHEMAORG_TYPE"),
-		"TYPE" => "LIST",
-		"VALUES" => ["Article" => "Article", "NewsArticle" => "NewsArticle", "BlogPosting" => "BlogPosting"],
-	);
-}
+/** Тип автора Schema.org */
+$arTemplateParameters["SCHEMAORG_AUTHOR"] = array(
+	"NAME" => GetMessage("T_IBLOCK_DESC_SCHEMAORG_AUTHOR"),
+	"TYPE" => "LIST",
+	"VALUES" => ["Person" => "Person", "Organization" => "Organization"],
+);
+/** Тип издателя Schema.org */
+$arTemplateParameters["SCHEMAORG_PUBLISHER"] = array(
+	"NAME" => GetMessage("T_IBLOCK_DESC_SCHEMAORG_PUBLISHER"),
+	"TYPE" => "LIST",
+	"VALUES" => ["Person" => "Person", "Organization" => "Organization"],
+);
 
 /** -- Отображать панель соц. закладок*/
 // if (($arCurrentValues['USE_SHARE'] ?? 'N') === 'Y')

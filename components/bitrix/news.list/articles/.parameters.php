@@ -6,6 +6,12 @@ $arTemplateParameters["DISPLAY_DATE"] = array(
 	"TYPE" => "CHECKBOX",
 	"DEFAULT" => "Y",
 );
+/** Выводить автора элемента */
+$arTemplateParameters["DISPLAY_AUTHOR"] = array(
+	"NAME" => GetMessage("T_IBLOCK_DESC_NEWS_AUTHOR"),
+	"TYPE" => "CHECKBOX",
+	"DEFAULT" => "Y",
+);
 // $arTemplateParameters = array(
 	/** - Выводить название элемента */
 	// "DISPLAY_NAME" => Array(

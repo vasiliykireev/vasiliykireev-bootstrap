@@ -7,6 +7,12 @@ $arTemplateParameters["DISPLAY_DATE"] = array(
 	"TYPE" => "CHECKBOX",
 	"DEFAULT" => "Y",
 );
+/** Выводить автора элемента */
+$arTemplateParameters["DISPLAY_AUTHOR"] = array(
+	"NAME" => GetMessage("T_IBLOCK_DESC_NEWS_AUTHOR"),
+	"TYPE" => "CHECKBOX",
+	"DEFAULT" => "Y",
+);
 // $arTemplateParameters = array(
 	/** -  Выводить название элемента */
 	// "DISPLAY_NAME" => Array(
@@ -91,18 +97,27 @@ $arTemplateParameters["DETAIL_MARKDOWN"] = array(
 	"DEFAULT" => "N",
 );
 /** + Выводить на детальной странице элемента микроразметку Schema.org JSON-LD */
-$arTemplateParameters["SCHEMAORG_JSON"] = array(
-	"NAME" => GetMessage("T_IBLOCK_DESC_SCHEMAORG_JSON"),
-	"TYPE" => "CHECKBOX",
-	"DEFAULT" => "Y",
+// $arTemplateParameters["SCHEMAORG_JSON"] = array(
+// 	"NAME" => GetMessage("T_IBLOCK_DESC_SCHEMAORG_JSON"),
+// 	"TYPE" => "CHECKBOX",
+// 	"DEFAULT" => "Y",
+// );
+/** + Тип статьи Schema.org */
+$arTemplateParameters["SCHEMAORG_TYPE"] = array(
+	"NAME" => GetMessage("T_IBLOCK_DESC_SCHEMAORG_TYPE"),
+	"TYPE" => "LIST",
+	"VALUES" => ["Article" => "Article", "NewsArticle" => "NewsArticle", "BlogPosting" => "BlogPosting"],
 );
-/** ++ Тип статьи Schema.org */
-if (($arCurrentValues['SCHEMAORG_JSON'] ?? 'N') === 'Y') {
-	$arTemplateParameters["SCHEMAORG_TYPE"] = array(
-		"NAME" => GetMessage("T_IBLOCK_DESC_SCHEMAORG_TYPE"),
-		"TYPE" => "LIST",
-		"VALUES" => ["Article" => "Article", "NewsArticle" => "NewsArticle", "BlogPosting" => "BlogPosting"],
-	);
-}
-
+/** Тип автора Schema.org */
+$arTemplateParameters["SCHEMAORG_AUTHOR"] = array(
+	"NAME" => GetMessage("T_IBLOCK_DESC_SCHEMAORG_AUTHOR"),
+	"TYPE" => "LIST",
+	"VALUES" => ["Person" => "Person", "Organization" => "Organization"],
+);
+/** Тип издателя Schema.org */
+$arTemplateParameters["SCHEMAORG_PUBLISHER"] = array(
+	"NAME" => GetMessage("T_IBLOCK_DESC_SCHEMAORG_PUBLISHER"),
+	"TYPE" => "LIST",
+	"VALUES" => ["Person" => "Person", "Organization" => "Organization"],
+);
 ?>

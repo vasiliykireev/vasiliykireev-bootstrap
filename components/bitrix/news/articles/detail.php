@@ -16,11 +16,11 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
 ?>
-<div class="article mt-3 mb-5" id="<?=$this->GetEditAreaId($arResult['ID']);?>">
+<div class="article mt-3 mb-5" id="<?=$this->GetEditAreaId($arResult['ID']);?>" itemscope itemtype="https://schema.org/<?=$arParams["SCHEMAORG_TYPE"]?>">
     <div class="article__container container">
 	    <div class="article__row row justify-content-center">
 			<div class="article__col">
-                <h1 class="article__heading text-center">
+                <h1 class="article__heading text-center" itemprop="headline">
 					<?$APPLICATION->ShowTitle(false)?>
 				</h1>	
 <?
@@ -31,8 +31,11 @@ $ElementID = $APPLICATION->IncludeComponent(
 		"DISPLAY_EXTERNAL_LINK" => $arParams["DISPLAY_EXTERNAL_LINK"],
 		"DEFAULT_EXTERNAL_LINK_CAPTION" => $arParams["DEFAULT_EXTERNAL_LINK_CAPTION"],
 		"DETAIL_MARKDOWN" => $arParams["DETAIL_MARKDOWN"],
-		"SCHEMAORG_JSON" => $arParams["SCHEMAORG_JSON"],
+		"SCHEMAORG_TYPE" => $arParams["SCHEMAORG_TYPE"],
+		"SCHEMAORG_AUTHOR" => $arParams["SCHEMAORG_AUTHOR"],
+		"SCHEMAORG_PUBLISHER" => $arParams["SCHEMAORG_PUBLISHER"],
 		"DISPLAY_DATE" => $arParams["DISPLAY_DATE"],
+		"DISPLAY_AUTHOR" => $arParams["DISPLAY_AUTHOR"],
 		"DISPLAY_NAME" => $arParams["DISPLAY_NAME"],
 		"DISPLAY_PICTURE" => $arParams["DISPLAY_PICTURE"],
 		"DISPLAY_PREVIEW_TEXT" => $arParams["DISPLAY_PREVIEW_TEXT"],
