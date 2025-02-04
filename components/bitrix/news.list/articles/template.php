@@ -158,9 +158,17 @@ if($arParams['SECTION_SET_CANONICAL_URL'] == "Y"){
 	    							</h2>
                                 <?endif;?>
                                 <div class="article__info row mb-1">
-                                    <?/*<div class="article__author col small text-body-tertiary">
-	    							To Do: Добавить вывод автора
-	    							</div>*/?>
+								    <?if($arParams["DISPLAY_AUTHOR"] === 'Y') {?>
+									    <div class="article__author col-auto small text-body-tertiary">
+                                            <?if(($arItem['AUTHOR']['NAME'] ?? '') !== '' || ($arItem['AUTHOR']['LAST_NAME']?? '') !== '') {?>
+                                                <span itemprop="name"><?
+                                                    if(($arItem['AUTHOR']['NAME'] ?? '') !== '') echo($arItem['AUTHOR']['NAME']);
+                                                    if(($arItem['AUTHOR']['NAME'] ?? '') !== '' && ($arItem['AUTHOR']['LAST_NAME']?? '') !== '') echo " ";
+                                                    if(($arItem['AUTHOR']['LAST_NAME'] ?? '') !== '') echo($arItem['AUTHOR']['LAST_NAME'])
+                                                    ?></span>
+                                            <?}?>
+                                        </div>
+                                    <?}?>
 	    							<?if($arParams["DISPLAY_DATE"]!="N" && (($arItem["DISPLAY_ACTIVE_FROM"] ?? '') !== '')):?>
                                         <div class="article__time col-auto small text-body-tertiary"><?=$arItem["DISPLAY_ACTIVE_FROM"]?></div>
 	    							<?endif?>
@@ -217,3 +225,11 @@ if($arParams['SECTION_SET_CANONICAL_URL'] == "Y"){
     </div>
 </div>
 <?endif?>
+
+<?
+// echo '<pre> arParams: ';
+// print_r($arParams);
+// echo '</pre><pre> arResult: ';
+// print_r($arResult);
+// echo '</pre>';
+?>

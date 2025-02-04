@@ -97,5 +97,46 @@ if(!empty($arResult["SECTION"]["PATH"]) && ($arResult["SECTION"]["PATH"][array_k
         }
     }
 }
+/** Получение информации об авторах элементов */
+$arItemsIds = array();
+foreach($arResult['ITEMS'] as &$arItem){
+    array_push($arItemsIds, $arItem['ID']);
+}
+$arItemsKeys = array();
+// echo '<pre>';
+// echo 'arItemsIds: ';
+// print_r($arItemsIds);
+// echo '</pre>';
+/** Автор элемента */
+if($arParams["DISPLAY_AUTHOR"] === 'Y') {
+    $arOrder = Array("SORT"=>"ASC");
+    $arFilter = Array("ID" => $arItemsIds);
+    $arGroupBy = false;
+    $arNavStartParams = false;
+    $arSelectFields = Array(
+        'ID',
+        'CREATED_BY', // Код пользователя, создавшего элемент
+    );
+    $elements = CIBlockElement::GetList($arOrder, $arFilter, $arGroupBy, $arNavStartParams, $arSelectFields);
+    while($element = $elements->GetNext())
+    {
+        // $arResult['ITEMS'][$element['ID']]['CREATED_BY'] = $element['CREATED_BY'];
+        $itemKey = array_search($element['ID'], array_column($arResult['ITEMS'],'ID'));
+        array_push($arItemsKeys, $itemKey);
+        $arResult['ITEMS'][$itemKey]['CREATED_BY'] = $element['CREATED_BY'];
+        // echo('element[ID]:'.$element['ID'].";".'Ключ: '.$itemKey);
+    	// $arResult["SCHEMAORG"] = $element->GetFields();
+        echo '<pre>';
+        // echo 'AUTHOR ';
+    	// print_r($arResult["SCHEMAORG"]);
+        echo '</pre>';
 
+        $arFilter = array("ID" => $arResult['ITEMS'][$itemKey]['CREATED_BY']);
+        $arParameters = array("FIELDS" => ["NAME", "LAST_NAME"]);
+        $users = CUser::GetList("id", "desc", $arFilter, $arParameters);
+        while($user = $users->GetNext()) {
+            $arResult['ITEMS'][$itemKey]['AUTHOR'] = $user;
+        }
+    }
+}
 ?>

@@ -202,11 +202,11 @@ $isShowExternalLink = ($arParams['DISPLAY_EXTERNAL_LINK'] == "Y") &&
 	        <?endif?>  
             <?if($arParams["DISPLAY_AUTHOR"] === 'Y') {?>
             <div class="article__author col-auto small text-body-tertiary">
-                <?if(($arResult['USER']['NAME'] ?? '') !== '' || ($arResult['USER']['LAST_NAME']?? '') !== '') {?>
+                <?if(($arResult['AUTHOR']['NAME'] ?? '') !== '' || ($arResult['AUTHOR']['LAST_NAME']?? '') !== '') {?>
                     <span itemprop="name"><?
-                        if(($arResult['USER']['NAME'] ?? '') !== '') echo($arResult['USER']['NAME']);
-                        if(($arResult['USER']['NAME'] ?? '') !== '' && ($arResult['USER']['LAST_NAME']?? '') !== '') echo " ";
-                        if(($arResult['USER']['LAST_NAME'] ?? '') !== '') echo($arResult['USER']['LAST_NAME'])
+                        if(($arResult['AUTHOR']['NAME'] ?? '') !== '') echo($arResult['AUTHOR']['NAME']);
+                        if(($arResult['AUTHOR']['NAME'] ?? '') !== '' && ($arResult['AUTHOR']['LAST_NAME']?? '') !== '') echo " ";
+                        if(($arResult['AUTHOR']['LAST_NAME'] ?? '') !== '') echo($arResult['AUTHOR']['LAST_NAME']);
                         ?></span>
                 <?}?>
             </div>

@@ -61,12 +61,13 @@ if(($arResult["SCHEMAORG"]['ACTIVE_FROM_X'] ?? '') !== ''){
 // Заполнение ISO-даты изменения из TIMESTAMP_X
 $arResult["SCHEMAORG"]["DATE_MODIFIED"] = date_format(DateTime::createFromFormat(CDatabase::DateFormatToPHP($arResult['SITE']['FORMAT_DATETIME']),$arResult["SCHEMAORG"]['TIMESTAMP_X']), 'c');
 
+/** Получение информации о пользователе */
 $arFilter = array("ID" => $arResult["SCHEMAORG"]['CREATED_BY']);
 $arParameters = array("FIELDS" => ["NAME", "LAST_NAME","PERSONAL_WWW"]);
 $users = CUser::GetList("id", "desc", $arFilter, $arParameters);
 while($user = $users->GetNext()) {
-    $arResult["USER"] = $user;
-    $arResult["USER"]["URL"] = 'https://' . end(explode('//', $arResult["USER"]["PERSONAL_WWW"],2));
+    $arResult["AUTHOR"] = $user;
+    $arResult["AUTHOR"]["URL"] = 'https://' . end(explode('//', $arResult["AUTHOR"]["PERSONAL_WWW"],2));
     // echo '<pre>';
     // echo 'SCHEMAORG with AUTHOR ';
 	// print_r($arResult["SCHEMAORG"]);
