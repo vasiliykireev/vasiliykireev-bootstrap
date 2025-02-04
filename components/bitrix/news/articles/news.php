@@ -136,5 +136,5 @@ $APPLICATION->IncludeComponent(
 	['HIDE_ICONS' => 'Y']
 );
 ?>
-</div>
+    </div>
 </div>

@@ -103,11 +103,6 @@ foreach($arResult['ITEMS'] as &$arItem){
     array_push($arItemsIds, $arItem['ID']);
 }
 $arItemsKeys = array();
-// echo '<pre>';
-// echo 'arItemsIds: ';
-// print_r($arItemsIds);
-// echo '</pre>';
-/** Автор элемента */
 if($arParams["DISPLAY_AUTHOR"] === 'Y') {
     $arOrder = Array("SORT"=>"ASC");
     $arFilter = Array("ID" => $arItemsIds);
@@ -120,17 +115,9 @@ if($arParams["DISPLAY_AUTHOR"] === 'Y') {
     $elements = CIBlockElement::GetList($arOrder, $arFilter, $arGroupBy, $arNavStartParams, $arSelectFields);
     while($element = $elements->GetNext())
     {
-        // $arResult['ITEMS'][$element['ID']]['CREATED_BY'] = $element['CREATED_BY'];
         $itemKey = array_search($element['ID'], array_column($arResult['ITEMS'],'ID'));
         array_push($arItemsKeys, $itemKey);
         $arResult['ITEMS'][$itemKey]['CREATED_BY'] = $element['CREATED_BY'];
-        // echo('element[ID]:'.$element['ID'].";".'Ключ: '.$itemKey);
-    	// $arResult["SCHEMAORG"] = $element->GetFields();
-        echo '<pre>';
-        // echo 'AUTHOR ';
-    	// print_r($arResult["SCHEMAORG"]);
-        echo '</pre>';
-
         $arFilter = array("ID" => $arResult['ITEMS'][$itemKey]['CREATED_BY']);
         $arParameters = array("FIELDS" => ["NAME", "LAST_NAME"]);
         $users = CUser::GetList("id", "desc", $arFilter, $arParameters);

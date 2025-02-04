@@ -161,25 +161,6 @@ $isShowExternalLink = ($arParams['DISPLAY_EXTERNAL_LINK'] == "Y") &&
     <?if(is_array($arResult["DETAIL_PICTURE"])):?>
         <div class="article__picture-container mt-3 mb-2">
 	    	<picture class="article__picture">
-			    <?/*if(($arResult['DISPLAY_PROPERTIES']['IMAGE_WEBP_2X'] ?? '') !== ''):?>
-                    <source
-                    type="<?=$$arResult['DISPLAY_PROPERTIES']['IMAGE_WEBP_2X']['FILE_VALUE']['CONTENT_TYPE']?>"
-			        srcset="<?=$arResult['DISPLAY_PROPERTIES']['IMAGE_WEBP_2X']['FILE_VALUE']['SRC']?>"
-			        class="article__image-source article-screen__image-source_size_2x"
-				<?//media="(-webkit-min-device-pixel-ratio: 1.5)"?>/>
-			    <?endif*/?>
-			    <?/*<?if(($arResult['DISPLAY_PROPERTIES']['IMAGE_WEBP'] ?? '') !== ''):?>
-                    <source
-                    type="<?=$arResult['DISPLAY_PROPERTIES']['IMAGE_WEBP']['FILE_VALUE']['CONTENT_TYPE']?>"
-			        srcset="<?=$arResult['DISPLAY_PROPERTIES']['IMAGE_WEBP']['FILE_VALUE']['SRC']?>"
-                    class="article__image-source article-screen__image-source_size_normal">
-			    <?endif?>*/?>
-                <?/*<img
-                src="<?=$arResult["DETAIL_PICTURE"]["SRC"]?>"
-                class="article__image rounded"
-                alt="<?=$arResult["DETAIL_PICTURE"]["ALT"]?>"
-                title="<?=$arResult["DETAIL_PICTURE"]["TITLE"]?>"
-                loading="lazy">*/?>
 				<source
                 type="<?=$arResult['DETAIL_PICTURE']['CONTENT_TYPE']?>"
 				srcset="<?=$arResult['MOBILE_RESIZED_DETAIL_PICTURE']['src']?>"
@@ -251,10 +232,3 @@ $isShowExternalLink = ($arParams['DISPLAY_EXTERNAL_LINK'] == "Y") &&
 	    }?>
     </div>
 <?endif?>
-<?
-// echo '<pre> arParams:';
-// print_r($arParams);
-// echo '</pre><pre> arResult:';
-// print_r($arResult);
-// echo '</pre>';
-?>

@@ -225,11 +225,3 @@ if($arParams['SECTION_SET_CANONICAL_URL'] == "Y"){
     </div>
 </div>
 <?endif?>
-
-<?
-// echo '<pre> arParams: ';
-// print_r($arParams);
-// echo '</pre><pre> arResult: ';
-// print_r($arResult);
-// echo '</pre>';
-?>

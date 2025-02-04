@@ -24,10 +24,6 @@ while ($site = $sites->Fetch())
 {
 	$arResult["SITE"]["SITE_NAME"] = $site["SITE_NAME"];
     $arResult['SITE']['FORMAT_DATETIME'] = $site['FORMAT_DATETIME'];
-    // echo '<pre>';
-    // echo 'SITE ';
-	// print_r($site);
-    // echo '</pre>';
 }
 
 /** Получение даты и пользователя, создавшего элемент, для микроразметки Schema.org */
@@ -45,10 +41,6 @@ $elements = CIBlockElement::GetList($arOrder, $arFilter, $arGroupBy, $arNavStart
 while($element = $elements->GetNextElement())
 {
 	$arResult["SCHEMAORG"] = $element->GetFields();
-    // echo '<pre>';
-    // echo 'SCHEMAORG without AUTHOR ';
-	// print_r($arResult["SCHEMAORG"]);
-    // echo '</pre>';
 }
 // Заполнение ISO-даты публикации из ACTIVE_FROM_X или DATE_CREATE
 if(($arResult["SCHEMAORG"]['ACTIVE_FROM_X'] ?? '') !== ''){
@@ -57,20 +49,15 @@ if(($arResult["SCHEMAORG"]['ACTIVE_FROM_X'] ?? '') !== ''){
     $arResult["SCHEMAORG"]["DATE_PUBLISHED"] = date_format(DateTime::createFromFormat(CDatabase::DateFormatToPHP($arResult['SITE']['FORMAT_DATETIME']),$arResult["SCHEMAORG"]['DATE_CREATE']), 'c');
 
 }
-
 // Заполнение ISO-даты изменения из TIMESTAMP_X
 $arResult["SCHEMAORG"]["DATE_MODIFIED"] = date_format(DateTime::createFromFormat(CDatabase::DateFormatToPHP($arResult['SITE']['FORMAT_DATETIME']),$arResult["SCHEMAORG"]['TIMESTAMP_X']), 'c');
 
-/** Получение информации о пользователе */
+/** Получение информации об авторе */
 $arFilter = array("ID" => $arResult["SCHEMAORG"]['CREATED_BY']);
 $arParameters = array("FIELDS" => ["NAME", "LAST_NAME","PERSONAL_WWW"]);
 $users = CUser::GetList("id", "desc", $arFilter, $arParameters);
 while($user = $users->GetNext()) {
     $arResult["AUTHOR"] = $user;
     if(($arResult["AUTHOR"]["PERSONAL_WWW"] ?? '') !== '') {$arResult["AUTHOR"]["URL"] = 'https://' . end(explode('//', $arResult["AUTHOR"]["PERSONAL_WWW"],2));}
-    // echo '<pre>';
-    // echo 'SCHEMAORG with AUTHOR ';
-	// print_r($arResult["SCHEMAORG"]);
-    // echo '</pre>';
 }
 ?>
