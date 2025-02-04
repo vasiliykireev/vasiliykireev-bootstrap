@@ -60,8 +60,8 @@ $arTemplateParameters["DISPLAY_DETAIL_LINK"] = array(
 );
 /** ++ Текст ссылки на элемент*/
 if (($arCurrentValues['DISPLAY_DETAIL_LINK'] ?? 'N') === 'Y') {
-    $arTemplateParameters["DEFAULT_DETAIL_LINK_CAPTION"] = array(
-    	"NAME" => GetMessage("T_IBLOCK_DESC_DEFAULT_DETAIL_LINK_CAPTION"),
+    $arTemplateParameters["DETAIL_LINK_CAPTION"] = array(
+    	"NAME" => GetMessage("T_IBLOCK_DESC_DETAIL_LINK_CAPTION"),
     	"TYPE" => "STRING",
     	"DEFAULT" => GetMessage("T_IBLOCK_DESC_DEFAULT_DETAIL_LINK_CAPTION_VALUE"),
     );

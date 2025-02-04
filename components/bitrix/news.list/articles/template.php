@@ -182,7 +182,7 @@ if($arParams['SECTION_SET_CANONICAL_URL'] == "Y"){
                             <?if($isShowLinks):?>
                                 <div class="article__buttons text-center text-xl-start">
                             		<?if($isShowDetailLink):?>
-                            				<a class="btn btn-primary" href="<?=$arItem["DETAIL_PAGE_URL"]?>">Подробнее</a>
+                            			<a class="btn btn-primary" href="<?=$arItem["DETAIL_PAGE_URL"]?>"><?=$arParams['DETAIL_LINK_CAPTION']?></a>
                             		<?endif?>
                             		<?if($isShowExternalLink):?>
                                         <a
