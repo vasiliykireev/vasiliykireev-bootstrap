@@ -5,7 +5,7 @@ $APPLICATION->SetTitle(GetMessage("AUTH_TITLE"));
 <section class="auth mt-5 mb-5">
 	<div class="auth__container container">
 		<div class="auth__info-row row justify-content-center">
-			<div class="auth__info-col col-12 col-xl-4">
+			<div class="auth__info-col col-12 col-sm-auto col-xl-4">
 				<div class="auth__card card p-3 border-1">
 					<div class="auth__info text-center">
 						<h1><?=GetMessage("AUTH_TITLE")?></h1>
