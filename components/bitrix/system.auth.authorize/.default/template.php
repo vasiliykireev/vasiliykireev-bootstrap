@@ -1,19 +1,19 @@
 <?
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
+$APPLICATION->SetTitle(GetMessage("AUTH_TITLE"));
 ?>
-
 <section class="auth mt-5 mb-5">
 	<div class="auth__container container">
 		<div class="auth__info-row row justify-content-center">
-			<div class="auth__card col-auto col-md-4 card p-5">
+			<div class="auth__card col-auto col-xl-4 card p-3 border-0">
 				<div class="auth__info text-center">
-					<h1><?echo GetMessage("AUTH_TITLE")?></h1>
+					<h1><?=GetMessage("AUTH_TITLE")?></h1>
 					<p><?=GetMessage("AUTH_PLEASE_AUTH")?></p>
 				</div>
 
 				<?if (!empty($arParams["~AUTH_RESULT"])) {?>
-					<div class="auth__info alert alert-danger pb-1" role="alert">
-					<? ShowMessage($arParams["~AUTH_RESULT"]);?>
+					<div class="auth__info alert alert-danger" role="alert">
+					<?=GetMessage("AUTH_RESULT_MESSAGE")?>
 				</div>
 				<? } ?>
 
@@ -22,7 +22,6 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
 					<?ShowMessage($arResult['ERROR_MESSAGE']);?>
 					</div>
 				<? } ?>
-				
 
 				<form class="auth__form" name="form_auth" method="post" target="_top" action="<?=$arResult["AUTH_URL"]?>">
 					<input type="hidden" name="AUTH_FORM" value="Y" />
@@ -39,12 +38,13 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
 							<input type="text" class="auth__login-input form-control" id="login" name="USER_LOGIN" maxlength="255" value="<?=$arResult["LAST_LOGIN"]?>" placeholder="<?=GetMessage("AUTH_LOGIN")?>">
 							<label class="auth__login-label" for="login"><?=GetMessage("AUTH_LOGIN")?></label>
 						</div>
+
 						<div class="auth__password form-floating">
 							<input type="password" class="auth__password-input form-control" id="password" name="USER_PASSWORD" maxlength="255" autocomplete="off" placeholder="<?=GetMessage("AUTH_PASSWORD")?>">
 							<label class="auth__password-label" for="password"><?=GetMessage("AUTH_PASSWORD")?></label>
-<? /** To Do: сделать, чтобы надпись появлялась после нажатия на поле ввода пароля */?>
+							<?/* Не нужно показывать информацию о защищенность
 							<?if($arResult["SECURE_AUTH"]):?>
-								<div class="form-text bx-auth-secure" id="bx_auth_secure" style="display:none">
+								<div class="auth__password-caption form-text bx-auth-secure" id="bx_auth_secure" style="display:none">
 									<?echo GetMessage("AUTH_SECURE_NOTE")?>
 								</div>
 								<noscript>
@@ -53,10 +53,11 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
 								</div>
 								</noscript>
 								<script>
-								document.getElementById('bx_auth_secure').style.display = 'inline-block';
+								document.querySelector('.auth__password-input').addEventListener('focus', function (event) {
+									document.getElementById('bx_auth_secure').style.display = 'block';
+								})
 								</script>
-							<?endif?>
-
+							<?endif?>*/?>
 						</div>
 					</div>
 
@@ -96,7 +97,6 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
 							<noindex>
 								<p class="mb-1"><?=GetMessage("AUTH_FIRST_ONE")?>
 									<a href="<?=$arResult["AUTH_REGISTER_URL"]?>" rel="nofollow"><?=GetMessage("AUTH_REGISTER")?></a><br />
-									
 								</p>
 							</noindex>
 						<?endif?>
