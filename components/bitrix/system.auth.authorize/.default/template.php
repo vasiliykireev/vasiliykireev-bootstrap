@@ -14,13 +14,13 @@ $APPLICATION->SetTitle(GetMessage("AUTH_TITLE"));
 
 					<?if (!empty($arParams["~AUTH_RESULT"])) {?>
 						<div class="auth__info alert alert-danger" role="alert">
-						<?=GetMessage("AUTH_RESULT_MESSAGE")?>
-					</div>
+							<?=GetMessage("AUTH_RESULT_MESSAGE")?>
+						</div>
 					<? } ?>
 
 					<? if (!empty($arResult['ERROR_MESSAGE'])) { ?>
 						<div class="auth__alert alert alert-danger" role="alert">
-						<?ShowMessage($arResult['ERROR_MESSAGE']);?>
+							<?ShowMessage($arResult['ERROR_MESSAGE']);?>
 						</div>
 					<? } ?>
 
