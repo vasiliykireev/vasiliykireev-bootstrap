@@ -52,49 +52,107 @@ if($arResult["SHOW_SMS_FIELD"] == true)
 					<? //endif ?>
 
 					<noindex>
-					<?// if($arResult["SHOW_SMS_FIELD"] == true):?>
-						<form method="post" class="register__form-sms sms" action="<?=$arResult["AUTH_URL"]?>" name="regform">
-							<input type="hidden" name="SIGNED_DATA" value="<?=htmlspecialcharsbx($arResult["SIGNED_DATA"])?>" />
-							<div class="sms__form-floating form-floating mb-3">
-								<input type="text" class="sms__input form-control" size="30" name="SMS_CODE" value="<?=htmlspecialcharsbx($arResult["SMS_CODE"])?>" autocomplete="off"  placeholder="<?echo GetMessage("main_register_sms_code")?>">
-								<label class="sms__label" for="login"><?echo GetMessage("main_register_sms_code")?></label>
-							</div>
-							<div class="sms__submit form-submit text-center mb-3">
-								<input type="submit" class="sms__submit-button btn btn-primary w-100" name="code_submit_button" value="<?echo GetMessage("main_register_sms_send")?>" />
-							</div>
-						</form>
+						<?if($arResult["SHOW_SMS_FIELD"] == true):?>
+							<form method="post" class="register__form-sms sms" action="<?=$arResult["AUTH_URL"]?>" name="regform">
+								<input type="hidden" name="SIGNED_DATA" value="<?=htmlspecialcharsbx($arResult["SIGNED_DATA"])?>" />
+								<div class="sms__form-floating form-floating mb-3">
+									<input type="text" class="sms__input form-control" size="30" name="SMS_CODE" value="<?=htmlspecialcharsbx($arResult["SMS_CODE"])?>" autocomplete="off"  placeholder="<?echo GetMessage("main_register_sms_code")?>">
+									<label class="sms__label" for="login"><?echo GetMessage("main_register_sms_code")?></label>
+								</div>
+								<div class="sms__submit form-submit text-center mb-3">
+									<input type="submit" class="sms__submit-button btn btn-primary w-100" name="code_submit_button" value="<?echo GetMessage("main_register_sms_send")?>" />
+								</div>
+							</form>
 
-						<script>
-						new BX.PhoneAuth({
-							containerId: 'bx_register_resend',
-							errorContainerId: 'bx_register_error',
-							interval: <?=$arResult["PHONE_CODE_RESEND_INTERVAL"]?>,
-							data:
-								<?= Json::encode([
-									'signedData' => $arResult["SIGNED_DATA"],
-								]) ?>,
-							onError:
-								function(response)
-								{
-									var errorDiv = BX('bx_register_error');
-									var errorNode = BX.findChildByClassName(errorDiv, 'errortext');
-									errorNode.innerHTML = '';
-									for(var i = 0; i < response.errors.length; i++)
+							<script>
+							new BX.PhoneAuth({
+								containerId: 'bx_register_resend',
+								errorContainerId: 'bx_register_error',
+								interval: <?=$arResult["PHONE_CODE_RESEND_INTERVAL"]?>,
+								data:
+									<?= Json::encode([
+										'signedData' => $arResult["SIGNED_DATA"],
+									]) ?>,
+								onError:
+									function(response)
 									{
-										errorNode.innerHTML = errorNode.innerHTML + BX.util.htmlspecialchars(response.errors[i].message) + '<br>';
+										var errorDiv = BX('bx_register_error');
+										var errorNode = BX.findChildByClassName(errorDiv, 'errortext');
+										errorNode.innerHTML = '';
+										for(var i = 0; i < response.errors.length; i++)
+										{
+											errorNode.innerHTML = errorNode.innerHTML + BX.util.htmlspecialchars(response.errors[i].message) + '<br>';
+										}
+										errorDiv.style.display = '';
 									}
-									errorDiv.style.display = '';
-								}
-						});
-						</script>
-						<? /* Не понимаю, как работают эти два div, но, видимо, они нужны для SMS-авторизации... если она работает */?>
-						<div role="alert" id="bx_register_error" <?/*style="display:none"*/?>><?ShowError("error")?></div>
-						<div role="alert" id="bx_register_resend"></div>
+							});
+							</script>
+							<? /* Не понимаю, как работают эти два div, но, видимо, они нужны для SMS-авторизации... если она работает */?>
+							<div role="alert" id="bx_register_error" <?/*style="display:none"*/?>><?ShowError("error")?></div>
+							<div role="alert" id="bx_register_resend"></div>
 
-					<?//elseif(!$arResult["SHOW_EMAIL_SENT_CONFIRMATION"]):?>
+						<?elseif(!$arResult["SHOW_EMAIL_SENT_CONFIRMATION"]):?>
+							<form method="post" class="register__form-login" action="<?=$arResult["AUTH_URL"]?>" name="bform" enctype="multipart/form-data">
+								<input type="hidden" name="AUTH_FORM" value="Y" />
+								<input type="hidden" name="TYPE" value="REGISTRATION" />
 
+								<div class="register__names mb-4">
+									<div class="register__name name form-floating mb-2">
+										<input class="name__input form-control" id="name" type="text" name="USER_NAME" maxlength="50" value="<?=$arResult["USER_NAME"]?>"  placeholder="<?=GetMessage("AUTH_NAME")?>">
+										<label class="name__label" for="name"><?=GetMessage("AUTH_NAME")?></label>
+									</div>
+									<div class="register__last-name last-name form-floating mb-2">
+										<input class="last-name__input form-control" id="last-name" type="text" name="USER_LAST_NAME" maxlength="50" value="<?=$arResult["USER_LAST_NAME"]?>"  placeholder="<?=GetMessage("AUTH_LAST_NAME")?>">
+										<label class="last-name__label" for="last-name"><?=GetMessage("AUTH_LAST_NAME")?></label>
+									</div>
+								</div>
+								<div class="register__login-info mb-4">
+									<div class="register__login login form-floating mb-2">
+										<input class="login__input form-control" id="login" type="text" name="USER_LOGIN" maxlength="50" value="<?=$arResult["USER_LOGIN"]?>" placeholder="<?=GetMessage("AUTH_LOGIN")?>">
+										<label class="login__label" for="login"><?=GetMessage("AUTH_LOGIN")?></label>
+										<div class="login__caption form-text"><?=GetMessage("AUTH_LOGIN_MIN")?></div>
+									</div>
+									<?if($arResult["EMAIL_REGISTRATION"]):?>
+										<div class="register__email email form-floating mb-2">
+											<input class="email__input form-control" id="email" type="text" name="USER_EMAIL" maxlength="255" value="<?=$arResult["USER_EMAIL"]?>" placeholder="<?=GetMessage("AUTH_EMAIL")?>" <?if($arResult["EMAIL_REQUIRED"]):?>required<?endif?>>
+											<label class="email__label" for="email"><?=GetMessage("AUTH_EMAIL")?></label>
+										</div>
+									<?endif?>
+									<?if($arResult["PHONE_REGISTRATION"]):?>
+										<div class="register__phone phone form-floating mb-2">
+											<input class="phome__input form-control" id="phone" type="text" name="USER_PHONE_NUMBER" maxlength="255" value="<?=$arResult["USER_PHONE_NUMBER"]?>" placeholder="<?=GetMessage("main_register_phone_number")?>" <?if($arResult["PHONE_REQUIRED"]):?>required<?endif?>>
+											<label class="phone__label" for="email"><?=GetMessage("main_register_phone_number")?></label>
+										</div>
+									<?endif?>
+								</div>
+								<div class="register__passwords mb-4">
+									<div class="register__password password form-floating mb-2">
+										<input class="password__input form-control" id="password" type="password" name="USER_PASSWORD" maxlength="255" value="<?=$arResult["USER_PASSWORD"]?>"  autocomplete="off" placeholder="<?=GetMessage("AUTH_PASSWORD_REQ")?>">
+										<label class="password__label" for="password"><?=GetMessage("AUTH_PASSWORD_REQ")?></label>
+									</div>
 
+									<? /* Не нужно показывать информацию о защищенности. Код не стилизован!
+									if($arResult["SECURE_AUTH"]):?>
+										<span class="bx-auth-secure" id="bx_auth_secure" title="<?echo GetMessage("AUTH_SECURE_NOTE")?>" style="display:none">
+											<div class="bx-auth-secure-icon"></div>
+										</span>
+										<noscript>
+										<span class="bx-auth-secure" title="<?echo GetMessage("AUTH_NONSECURE_NOTE")?>">
+											<div class="bx-auth-secure-icon bx-auth-secure-unlock"></div>
+										</span>
+										</noscript>
+										<script>
+										document.getElementById('bx_auth_secure').style.display = 'inline-block';
+										</script>
+									<?endif */?>
+									<div class="register__password-confirm password-confirm form-floating mb-2">
+										<input class="password-confirm__input form-control" id="password-confirm" type="password" name="USER_CONFIRM_PASSWORD" maxlength="255" value="<?=$arResult["USER_CONFIRM_PASSWORD"]?>" autocomplete="off" placeholder="<?=GetMessage("AUTH_LOGIN")?>">
+										<label class="password-confirm__label" for="password-confirm"><?=GetMessage("AUTH_CONFIRM")?></label>
+										<div class="password__caption form-text"><?echo $arResult["GROUP_POLICY"]["PASSWORD_REQUIREMENTS"];?></div>
+									</div>
+								</div>
 
+						<?endif?>
 					</noindex>
 
 				</div>
