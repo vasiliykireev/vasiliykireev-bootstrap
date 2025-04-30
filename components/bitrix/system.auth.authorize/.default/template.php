@@ -35,15 +35,15 @@ $APPLICATION->SetTitle(GetMessage("AUTH_TITLE"));
 						<?endforeach?>
 
 						<div class="auth__login-password mb-3">
-							<div class="auth__login form-floating mb-2">
-								<input type="text" class="auth__login-input form-control" id="login" name="USER_LOGIN" maxlength="255" value="<?=$arResult["LAST_LOGIN"]?>" placeholder="<?=GetMessage("AUTH_LOGIN")?>">
-								<label class="auth__login-label" for="login"><?=GetMessage("AUTH_LOGIN")?></label>
+							<div class="auth__login login form-floating mb-2">
+								<input type="text" class="login__input form-control" id="login" name="USER_LOGIN" maxlength="255" value="<?=$arResult["LAST_LOGIN"]?>" placeholder="<?=GetMessage("AUTH_LOGIN")?>">
+								<label class="login__label" for="login"><?=GetMessage("AUTH_LOGIN")?></label>
 							</div>
 
-							<div class="auth__password form-floating">
-								<input type="password" class="auth__password-input form-control" id="password" name="USER_PASSWORD" maxlength="255" autocomplete="off" placeholder="<?=GetMessage("AUTH_PASSWORD")?>">
-								<label class="auth__password-label" for="password"><?=GetMessage("AUTH_PASSWORD")?></label>
-								<?/* Не нужно показывать информацию о защищенность
+							<div class="auth__password password form-floating">
+								<input type="password" class="password__input form-control" id="password" name="USER_PASSWORD" maxlength="255" autocomplete="off" placeholder="<?=GetMessage("AUTH_PASSWORD")?>">
+								<label class="password__label" for="password"><?=GetMessage("AUTH_PASSWORD")?></label>
+								<?/* Не нужно показывать информацию о защищенности. Код стилизован
 								<?if($arResult["SECURE_AUTH"]):?>
 									<div class="auth__password-caption form-text bx-auth-secure" id="bx_auth_secure" style="display:none">
 										<?echo GetMessage("AUTH_SECURE_NOTE")?>
