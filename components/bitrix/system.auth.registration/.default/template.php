@@ -247,8 +247,8 @@ if($arResult["SHOW_SMS_FIELD"] == true) {
 							</div>*/?>
 								
 							<? /* Авторизация */ ?>
-							<div class="bx-authform-link-container">
-								<a href="<?=$arResult["AUTH_AUTH_URL"]?>" rel="nofollow"><b><?=GetMessage("AUTH_AUTH")?></b></a>
+							<div class="auth__links">
+								<p class="mb-1"><?=GetMessage("AUTH_AUTH_TITLE")?> <a href="<?=$arResult["AUTH_AUTH_URL"]?>" rel="nofollow"><?=GetMessage("AUTH_AUTH")?></a></p>
 							</div>
 								
 						</form>

@@ -8,6 +8,7 @@ $MESS["AUTH_CONFIRM"] = "Подтверждение пароля";
 $MESS["CAPTCHA_REGF_TITLE"] = "Защита от автоматической регистрации";
 $MESS["CAPTCHA_REGF_PROMT"] = "Введите символы с картинки";
 $MESS["AUTH_REQ"] = "Обязательные поля";
+$MESS["AUTH_AUTH_TITLE"] = "Есть аккаунт?";
 $MESS["AUTH_AUTH"] = "Авторизация";
 $MESS["AUTH_PASSWORD_REQ"] = "Пароль";
 $MESS["AUTH_EMAIL_WILL_BE_SENT"] = "На указанный в форме e-mail придет запрос на подтверждение регистрации.";
