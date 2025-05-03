@@ -29,11 +29,43 @@ else
 	$linkClassName .= '-link';
 }
 ?>
-<label data-bx-user-consent="<?=htmlspecialcharsbx($config)?>" class="main-user-consent-request">
-	<input type="checkbox" value="Y" <?=($arParams['IS_CHECKED'] ? 'checked' : '')?> name="<?=htmlspecialcharsbx($arParams['INPUT_NAME'])?>">
-	<span class="<?=$linkClassName?>"><?=$label?></span>
-</label>
-<div data-bx-template="main-user-consent-request-loader" style="display: none;">
+<div data-bx-user-consent="<?=htmlspecialcharsbx($config)?>" class="form-check main-user-consent-request" data-bs-toggle="modal" data-bs-target="#consentRequest">
+	<input class="form-check-input" id="consent-request" type="checkbox" value="Y" <?=($arParams['IS_CHECKED'] ? 'checked' : '')?> name="<?=htmlspecialcharsbx($arParams['INPUT_NAME'])?>" required>
+	<label for="consent-request" class="form-check-label <?=$linkClassName?>"><?=$label?></label>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="consentRequest" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel"><?=$arResult["NAME"]?></h1>
+      </div> -->
+      <div class="modal-body">
+	  <?=$arResult['CONFIG']['text'];?>
+      </div>
+      <div class="modal-footer">
+	  	<button type="button" class="modal__accept btn btn-primary" data-bs-dismiss="modal"><?=GetMessage("MAIN_USER_CONSENT_REQUEST_BTN_ACCEPT")?></button>
+        <button type="button" class="modal__reject btn btn-secondary" data-bs-dismiss="modal"><?=GetMessage("MAIN_USER_CONSENT_REQUEST_BTN_REJECT")?></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+	let consentRequest = document.querySelector("#consent-request");
+	let modalAcceptButton = document.querySelector(".modal__accept");
+	modalAcceptButton.addEventListener('click', function () {
+		consentRequest.checked = true;
+	});
+	let modalRejectButton = document.querySelector(".modal__reject");
+	modalRejectButton.addEventListener('click', function () {
+		consentRequest.checked = false;
+	})
+
+</script>
+
+<?/* <div data-bx-template="main-user-consent-request-loader" style="display: none;">
 	<div class="main-user-consent-request-popup">
 		<div class="main-user-consent-request-popup-cont">
 			<div data-bx-head="" class="main-user-consent-request-popup-header"></div>
@@ -60,3 +92,15 @@ else
 		</div>
 	</div>
 </div>
+*/?>
+<?/*
+<pre> arParams
+
+	<?print_r($arParams);?>
+</pre>
+
+<pre> arResult
+
+	<?print_r($arResult);?>
+</pre>
+*/?>
