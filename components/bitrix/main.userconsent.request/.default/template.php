@@ -30,12 +30,9 @@ else
 }
 ?>
 <label data-bx-user-consent="<?=htmlspecialcharsbx($config)?>" class="main-user-consent-request">
-	<input class="form-check-input" type="checkbox" value="Y" <?=($arParams['IS_CHECKED'] ? 'checked' : '')?> name="<?=htmlspecialcharsbx($arParams['INPUT_NAME'])?>">
-	<span class="form-check-label <?=$linkClassName?>"><?=$label?></span>
+	<input type="checkbox" value="Y" <?=($arParams['IS_CHECKED'] ? 'checked' : '')?> name="<?=htmlspecialcharsbx($arParams['INPUT_NAME'])?>">
+	<span class="<?=$linkClassName?>"><?=$label?></span>
 </label>
-
-<? /* Добавить модальное окно */ ?>
-
 <div data-bx-template="main-user-consent-request-loader" style="display: none;">
 	<div class="main-user-consent-request-popup">
 		<div class="main-user-consent-request-popup-cont">
