@@ -32,22 +32,22 @@ if($arResult["SHOW_SMS_FIELD"] == true) {
 						<h1><?=GetMessage("AUTH_REGISTER")?></h1>
 					</div>
 
-					<?//if(!empty($arParams["~AUTH_RESULT"]["MESSAGE"])):
+					<?if(!empty($arParams["~AUTH_RESULT"]["MESSAGE"])):
 						$message = str_replace(array("<br>", "<br />"), "\n", $arParams["~AUTH_RESULT"]["MESSAGE"]);?>
 						<div class="register__auth-result-message alert <?=($arParams["~AUTH_RESULT"]["TYPE"] == "OK"? "alert-success":"alert-danger")?>"><?=nl2br(htmlspecialcharsbx($message))?></div>
-					<?//endif?>
+					<?endif?>
 					
-					<?//if($arResult["SHOW_EMAIL_SENT_CONFIRMATION"]):?>
+					<?if($arResult["SHOW_EMAIL_SENT_CONFIRMATION"]):?>
 						<div class="register__email-sent-confirmation alert alert-success"><?echo GetMessage("AUTH_EMAIL_SENT")?></div>
-					<?//endif?>
+					<?endif?>
 					
-					<?//if(!$arResult["SHOW_EMAIL_SENT_CONFIRMATION"] && $arResult["USE_EMAIL_CONFIRMATION"] === "Y"):?>
+					<?if(!$arResult["SHOW_EMAIL_SENT_CONFIRMATION"] && $arResult["USE_EMAIL_CONFIRMATION"] === "Y"):?>
 						<div class="register__email-confirmation alert alert-warning"><?echo GetMessage("AUTH_EMAIL_WILL_BE_SENT")?></div>
-					<?//endif?>
+					<?endif?>
 
-					<?// if($arResult["SHOW_SMS_FIELD"] == true):?>
+					<?if($arResult["SHOW_SMS_FIELD"] == true):?>
 
-						<div id="bx_register_error" <?/*style="display:none"*/?> class="alert alert-danger"></div>
+						<div id="bx_register_error" style="display:none" class="alert alert-danger"></div>
 
 						<div id="bx_register_resend"></div>
 
@@ -87,7 +87,7 @@ if($arResult["SHOW_SMS_FIELD"] == true) {
 								}
 						});
 						</script>
-					<?//elseif(!$arResult["SHOW_EMAIL_SENT_CONFIRMATION"]):?>
+					<?elseif(!$arResult["SHOW_EMAIL_SENT_CONFIRMATION"]):?>
 
 						<form method="post" action="<?=$arResult["AUTH_URL"]?>" name="bform" enctype="multipart/form-data">
 							<input type="hidden" name="AUTH_FORM" value="Y" />
@@ -212,7 +212,7 @@ if($arResult["SHOW_SMS_FIELD"] == true) {
 								</div>
 							</div>
 						<?endif*/?>
-							<div class="register__agreement form-check mb-3">
+							<div class="register__agreement mb-3">
 								<div class="bx-authform-input-container">
 									<?$APPLICATION->IncludeComponent("bitrix:main.userconsent.request", "",
 										array(
@@ -257,7 +257,7 @@ if($arResult["SHOW_SMS_FIELD"] == true) {
 						document.bform.USER_NAME.focus();
 						</script>
 
-						<?//endif?>
+						<?endif?>
 
                 </div>
             </div>
@@ -265,3 +265,9 @@ if($arResult["SHOW_SMS_FIELD"] == true) {
     </div>
 </section>
 </noindex>
+<?/*
+<pre>
+	arResult
+<?print_r($arResult)?>
+</pre>
+*/?>
