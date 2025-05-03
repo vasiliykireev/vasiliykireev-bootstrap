@@ -18,6 +18,5 @@ $MESS["AUTH_SECURE_NOTE"] = "Перед отправкой формы парол
 $MESS["AUTH_NONSECURE_NOTE"] = "Пароль будет отправлен в открытом виде. Включите JavaScript в браузере, чтобы зашифровать пароль перед отправкой.";
 $MESS["main_register_sms_code"] = "Код подтверждения из СМС";
 $MESS["main_register_sms_send"] = "Отправить";
-$MESS["main_register_phone_number"] = "Номер телефона:";
-$MESS["AUTH_RESULT_MESSAGE"] = "Неверный логин или пароль!";
+$MESS["main_register_phone_number"] = "Номер телефона";
 ?>
