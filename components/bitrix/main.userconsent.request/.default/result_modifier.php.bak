@@ -1,0 +1,73 @@
+<?
+
+use Bitrix\Main\Localization\Loc;
+use Bitrix\Main\ErrorCollection;
+use Bitrix\Main\Error;
+use Bitrix\Main\UserConsent\Agreement; // https://dev.1c-bitrix.ru/api_d7/bitrix/main/userconsent/agreement/index.php
+
+if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true)
+{
+	die();
+}
+
+//Loc::loadMessages(__FILE__);
+
+
+		$agreement = new Agreement($arParams['ID'], $arParams['REPLACE']);
+		// if (!$agreement->isExist() || !$agreement->isActive())
+		// {
+		// 	$this->errors->setError(new Error(Loc::getMessage('MAIN_USER_CONSENT_REQUEST_COMP_CLASS_ERR_ID')));
+		// 	return false;
+		// }
+		
+		$agreementData = $agreement->getData();
+        // echo "<pre> agreementData ";
+        // print_r($agreementData);
+        // echo "</pre>";
+
+        // $agreementFields = $agreement->getFieldValues();
+        // echo "<pre> agreementFields ";
+        // print_r($agreementFields);
+        // echo "</pre>";
+
+        $arResult['NAME'] = $agreementData['NAME'];
+		// $arResult['INPUT_LABEL'] = $agreement->getLabelText();
+        
+		// $arResult['LABEL'] = $agreement->getLabel();
+		// $arResult['URL'] = $agreement->getUrl();
+
+		// if (isset($this->arParams['REPLACE']['fields']) && is_array($this->arParams['REPLACE']['fields']))
+		// {
+		// 	$this->arParams['REPLACE']['fields'] = $this->prepareResultReplaceFields($this->arParams['REPLACE']['fields']);
+		// }
+
+		// $config = array(
+		// 	'id' => $this->arParams['ID'],
+		// 	'sec' => $agreementData['SECURITY_CODE'],
+		// 	'autoSave' => $this->arParams['AUTO_SAVE'],
+		// 	'actionUrl' => $this->getPath() . '/ajax.php',
+		// 	'replace' => $this->arParams['REPLACE'],
+		// 	'url' => $this->arResult['URL'],
+		// );
+
+		// if ($this->arParams['IS_LOADED'])
+		// {
+		// 	$config['text'] = $agreement->getHtml();
+		// }
+		// if ($this->arParams['SUBMIT_EVENT_NAME'])
+		// {
+		// 	$config['submitEventName'] = $this->arParams['SUBMIT_EVENT_NAME'];
+		// }
+		// if ($this->arParams['ORIGIN_ID'])
+		// {
+		// 	$config['originId'] = $this->arParams['ORIGIN_ID'];
+		// }
+		// if ($this->arParams['ORIGINATOR_ID'])
+		// {
+		// 	$config['originatorId'] = $this->arParams['ORIGINATOR_ID'];
+		// }
+
+		// $this->arResult['CONFIG'] = $config;
+
+		return true;
+    ?>
