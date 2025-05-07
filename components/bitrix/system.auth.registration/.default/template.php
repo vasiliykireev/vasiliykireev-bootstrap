@@ -28,7 +28,7 @@ if($arResult["SHOW_SMS_FIELD"] == true) {
 		<div class="register__info-row row justify-content-center">
 			<div class="register__info-col col-12 col-sm-auto col-xl-4">
 				<div class="__card card p-3 border-1">
-					<div class="register__info text-center">
+					<div class="register__info text-center mb-3">
 						<h1><?=GetMessage("AUTH_REGISTER")?></h1>
 					</div>
 
