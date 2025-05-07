@@ -10,8 +10,6 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true)
  * @var array $arResult
  */
 
-//one css for all system.auth.* forms
-$APPLICATION->SetAdditionalCSS("/bitrix/css/main/system.auth/flat/style.css");
 ?>
 
 <section class="restore mt-5 mb-5">
@@ -67,9 +65,7 @@ $APPLICATION->SetAdditionalCSS("/bitrix/css/main/system.auth/flat/style.css");
 							<input type="submit" class="auth__submit-button btn btn-primary w-100" name="send_account_info" value="<?=GetMessage("AUTH_SEND")?>">
 						</div>
 						<div class="auth__links">
-							<p class="mb-1">
-								<a href="<?=$arResult["AUTH_AUTH_URL"]?>"><b><?=GetMessage("AUTH_AUTH")?></b></a>
-							</p>
+							<p class="mb-1"><?=GetMessage("AUTH_AUTH_TITLE")?> <a href="<?=$arResult["AUTH_AUTH_URL"]?>" rel="nofollow"><?=GetMessage("AUTH_AUTH")?></a></p>
 						</div>
 					</form>
 				</div>
@@ -81,16 +77,16 @@ $APPLICATION->SetAdditionalCSS("/bitrix/css/main/system.auth/flat/style.css");
 
 
 
-<div class="bx-authform">
+<?/*<div class="bx-authform">
 
-<?/*if(!empty($arParams["~AUTH_RESULT"]["MESSAGE"])):
+<?if(!empty($arParams["~AUTH_RESULT"]["MESSAGE"])):
 	$text = str_replace(array("<br>", "<br />"), "\n", $arParams["~AUTH_RESULT"]["MESSAGE"]);?>
 	<div class="alert <?=($arParams["~AUTH_RESULT"]["TYPE"] == "OK"? "alert-success":"alert-danger")?>"><?=nl2br(htmlspecialcharsbx($text))?></div>
-<?endif*/?>
+<?endif?>
 
 	<h3 class="bx-title"><?=GetMessage("AUTH_GET_CHECK_STRING")?></h3>
 
-	<?/*<p class="bx-authform-content-container"><?=GetMessage("AUTH_FORGOT_PASSWORD_2")?></p>*/?>
+	<p class="bx-authform-content-container"><?=GetMessage("AUTH_FORGOT_PASSWORD_2")?></p>
 
 	<form name="bform" method="post" target="_top" action="<?=$arResult["AUTH_URL"]?>">
 <?if($arResult["BACKURL"] <> ''):?>
@@ -143,11 +139,9 @@ $APPLICATION->SetAdditionalCSS("/bitrix/css/main/system.auth/flat/style.css");
 
 </div>
 
+*/?>
+
 <script>
 document.bform.onsubmit = function(){document.bform.USER_EMAIL.value = document.bform.USER_LOGIN.value;};
 document.bform.USER_LOGIN.focus();
 </script>
-
-<pre>
-<?print_r($arResult)?>
-</pre>
