@@ -89,16 +89,3 @@ switch($arResult["MESSAGE_CODE"])
 <?elseif(!$USER->IsAuthorized()):?>
 	<?$APPLICATION->IncludeComponent("bitrix:system.auth.authorize", ".default", array());?>
 <?endif?>
-
-<div class="bx-authform-formgroup-container">
-							<div class="bx-authform-label-container"><?echo GetMessage("CT_BSAC_LOGIN")?></div>
-							<div class="bx-authform-input-container">
-								<input type="text" name="<?echo $arParams["LOGIN"]?>" maxlength="50" value="<?echo $arResult["LOGIN"]?>" />
-							</div>
-						</div>
-						<div class="bx-authform-formgroup-container">
-							<div class="bx-authform-label-container"><?echo GetMessage("CT_BSAC_CONFIRM_CODE")?></div>
-							<div class="bx-authform-input-container">
-								<input type="text" name="<?echo $arParams["CONFIRM_CODE"]?>" maxlength="50" value="<?echo $arResult["CONFIRM_CODE"]?>" />
-							</div>
-						</div>
