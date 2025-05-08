@@ -28,7 +28,7 @@ if($arResult["SHOW_SMS_FIELD"] == true) {
 		<div class="register__info-row row justify-content-center">
 			<div class="register__info-col col-12 col-sm-auto col-xl-4">
 				<div class="__card card p-3 border-1">
-					<div class="register__info text-center mb-3">
+					<div class="register__info text-center mb-4">
 						<h1><?=GetMessage("AUTH_REGISTER")?></h1>
 					</div>
 
@@ -54,12 +54,12 @@ if($arResult["SHOW_SMS_FIELD"] == true) {
 						<form method="post" action="<?=$arResult["AUTH_URL"]?>" name="regform">
 							<input type="hidden" name="SIGNED_DATA" value="<?=htmlspecialcharsbx($arResult["SIGNED_DATA"])?>" />
 
-							<div class="register__sms mb-3">
+							<div class="register__sms mb-4">
 								<div class="register__sms-code sms-code form-floating mb-2">
 									<input class="sms-code__input form-control" id="sms-code" type="text" name="SMS_CODE" maxlength="255" value="<?=htmlspecialcharsbx($arResult["SMS_CODE"] ?? '')?>" autocomplete="off" placeholder="<?echo GetMessage("main_register_sms_code")?>" required>
 									<label class="sms-code__label" for="login"><?echo GetMessage("main_register_sms_code")?></label>
 								</div>
-								<div class="sms__submit form-submit text-center mb-3">
+								<div class="sms__submit form-submit text-center mb-4">
 									<input type="submit" class="sms__submit-button btn btn-primary w-100" name="code_submit_button" value="<?echo GetMessage("main_register_sms_send")?>" />
 								</div>
 							</div>
@@ -184,12 +184,12 @@ if($arResult["SHOW_SMS_FIELD"] == true) {
 							<?endif;*/?>
 
 							<?if ($arResult["USE_CAPTCHA"] == "Y"):?>
-								<div class="register__captcha captcha mb-3">
+								<div class="register__captcha captcha mb-4">
 									<div class="captcha__picture">
 											<input type="hidden" name="captcha_sid" value="<?echo $arResult["CAPTCHA_CODE"]?>" />
 											<img class="" src="/bitrix/tools/captcha.php?captcha_sid=<?echo $arResult["CAPTCHA_CODE"]?>" width="180" height="40" alt="CAPTCHA" />
 										</div>
-									<div class="captcha__field form-floating mt-2 mb-3">
+									<div class="captcha__field form-floating mt-2 mb-4">
 										<input type="text" class="captcha__input form-control" id="captcha" type="text" name="captcha_word" maxlength="50" value="" size="15" autocomplete="off" placeholder="<?=GetMessage("CAPTCHA_REGF_PROMT")?>" required>
 										<label for="captcha" class="captcha__label"><?=GetMessage("CAPTCHA_REGF_PROMT")?></label>
 									</div>
@@ -212,7 +212,7 @@ if($arResult["SHOW_SMS_FIELD"] == true) {
 								</div>
 							</div>
 						<?endif*/?>
-							<div class="register__agreement mb-3">
+							<div class="register__agreement mb-4">
 								<div class="bx-authform-input-container">
 									<?$APPLICATION->IncludeComponent("bitrix:main.userconsent.request", "",
 										array(
@@ -238,7 +238,7 @@ if($arResult["SHOW_SMS_FIELD"] == true) {
 								</div>
 							</div>
 
-							<div class="register__submit form-submit text-center mb-3">
+							<div class="register__submit form-submit text-center mb-4">
 								<input type="submit" class="register__submit-button btn btn-primary w-100" name="Register" value="<?=GetMessage("AUTH_REGISTER")?>">
 							</div>
 								

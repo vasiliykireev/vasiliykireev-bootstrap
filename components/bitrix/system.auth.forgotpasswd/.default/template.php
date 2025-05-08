@@ -17,7 +17,7 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true)
 		<div class="restore__info-row row justify-content-center">
 			<div class="restore__info-col col-12 col-sm-auto col-xl-4">
 				<div class="restore__card card p-3 border-1">
-					<div class="restore__info text-center mb-3">
+					<div class="restore__info text-center mb-4>
 						<h1><?=GetMessage("RESTORE_TITLE")?></h1>
 					</div>
 					<?if(!empty($arParams["~AUTH_RESULT"]["MESSAGE"])):
@@ -31,7 +31,7 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true)
 						<input type="hidden" name="AUTH_FORM" value="Y">
 						<input type="hidden" name="TYPE" value="SEND_PWD">
 						<?if(!$arResult["PHONE_REGISTRATION"]):?>
-						<div class="restore__login-password mb-3">
+						<div class="restore__login-password mb-4">
 							<div class="restore__login login form-floating mb-2">
 								<input type="text" class="login__input form-control" id="login" name="USER_LOGIN" maxlength="255" value="<?=$arResult["USER_LOGIN"]?>" placeholder="<?echo GetMessage("AUTH_LOGIN_EMAIL")?>">
 								<label class="login__label" for="login"><?echo GetMessage("AUTH_LOGIN_EMAIL")?></label>
@@ -41,7 +41,7 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true)
 						<input type="hidden" name="USER_EMAIL" />
 						<?endif?>
 						<?if($arResult["PHONE_REGISTRATION"]):?>
-						<div class="restore__sms mb-3">
+						<div class="restore__sms mb-4">
 							<div class="restore__phone phone form-floating mb-2">
 								<input type="text" class="phone__input form-control" id="phone" type="text" name="USER_PHONE_NUMBER" maxlength="255" value="<?=$arResult["USER_PHONE_NUMBER"]?>" placeholder="<?echo GetMessage("forgot_pass_phone_number")?>">
 								<label class="phone__label" for="phone"><?echo GetMessage("forgot_pass_phone_number")?></label>
@@ -50,18 +50,18 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true)
 						</div>
 						<?endif?>
 						<?if ($arResult["USE_CAPTCHA"]):?>
-							<div class="restore__use-captcha mb-3">
+							<div class="restore__use-captcha mb-4">
 								<div class="restore__captcha-picture">
 										<input type="hidden" name="captcha_sid" value="<?=$arResult["CAPTCHA_CODE"]?>" />
 										<img class="" src="/bitrix/tools/captcha.php?captcha_sid=<?=$arResult["CAPTCHA_CODE"]?>" width="180" height="40" alt="CAPTCHA" />
 									</div>
-								<div class="restore__captcha captcha form-floating mt-2 mb-3">
+								<div class="restore__captcha captcha form-floating mt-2 mb-4">
 									<input type="text" class="captcha__input form-control" id="captcha" type="text" name="captcha_word" maxlength="50" value="" size="15" autocomplete="off" placeholder="<?=GetMessage("system_auth_captcha")?>">
 									<label for="captcha" class="captcha__label"><?=GetMessage("system_auth_captcha")?></label>
 								</div>
 							</div>
 						<?endif?>
-						<div class="auth__submit form-submit text-center mb-3">
+						<div class="auth__submit form-submit text-center mb-4">
 							<input type="submit" class="auth__submit-button btn btn-primary w-100" name="send_account_info" value="<?=GetMessage("AUTH_SEND")?>">
 						</div>
 						<div class="auth__links">
