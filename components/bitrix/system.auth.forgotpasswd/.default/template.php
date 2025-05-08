@@ -24,7 +24,9 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true)
 						$text = str_replace(array("<br>", "<br />"), "\n", $arParams["~AUTH_RESULT"]["MESSAGE"]);?>
 						<div class="restore__alert alert <?=($arParams["~AUTH_RESULT"]["TYPE"] == "OK"? "alert-success":"alert-danger")?>"><?=nl2br(htmlspecialcharsbx($text))?></div>
 					<?endif?>
-					<?//if(!$arParams["~AUTH_RESULT"]["TYPE"] === "OK"):?>
+					<?if($arParams["~AUTH_RESULT"]["TYPE"] == "OK"):?>
+						<?/** В случае успеха форма скрывается */ ?>
+					<?else:?>
 						<form class="restore__form" name="bform" method="post" target="_top" action="<?=$arResult["AUTH_URL"]?>">
 							<?if($arResult["BACKURL"] <> ''):?>
 									<input type="hidden" name="backurl" value="<?=$arResult["BACKURL"]?>" />
@@ -68,7 +70,7 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true)
 								<p class="mb-1"><?=GetMessage("AUTH_AUTH_TITLE")?> <a href="<?=$arResult["AUTH_AUTH_URL"]?>" rel="nofollow"><?=GetMessage("AUTH_AUTH")?></a></p>
 							</div>
 						</form>
-					<?//endif?>
+					<?endif?>
 				</div>
 			</div>
 		</div>
