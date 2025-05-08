@@ -89,7 +89,7 @@ switch($arResult["MESSAGE_CODE"])
 <?elseif(!$USER->IsAuthorized()):?>
 	<?if($arResult["MESSAGE_TEXT"] <> ''):
 		$text = str_replace(array("<br>", "<br />"), "\n", $arResult["MESSAGE_TEXT"]);?>
-		<section class="register mt-5 mb-2">
+		<section class="register mt-5">
 			<div class="register__container container">
 				<div class="register__row row justify-content-center">
 					<div class="register__col col-auto">
