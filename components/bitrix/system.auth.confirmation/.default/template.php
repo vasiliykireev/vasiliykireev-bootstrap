@@ -89,13 +89,15 @@ switch($arResult["MESSAGE_CODE"])
 <?elseif(!$USER->IsAuthorized()):?>
 	<?if($arResult["MESSAGE_TEXT"] <> ''):
 		$text = str_replace(array("<br>", "<br />"), "\n", $arResult["MESSAGE_TEXT"]);?>
-		<div class="register__container container">
-			<div class="register__row row justify-content-center">
-				<div class="register__col col-auto">
-					<div class="register__message-text alert <?=$class?>"><?echo nl2br(htmlspecialcharsbx($text))?></div>
+		<section class="register mt-5 mb-5">
+			<div class="register__container container">
+				<div class="register__row row justify-content-center">
+					<div class="register__col col-auto">
+						<div class="register__message-text alert <?=$class?>"><?echo nl2br(htmlspecialcharsbx($text))?></div>
+					</div>
 				</div>
 			</div>
-		</div>
+		</section>
 	<?endif?>
 	<?$APPLICATION->IncludeComponent("bitrix:system.auth.authorize", "", array());?>
 <?endif?>
