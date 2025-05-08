@@ -87,5 +87,5 @@ switch($arResult["MESSAGE_CODE"])
 </section>
 
 <?elseif(!$USER->IsAuthorized()):?>
-	<?$APPLICATION->IncludeComponent("bitrix:system.auth.authorize", ".default", array());?>
+	<?$APPLICATION->IncludeComponent("bitrix:system.auth.authorize", "", array());?>
 <?endif?>
