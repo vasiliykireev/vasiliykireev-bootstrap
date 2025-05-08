@@ -106,9 +106,9 @@ if($arResult["SHOW_SMS_FIELD"] == true) {
 
 							<div class="register__login-info mb-4">
 								<div class="register__login login form-floating mb-2">
-									<input class="login__input form-control" id="login" type="text" name="USER_LOGIN" minlength="3" maxlength="50" value="<?=$arResult["USER_LOGIN"]?>" placeholder="<?=GetMessage("AUTH_LOGIN")?>" required>
-									<label class="login__label" for="login"><?=GetMessage("AUTH_LOGIN")?></label>
-									<div class="login__caption form-text"><?=GetMessage("AUTH_LOGIN_MIN")?></div>
+									<input class="login__input form-control" id="login" type="text" name="USER_LOGIN" minlength="3" maxlength="50" value="<?=$arResult["USER_LOGIN"]?>" placeholder="<?=GetMessage("AUTH_LOGIN_MIN")?>" required>
+									<label class="login__label" for="login"><?=GetMessage("AUTH_LOGIN_MIN")?></label>
+									<div class="login__caption form-text"><?=GetMessage("AUTH_LOGIN_CAPTION")?></div>
 								</div>
 								<?if($arResult["EMAIL_REGISTRATION"]):?>
 									<div class="register__email email form-floating mb-2">

@@ -2,8 +2,8 @@
 $MESS["AUTH_REGISTER"] = "Регистрация";
 $MESS["AUTH_NAME"] = "Имя";
 $MESS["AUTH_LAST_NAME"] = "Фамилия";
-$MESS["AUTH_LOGIN"] = "Логин";
-$MESS["AUTH_LOGIN_MIN"] = "Не менее 3 символов";
+$MESS["AUTH_LOGIN_CAPTION"] = "Не менее 3 символов";
+$MESS["AUTH_LOGIN_MIN"] = "Логин";
 $MESS["AUTH_CONFIRM"] = "Подтверждение пароля";
 $MESS["CAPTCHA_REGF_TITLE"] = "Защита от автоматической регистрации";
 $MESS["CAPTCHA_REGF_PROMT"] = "Введите символы с картинки";
