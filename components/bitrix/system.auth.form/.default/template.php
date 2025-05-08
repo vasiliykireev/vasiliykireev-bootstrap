@@ -4,19 +4,21 @@ CJSCore::Init();
 
 if($arParams["SHOW_CAPTCHA"]) {
 include_once($_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/main/classes/general/captcha.php");
-$captcha = new CCaptcha();
-$captcha->SetCodeLength(5);
-$captcha->SetCode();
-$captchaSID = $captcha->GetSID();
+$GLOBALS['cpt'] = new CCaptcha();
+$GLOBALS['cpt']->SetCodeLength(5);
+$GLOBALS['cpt']->SetCode();
+$captchaSID = $GLOBALS['cpt']->GetSID();
 };
 ?>
 
 <div class="auth__card card p-3 border-1 m-5">
 
 <?if ($arResult['SHOW_ERRORS'] === 'Y' && $arResult['ERROR'] && !empty($arResult['ERROR_MESSAGE'])):
-	$message = str_replace(array("<br>", "<br />"), "\n", $arResult['ERROR_MESSAGE']);
+	$message = str_replace(array("<br>", "<br />"), "\n", $arResult['ERROR_MESSAGE']['MESSAGE']);
 	?>
-		<div class="auth__alert-auth-result-message alert alert-danger"><?=nl2br(htmlspecialcharsbx($message))?>
+		<div class="auth__alert-auth-result-message alert alert-danger">
+			<?=nl2br(htmlspecialcharsbx($message))?>
+	</div>
 <?endif?>
 
 <?if($arResult["FORM_TYPE"] == "login"):?>
@@ -41,22 +43,22 @@ $captchaSID = $captcha->GetSID();
 			<label class="password__label" for="password"><?=GetMessage("AUTH_PASSWORD")?></label>
 		</div>
 	</div>
-	<?if($arParams["SHOW_CAPTCHA"]):?>
-		<div class="auth__captcha captcha mb-4">
-			<div class="auth__captcha-picture mb-2">
-					<input type="hidden" name="captcha_sid" value="<?=$captchaSID?>" />
-					<img class="captcha__image" src="/bitrix/tools/captcha.php?captcha_sid=<?=$captchaSID?>" width="180" height="40" alt="CAPTCHA" />
-				</div>
-			<div class="captcha__field form-floating mb-2">
-				<input class="captcha__input form-control" id="captcha" type="text" name="captcha_word" maxlength="50" value="" size="15" autocomplete="off" placeholder="<?echo GetMessage("AUTH_CAPTCHA_PROMT")?>">
-				<label for="captcha" class="captcha__label"><?echo GetMessage("AUTH_CAPTCHA_PROMT")?></label>
-			</div>
-		</div>
-	<?endif;?>
+	<?if($arResult["CAPTCHA_CODE"]):?>
+							<div class="auth__captcha captcha mb-4">
+								<div class="auth__captcha-picture mb-2">
+										<input type="hidden" name="captcha_sid" value="<?echo $arResult["CAPTCHA_CODE"]?>" />
+										<img class="captcha__image" src="/bitrix/tools/captcha.php?captcha_sid=<?echo $arResult["CAPTCHA_CODE"]?>" width="180" height="40" alt="CAPTCHA" />
+									</div>
+								<div class="captcha__field form-floating mb-2">
+									<input class="captcha__input form-control" id="captcha" type="text" name="captcha_word" maxlength="50" value="" size="15" autocomplete="off" placeholder="<?echo GetMessage("AUTH_CAPTCHA_PROMT")?>">
+									<label for="captcha" class="captcha__label"><?echo GetMessage("AUTH_CAPTCHA_PROMT")?></label>
+								</div>
+							</div>
+						<?endif;?>
 	<?if ($arParams["STORE_PASSWORD"] == "Y"):?>
 		<div class="auth__remember remember form-check mb-4">
-			<input class="remember__input form-check-input" type="checkbox" id="USER_REMEMBER" name="USER_REMEMBER" value="Y">
-			<label class="remember__label form-check-label" for="USER_REMEMBER">&nbsp;<?=GetMessage("AUTH_REMEMBER_ME")?></label>
+			<input class="remember__input form-check-input" type="checkbox" id="USER_REMEMBER_frm" name="USER_REMEMBER" value="Y">
+			<label class="remember__label form-check-label" for="USER_REMEMBER_frm">&nbsp;<?=GetMessage("AUTH_REMEMBER_ME")?></label>
 		</div>
 	<?endif?>
 	<div class="auth__submit form-submit text-center mb-4">
