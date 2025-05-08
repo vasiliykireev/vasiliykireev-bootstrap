@@ -33,6 +33,11 @@ if($arResult["PHONE_REGISTRATION"])
 						<div class="alert alert-danger" id="bx_chpass_error" style="display:none"></div>
 						<div id="bx_chpass_resend"></div>
 					<?endif?>
+					<?if($arParams["~AUTH_RESULT"]["TYPE"] == "OK"){?>
+						<div class="restore__links">
+							<p class="mb-1"><a href="<?=$arResult["AUTH_AUTH_URL"]?>" rel="nofollow"><?=GetMessage("AUTH_AUTH")?></a></p>
+						</div>
+					<?} else {?>
 					<form method="post" action="<?=$arResult["AUTH_URL"]?>" name="bform">
 						<?if ($arResult["BACKURL"] <> ''): ?>
 							<input type="hidden" name="backurl" value="<?=$arResult["BACKURL"]?>" />
@@ -100,6 +105,7 @@ if($arResult["PHONE_REGISTRATION"])
 						<div class="restore__links">
 							<p class="mb-1"><?=GetMessage("AUTH_AUTH_TITLE")?> <a href="<?=$arResult["AUTH_AUTH_URL"]?>" rel="nofollow"><?=GetMessage("AUTH_AUTH")?></a></p>
 						</div>
+						<?}?>
 					</form>
 				</div>
 			</div>
@@ -133,3 +139,6 @@ if($arResult["PHONE_REGISTRATION"])
 	});
 	</script>
 <?endif?>
+<pre>
+<?print_r($arResult)?>
+</pre>
