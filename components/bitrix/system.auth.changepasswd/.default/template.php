@@ -139,6 +139,3 @@ if($arResult["PHONE_REGISTRATION"])
 	});
 	</script>
 <?endif?>
-<pre>
-<?print_r($arResult)?>
-</pre>
