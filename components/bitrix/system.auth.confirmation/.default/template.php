@@ -56,7 +56,7 @@ switch($arResult["MESSAGE_CODE"])
 	<div class="register__container container">
 		<div class="register__row row justify-content-center">
 			<div class="register__col col-12 col-sm-auto col-xl-4">
-				<div class="__card card p-3 border-1">
+				<div class="register__card card p-3 border-1">
 					<div class="register__info text-center mb-4">
 						<h1><?=GetMessage("CT_BSAC_TITLE")?></h1>
 					</div>
@@ -89,7 +89,13 @@ switch($arResult["MESSAGE_CODE"])
 <?elseif(!$USER->IsAuthorized()):?>
 	<?if($arResult["MESSAGE_TEXT"] <> ''):
 		$text = str_replace(array("<br>", "<br />"), "\n", $arResult["MESSAGE_TEXT"]);?>
-		<div class="register__message-text alert <?=$class?>"><?echo nl2br(htmlspecialcharsbx($text))?></div>
+		<div class="register__container container">
+			<div class="register__row row justify-content-center">
+				<div class="register__col col-auto">
+					<div class="register__message-text alert <?=$class?>"><?echo nl2br(htmlspecialcharsbx($text))?></div>
+				</div>
+			</div>
+		</div>
 	<?endif?>
 	<?$APPLICATION->IncludeComponent("bitrix:system.auth.authorize", "", array());?>
 <?endif?>
