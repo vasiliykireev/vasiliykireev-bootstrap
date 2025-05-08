@@ -17,7 +17,7 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true)
 		<div class="restore__info-row row justify-content-center">
 			<div class="restore__info-col col-12 col-sm-auto col-xl-4">
 				<div class="restore__card card p-3 border-1">
-					<div class="restore__info text-center mb-4>
+					<div class="restore__info text-center mb-4">
 						<h1><?=GetMessage("RESTORE_TITLE")?></h1>
 					</div>
 					<?if(!empty($arParams["~AUTH_RESULT"]["MESSAGE"])):
