@@ -19,8 +19,8 @@ if($arResult["PHONE_REGISTRATION"])
 ?>
 <section class="restore mt-5 mb-5">
 	<div class="restore__container container">
-		<div class="restore__info-row row justify-content-center">
-			<div class="restore__info-col col-12 col-sm-auto col-xl-4">
+		<div class="restore__row row justify-content-center">
+			<div class="restore__col col-12 col-sm-auto col-xl-4">
 				<div class="restore__card card p-3 border-1">
 					<div class="restore__info text-center mb-4">
 						<h1><?=GetMessage("AUTH_CHANGE_PASSWORD")?></h1>
@@ -57,7 +57,6 @@ if($arResult["PHONE_REGISTRATION"])
 									<input class="login__input form-control" id="login" type="text" name="USER_LOGIN" maxlength="255" value="<?=$arResult["LAST_LOGIN"]?>" placeholder="<?=GetMessage("AUTH_LOGIN")?>">
 									<label class="login__label" for="login"><?=GetMessage("AUTH_LOGIN")?></label>
 								</div>
-
 								<?if($arResult["USE_PASSWORD"]):?>
 									<div class="restore__password password form-floating mb-2">
 										<input class="password__input form-control" id="password" type="password" name="USER_CURRENT_PASSWORD" maxlength="255" value="<?=$arResult["USER_CURRENT_PASSWORD"]?>" autocomplete="new-password" placeholder="<?echo GetMessage("system_change_pass_current_pass")?>">
@@ -84,21 +83,21 @@ if($arResult["PHONE_REGISTRATION"])
 						</div>
 
 						<?if ($arResult["USE_CAPTCHA"]):?>
-							<div class="restore__use-captcha mb-4">
-								<div class="restore__captcha-picture mb-2">
+							<div class="restore__captcha captcha mb-4">
+								<div class="captcha__picture mb-2">
 										<input type="hidden" name="captcha_sid" value="<?=$arResult["CAPTCHA_CODE"]?>" />
-										<img class="" src="/bitrix/tools/captcha.php?captcha_sid=<?=$arResult["CAPTCHA_CODE"]?>" width="180" height="40" alt="CAPTCHA" />
+										<img class="captcha__image" src="/bitrix/tools/captcha.php?captcha_sid=<?=$arResult["CAPTCHA_CODE"]?>" width="180" height="40" alt="CAPTCHA" />
 									</div>
-								<div class="restore__captcha captcha form-floating mb-2">
-									<input type="text" class="captcha__input form-control" id="captcha" type="text" name="captcha_word" maxlength="50" value="" size="15" autocomplete="off" placeholder="<?=GetMessage("system_auth_captcha")?>">
+								<div class="captcha__field form-floating mb-2">
+									<input class="captcha__input form-control" id="captcha" type="text" name="captcha_word" maxlength="50" value="" size="15" autocomplete="off" placeholder="<?=GetMessage("system_auth_captcha")?>">
 									<label for="captcha" class="captcha__label"><?=GetMessage("system_auth_captcha")?></label>
 								</div>
 							</div>
 						<?endif?>
-						<div class="auth__submit form-submit text-center mb-4">
-							<input type="submit" class="auth__submit-button btn btn-primary w-100" name="send_account_info" value="<?=GetMessage("AUTH_CHANGE")?>">
+						<div class="restore__submit form-submit text-center mb-4">
+							<input class="restore__submit-button btn btn-primary w-100" type="submit" name="send_account_info" value="<?=GetMessage("AUTH_CHANGE")?>">
 						</div>
-						<div class="auth__links">
+						<div class="restore__links">
 							<p class="mb-1"><?=GetMessage("AUTH_AUTH_TITLE")?> <a href="<?=$arResult["AUTH_AUTH_URL"]?>" rel="nofollow"><?=GetMessage("AUTH_AUTH")?></a></p>
 						</div>
 					</form>
