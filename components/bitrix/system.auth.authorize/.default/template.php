@@ -14,7 +14,7 @@ $APPLICATION->SetTitle(GetMessage("AUTH_TITLE"));
 					<?if(!empty($arParams["~AUTH_RESULT"]["MESSAGE"])):
 						$message = str_replace(array("<br>", "<br />"), "\n", $arParams["~AUTH_RESULT"]["MESSAGE"]);
 					?>
-						<div class="auth__alert-auth-result-message alert-danger"><?=nl2br(htmlspecialcharsbx($message))?>
+						<div class="auth__alert-auth-result-message alert alert-danger"><?=nl2br(htmlspecialcharsbx($message))?>
 					</div>
 					<?endif?>
 					<?if (!empty($arResult['ERROR_MESSAGE'])):
