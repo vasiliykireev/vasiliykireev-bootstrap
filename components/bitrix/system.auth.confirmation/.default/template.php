@@ -93,7 +93,7 @@ switch($arResult["MESSAGE_CODE"])
 			<div class="register__container container">
 				<div class="register__row row justify-content-center">
 					<div class="register__col col-auto">
-						<div class="register__message-text alert <?=$class?>"><?echo nl2br(htmlspecialcharsbx($text))?></div>
+						<div class="register__message-text alert <?=$class?> mb-0"><?echo nl2br(htmlspecialcharsbx($text))?></div>
 					</div>
 				</div>
 			</div>
