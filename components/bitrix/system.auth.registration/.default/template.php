@@ -36,10 +36,10 @@ if($arResult["SHOW_SMS_FIELD"] == true) {
 						<div class="register__auth-result-message alert <?=($arParams["~AUTH_RESULT"]["TYPE"] == "OK"? "alert-success":"alert-danger")?>"><?=nl2br(htmlspecialcharsbx($message))?></div>
 					<?endif?>
 					<?if($arResult["SHOW_EMAIL_SENT_CONFIRMATION"]):?>
-						<div class="register__email-sent-confirmation alert alert-success"><?echo GetMessage("AUTH_EMAIL_SENT")?></div>
+						<p class="register__email-sent-confirmation"><?echo GetMessage("AUTH_EMAIL_SENT")?></p>
 					<?endif?>
 					<?if(!$arResult["SHOW_EMAIL_SENT_CONFIRMATION"] && $arResult["USE_EMAIL_CONFIRMATION"] === "Y"):?>
-						<div class="register__email-confirmation alert alert-warning"><?echo GetMessage("AUTH_EMAIL_WILL_BE_SENT")?></div>
+						<p class="register__email-confirmation"><?echo GetMessage("AUTH_EMAIL_WILL_BE_SENT")?></p>
 					<?endif?>
 					<?if($arResult["SHOW_SMS_FIELD"] == true):?>
 						<div id="bx_register_error" style="display:none" class="register__sms-error alert alert-danger"></div>
