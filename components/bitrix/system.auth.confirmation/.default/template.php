@@ -72,7 +72,7 @@ switch($arResult["MESSAGE_CODE"])
 							<label class="login__label" for="login"><?echo GetMessage("CT_BSAC_LOGIN")?></label>
 						</div>
 						<div class="register__confirm-code confirm-code form-floating mb-2">
-							<input class="confirm-code__input form-control" id="login" type="text" name="<?echo $arParams["LOGIN"]?>" maxlength="50" value="<?echo $arResult["LOGIN"]?>" placeholder="<?echo GetMessage("CT_BSAC_CONFIRM_CODE")?>">
+							<input class="confirm-code__input form-control" type="text" name="<?echo $arParams["CONFIRM_CODE"]?>" maxlength="50" value="<?echo $arResult["CONFIRM_CODE"]?>" placeholder="<?echo GetMessage("CT_BSAC_CONFIRM_CODE")?>">
 							<label class="confirm-code__label" for="login"><?echo GetMessage("CT_BSAC_CONFIRM_CODE")?></label>
 						</div>
 						<div class="register__submit form-submit text-center mb-4">
@@ -89,3 +89,16 @@ switch($arResult["MESSAGE_CODE"])
 <?elseif(!$USER->IsAuthorized()):?>
 	<?$APPLICATION->IncludeComponent("bitrix:system.auth.authorize", ".default", array());?>
 <?endif?>
+
+<div class="bx-authform-formgroup-container">
+							<div class="bx-authform-label-container"><?echo GetMessage("CT_BSAC_LOGIN")?></div>
+							<div class="bx-authform-input-container">
+								<input type="text" name="<?echo $arParams["LOGIN"]?>" maxlength="50" value="<?echo $arResult["LOGIN"]?>" />
+							</div>
+						</div>
+						<div class="bx-authform-formgroup-container">
+							<div class="bx-authform-label-container"><?echo GetMessage("CT_BSAC_CONFIRM_CODE")?></div>
+							<div class="bx-authform-input-container">
+								<input type="text" name="<?echo $arParams["CONFIRM_CODE"]?>" maxlength="50" value="<?echo $arResult["CONFIRM_CODE"]?>" />
+							</div>
+						</div>
