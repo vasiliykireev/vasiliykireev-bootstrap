@@ -6,7 +6,8 @@ $MESS["AUTH_REMEMBER_ME"] = "Запомнить меня на этом комп�
 $MESS["AUTH_AUTHORIZE"] = "Войти";
 $MESS["AUTH_REGISTER"] = "Зарегистрироваться";
 $MESS["AUTH_FIRST_ONE"] = "Нет аккаунта?";
-$MESS["AUTH_FORGOT_PASSWORD_2"] = "Забыли пароль?";
+$MESS["AUTH_FORGOT_PASSWORD_TITLE"] = "Забыли пароль?";
+$MESS["AUTH_FORGOT_PASSWORD_2"] = "Восстановить";
 $MESS["AUTH_CAPTCHA_PROMT"] = "Введите символы с картинки";
 $MESS["AUTH_TITLE"] = "Авторизация";
 /*

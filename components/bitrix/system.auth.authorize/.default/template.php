@@ -68,7 +68,7 @@ $APPLICATION->SetTitle(GetMessage("AUTH_TITLE"));
 							<?if ($arParams["NOT_SHOW_LINKS"] != "Y"):?>
 								<noindex>
 									<p class="mb-1">
-										<a href="<?=$arResult["AUTH_FORGOT_PASSWORD_URL"]?>" rel="nofollow"><?=GetMessage("AUTH_FORGOT_PASSWORD_2")?></a>
+									<?=GetMessage("AUTH_FORGOT_PASSWORD_TITLE")?> <a href="<?=$arResult["AUTH_FORGOT_PASSWORD_URL"]?>" rel="nofollow"><?=GetMessage("AUTH_FORGOT_PASSWORD_2")?></a>
 									</p>
 								</noindex>
 							<?endif?>
