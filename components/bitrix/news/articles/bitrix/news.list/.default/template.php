@@ -37,7 +37,7 @@ $this->setFrameMode(true);
 				<?if(($arParams['DISPLAY_SECTIONS_BUTTONS'] == 'Y') && !isset($arResult["SECTION"]["PATH"]) && ($arResult["SECTIONS"] ?? '') !== ''):?>
 					<?foreach($arResult["SECTIONS"] as $arSection):?>
                          <?if($arSection["ELEMENT_CNT"] > 0):?>
-							<a class="articles__section-button btn btn-outline-primary" href="<?=$arSection["SECTION_PAGE_URL"]?>"><?=$arSection["NAME"]?></a>
+							<a class="articles__section-button btn btn-outline-primary mb-1" href="<?=$arSection["SECTION_PAGE_URL"]?>"><?=$arSection["NAME"]?></a>
 						 <?endif?>
 					<?endforeach?>
                 <?elseif((($arResult["SECTION"]["PATH"] ?? '') !== '') && ($arResult["SECTION"]["PATH"][array_key_last($arResult["SECTION"]["PATH"])]["SECTIONS"]?? '') !== ''):?>
@@ -118,7 +118,7 @@ $this->setFrameMode(true);
 									    <?if($arParams['DISPLAY_SECTIONS'] == "Y" && $arParams["DISPLAY_SECTIONS_BUTTONS"]):?>
 									        <div class="article__badges text-center text-xl-start">
 									        	<?foreach($arItem["SECTIONS"] as $arSection):?>
-                                                    <a class="article__badge btn btn-outline-primary btn-sm mb-1" href="<?=$arSection["SECTION_PAGE_URL"]?>"><?=$arSection["NAME"]?></a>
+                                                    <a class="article__badge btn btn-outline-primary btn-sm mb-2" href="<?=$arSection["SECTION_PAGE_URL"]?>"><?=$arSection["NAME"]?></a>
 									        	<?endforeach?>
 									        </div>
 									    <?endif?>

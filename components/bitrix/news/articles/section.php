@@ -60,7 +60,7 @@ $this->setFrameMode(true);
         <?if($arParams["DISPLAY_HEADER"] == 'Y'):?>
         	<div class="articles__preview-row row justify-content-center">
         	    <div class="articles__preview-col col-12 col-md-10 col-lg-8 col-xl-12 col-xxl-11">
-        	    	<div class="articles__preview-card card mb-3 border-0">
+        	    	<div class="articles__preview-card card mb-xl-3 border-0">
         	    		<div class="articles__preview-card-row row justify-content-center align-items-stretch">
         	    		    <div class="articles__preview-card-body col col-xl-6 col-xxl-7 order-last order-xl-first card-body pt-xl-0 pb-xl-0 d-flex flex-column justify-content-evenly">
                     	        <div class="articles__preview-announce">
