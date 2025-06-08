@@ -47,6 +47,15 @@
 	font-weight: 500;
 }
 
+.article__detail-text img {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	max-width: var(--article-width);
+	width: 100%;
+	height: auto;
+}
+
 pre code {
     display: block;
     margin-left: auto;
