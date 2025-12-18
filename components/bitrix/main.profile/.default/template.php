@@ -35,11 +35,128 @@ if (isset($arResult["SHOW_SMS_FIELD"]) && $arResult["SHOW_SMS_FIELD"] == true) {
 
 						<div class="card border mb-3">
 							<div class="card-body">
-								<h2 class="mb-3"><?= rtrim(GetMessage("USER_PHOTO"), ':') ?></h2>
+								<label for="PERSONAL_PHOTO" class="form-label">
+									<h2 class="mb-3"><?= rtrim(GetMessage("USER_PHOTO"), ':') ?></h2>
+								</label>
 								<div class="d-flex flex-wrap align-items-center gap-3">
 									<div class="profile-photo-preview">
+										<div class="mb-3">
+
+											<?
+											$personalPhotoInput = $arResult["arUser"]["PERSONAL_PHOTO_INPUT"];
+											$personalPhotoInput = mb_convert_encoding($personalPhotoInput, 'HTML-ENTITIES', 'UTF-8');
+
+											libxml_use_internal_errors(true);
+
+											$personalPhotoInputDOM = new DOMDocument();
+											$personalPhotoInputDOM->loadHTML($personalPhotoInput, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+
+											$personalPhotoInputXPath = new DOMXPath($personalPhotoInputDOM);
+
+											function addClass(DOMElement $el, string $class): void
+											{
+												$current = trim($el->getAttribute('class'));
+												$classes = $current === '' ? [] : preg_split('/\s+/', $current);
+												if (!in_array($class, $classes, true)) {
+													$classes[] = $class;
+												}
+												$el->setAttribute('class', implode(' ', $classes));
+											}
+
+											// PERSONAL_PHOTO input: классы + id + обёртка div.personal-photo
+											$fileInput = $personalPhotoInputXPath->query('//input[@name="PERSONAL_PHOTO"]')->item(0);
+
+											$personalPhotoInputDiv = null;
+
+											if ($fileInput instanceof DOMElement) {
+												// Гарантируем id
+												$fileInput->setAttribute('id', 'PERSONAL_PHOTO');
+
+												// Добавляем нужные классы (не трогаем существующие, просто дописываем)
+												addClass($fileInput, 'personal-photo__input');
+												addClass($fileInput, 'typefile');
+												addClass($fileInput, 'form-control');
+
+												// Оборачиваем input в <div class="personal-photo">
+												$personalPhotoInputDiv = $personalPhotoInputDOM->createElement('div');
+												$personalPhotoInputDiv->setAttribute('class', 'personal-photo mb-2');
+
+												$parent = $fileInput->parentNode;
+												$parent->insertBefore($personalPhotoInputDiv, $fileInput);
+												$personalPhotoInputDiv->appendChild($fileInput);
+											}
+
+											// span.bx-input-file-desc: собрать form-check из чекбокса + label и удалить span
+											$span = $personalPhotoInputXPath
+												->query('//span[contains(concat(" ", normalize-space(@class), " "), " bx-input-file-desc ")]')
+												->item(0);
+
+											$formCheckDiv = null;
+
+											if ($span instanceof DOMElement) {
+												$delInput = $personalPhotoInputXPath
+													->query('.//input[translate(@type,"CHECKBOX","checkbox")="checkbox" and @name="PERSONAL_PHOTO_del"]', $span)
+													->item(0);
+
+												$label = $personalPhotoInputXPath
+													->query('.//label[@for="PERSONAL_PHOTO_del"]', $span)
+													->item(0);
+
+												if ($delInput instanceof DOMElement) {
+													addClass($delInput, 'form-check-input');
+
+													$formCheckDiv = $personalPhotoInputDOM->createElement('div');
+													$formCheckDiv->setAttribute('class', 'form-check');
+
+													$span->parentNode->insertBefore($formCheckDiv, $span);
+
+													$formCheckDiv->appendChild($delInput);
+
+													if ($label instanceof DOMElement) {
+														addClass($label, 'form-check-label');
+														$formCheckDiv->appendChild($label);
+													}
+												}
+
+												$span->parentNode->removeChild($span);
+											}
+
+											libxml_clear_errors();
+
+											// Вывод строго нужных блоков
+											$personalPhotoInputFile = '';
+											if ($personalPhotoInputDiv instanceof DOMElement) {
+												$personalPhotoInputFile = $personalPhotoInputDOM->saveHTML($personalPhotoInputDiv) . "\n";
+											}
+											$personalPhotoInputDelete = '';
+											if ($formCheckDiv instanceof DOMElement) {
+												$personalPhotoInputDelete = $personalPhotoInputDOM->saveHTML($formCheckDiv);
+											}
+
+											echo $personalPhotoInputFile;
+											echo $personalPhotoInputDelete;
+											?>
+										</div>
+
 										<? if (!empty($arResult["arUser"]["PERSONAL_PHOTO_HTML"])): ?>
-											<?= $arResult["arUser"]["PERSONAL_PHOTO_HTML"] ?>
+											<?
+											// echo $arResult["arUser"]["PERSONAL_PHOTO_HTML"]
+											$personalPhotoHtml = $arResult["arUser"]["PERSONAL_PHOTO_HTML"];
+
+											libxml_use_internal_errors(true);
+
+											$personalPhotoHtmlDOM = new DOMDocument('1.0', 'UTF-8');
+											$personalPhotoHtmlDOM->loadHTML('<?xml encoding="UTF-8">' . $personalPhotoHtml, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+
+											$personalPhotoHtmlXPath = new DOMXPath($personalPhotoHtmlDOM);
+
+											$img = $personalPhotoHtmlXPath->query('//img')->item(0);
+											$personalPhotoHtmlImgSrc = ($img instanceof DOMElement) ? $img->getAttribute('src') : '';
+
+											libxml_clear_errors();
+
+											echo htmlspecialchars($personalPhotoHtmlImgSrc, ENT_QUOTES | ENT_HTML5, 'UTF-8');
+											?>
 										<? else: ?>
 											<span class="text-muted">Изображение не загружено</span>
 										<? endif; ?>
@@ -119,6 +236,9 @@ if (isset($arResult["SHOW_SMS_FIELD"]) && $arResult["SHOW_SMS_FIELD"] == true) {
 <? endif; ?>
 
 <hr>
+<pre>$arUser
+	<? print_r($arUser) ?>
+</pre>
 <pre>$arResult
 	<? print_r($arResult) ?>
 </pre>
